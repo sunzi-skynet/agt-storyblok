@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* TT Hoves Pro Font */
+@font-face {
+  font-family: 'TT Hoves Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('~/assets/fonts/TT_Hoves_Pro_Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'TT Hoves Pro';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('~/assets/fonts/TT_Hoves_Pro_Medium.woff2') format('woff2');
+}
+
+/* Base Styles */
+@layer base {
+  html {
+    @apply font-sans text-text antialiased;
+  }
+
+  body {
+    @apply bg-surface-alt;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-medium text-text;
+  }
+
+  a {
+    @apply text-text hover:text-primary transition-colors;
+  }
+}
+
+/* Component Classes */
+@layer components {
+  .container-agt {
+    @apply max-w-container mx-auto px-4 lg:px-8;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 font-medium rounded-lg transition-all duration-200;
+  }
+
+  .btn-primary {
+    @apply btn bg-primary text-white hover:bg-primary-hover;
+  }
+
+  .btn-secondary {
+    @apply btn bg-secondary text-white hover:opacity-90;
+  }
+
+  .btn-outline {
+    @apply btn border-2 border-primary text-primary hover:bg-primary hover:text-white;
+  }
+}
