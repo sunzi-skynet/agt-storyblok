@@ -3,6 +3,8 @@ defineProps<{
   blok: {
     headline: string
     headline_secondary?: string
+    text_left?: string
+    text_right?: string
     subheadline?: string
     background_image?: string
     cta_text?: string
@@ -17,55 +19,51 @@ defineProps<{
 <template>
   <section
     v-editable="blok"
-    class="relative w-full min-h-screen overflow-hidden"
+    class="relative w-full min-h-screen"
   >
-    <!-- Background Image (full bleed) -->
-    <img
-      v-if="blok.background_image"
-      :src="blok.background_image"
-      alt=""
-      class="absolute inset-0 w-full h-full object-cover"
-    />
-    
-    <!-- Subtle gradient for text readability -->
-    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
+    <!-- Background Image -->
+    <div class="absolute inset-0">
+      <img
+        v-if="blok.background_image"
+        :src="blok.background_image"
+        alt=""
+        class="w-full h-full object-cover"
+      />
+      <!-- Gradient overlay - stronger at bottom -->
+      <div class="absolute inset-0 bg-gradient-to-t from-[#040B2F]/80 via-[#040B2F]/30 to-transparent" />
+    </div>
 
-    <!-- Content positioned at bottom -->
-    <div class="absolute inset-0 flex flex-col justify-end">
-      <div class="w-full max-w-[1400px] mx-auto px-6 lg:px-12 pb-24 lg:pb-32">
+    <!-- Content Layer -->
+    <div class="relative z-10 min-h-screen flex flex-col justify-end pb-20 lg:pb-28">
+      <div class="w-full max-w-[1200px] mx-auto px-6 lg:px-8">
         
-        <!-- Two-column headline grid -->
-        <div class="flex flex-col lg:flex-row lg:justify-between lg:items-end gap-8 lg:gap-16">
+        <!-- Headlines Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 mb-12 lg:mb-16">
+          <!-- Left Headline -->
+          <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-[72px] text-white font-medium leading-[1.05] tracking-[-0.02em]">
+            Bus mieten.<br>Deutsch-<br>landweit.
+          </h1>
           
-          <!-- Left: Primary headline -->
-          <div class="lg:flex-1">
-            <h1 class="text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-white font-medium leading-[0.95] tracking-tight">
-              {{ blok.headline?.replace(/\\n/g, '\n') }}
-            </h1>
-          </div>
-
-          <!-- Right: Secondary headline -->
-          <div v-if="blok.headline_secondary" class="lg:flex-1 lg:text-right">
-            <p class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white font-medium leading-[0.95] tracking-tight italic">
-              {{ blok.headline_secondary?.replace(/\\n/g, '\n') }}
-            </p>
-          </div>
+          <!-- Right Headline (italic) -->
+          <p class="text-4xl sm:text-5xl lg:text-6xl xl:text-[72px] text-white font-medium leading-[1.05] tracking-[-0.02em] italic lg:text-right">
+            Experience<br>Mobility.
+          </p>
         </div>
 
-        <!-- Subheadline & CTA -->
-        <div class="mt-12 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-          <p v-if="blok.subheadline" class="text-lg lg:text-xl text-white/90">
-            {{ blok.subheadline }}
+        <!-- Text Paragraphs Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 text-white/90">
+          <!-- Left Text -->
+          <p class="text-base lg:text-lg leading-relaxed">
+            Mit der agency for global transport reisen Gruppen, Unternehmen und Organisationen in Deutschland und Europa komfortabel ans Ziel. Mit über 100 Jahren Erfahrungen als Busvermietung sind Gruppenfahrten bis hin zur komplexen Eventlogistik kein Problem für uns. ISO-zertifiziert, transparent und zuverlässig.
           </p>
           
-          <a
-            v-if="blok.cta_text"
-            :href="blok.cta_link || '#'"
-            class="inline-flex items-center justify-center px-8 py-4 bg-primary text-white font-medium rounded hover:bg-primary-hover transition-colors"
-          >
-            {{ blok.cta_text }}
-          </a>
+          <!-- Right Text -->
+          <p class="text-base lg:text-lg leading-relaxed">
+            Als Full-Service Anbieter für Busvermietung und Personenlogistik kombiniert die agt effiziente Organisation mit persönlicher Betreuung.<br>
+            Von der ersten Anfrage bis zur letzten Fahrt sorgen wir für unvergessliche Servicequalität.
+          </p>
         </div>
+
       </div>
     </div>
   </section>
