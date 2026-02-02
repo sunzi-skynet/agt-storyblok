@@ -38,7 +38,7 @@ defineProps<{
       <div class="grid md:grid-cols-2 gap-8 items-end">
         <!-- Left Column -->
         <div>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white font-medium leading-[1.1]">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white font-medium leading-[1.1] whitespace-pre-line">
             {{ blok.headline }}
           </h1>
           
@@ -54,7 +54,7 @@ defineProps<{
         <div class="md:text-right">
           <p
             v-if="blok.headline_secondary"
-            class="text-4xl md:text-5xl lg:text-6xl text-white font-medium leading-[1.1]"
+            class="text-4xl md:text-5xl lg:text-6xl text-white font-medium leading-[1.1] whitespace-pre-line"
           >
             {{ blok.headline_secondary }}
           </p>
