@@ -2,6 +2,7 @@
 defineProps<{
   blok: {
     headline: string
+    headline_secondary?: string
     subheadline?: string
     background_image?: string
     cta_text?: string
@@ -16,7 +17,7 @@ defineProps<{
 <template>
   <section
     v-editable="blok"
-    class="relative min-h-[60vh] flex items-center bg-secondary overflow-hidden"
+    class="relative min-h-[85vh] flex items-end bg-secondary overflow-hidden"
   >
     <!-- Background Image -->
     <div
@@ -26,27 +27,52 @@ defineProps<{
       <img
         :src="blok.background_image"
         alt=""
-        class="w-full h-full object-cover opacity-50"
+        class="w-full h-full object-cover"
       />
+      <!-- Gradient overlay -->
+      <div class="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/40 to-transparent" />
     </div>
 
     <!-- Content -->
-    <div class="container-agt relative z-10 py-20 text-center">
-      <h1 class="text-4xl md:text-display-5 lg:text-display-4 text-white font-medium leading-tight">
-        {{ blok.headline }}
-      </h1>
-      
-      <p
-        v-if="blok.subheadline"
-        class="mt-4 text-body-lg text-white/80 max-w-2xl mx-auto"
-      >
-        {{ blok.subheadline }}
-      </p>
+    <div class="container-agt relative z-10 pb-16 pt-32">
+      <div class="grid md:grid-cols-2 gap-8 items-end">
+        <!-- Left Column -->
+        <div>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl text-white font-medium leading-[1.1]">
+            {{ blok.headline }}
+          </h1>
+          
+          <p
+            v-if="blok.subheadline && !blok.headline_secondary"
+            class="mt-6 text-lg text-white/80 max-w-lg"
+          >
+            {{ blok.subheadline }}
+          </p>
+        </div>
 
+        <!-- Right Column -->
+        <div class="md:text-right">
+          <p
+            v-if="blok.headline_secondary"
+            class="text-4xl md:text-5xl lg:text-6xl text-white font-medium leading-[1.1]"
+          >
+            {{ blok.headline_secondary }}
+          </p>
+          
+          <p
+            v-if="blok.subheadline && blok.headline_secondary"
+            class="mt-6 text-lg text-white/80"
+          >
+            {{ blok.subheadline }}
+          </p>
+        </div>
+      </div>
+
+      <!-- CTA -->
       <a
         v-if="blok.cta_text"
         :href="blok.cta_link || '#'"
-        class="btn-primary mt-8 inline-block"
+        class="btn-primary mt-10 inline-block"
       >
         {{ blok.cta_text }}
       </a>
