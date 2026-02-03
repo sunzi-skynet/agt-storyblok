@@ -78,12 +78,35 @@ defineProps<{
   background-repeat: no-repeat;
   color: white;
   padding: 80px 0 40px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative circles pattern */
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 10% 50%, rgba(38, 91, 246, 0.15) 0%, transparent 25%),
+    radial-gradient(circle at 5% 70%, rgba(38, 91, 246, 0.1) 0%, transparent 20%),
+    radial-gradient(circle at 15% 30%, rgba(38, 91, 246, 0.08) 0%, transparent 15%),
+    radial-gradient(circle at 85% 20%, rgba(38, 91, 246, 0.12) 0%, transparent 22%),
+    radial-gradient(circle at 90% 60%, rgba(38, 91, 246, 0.1) 0%, transparent 18%),
+    radial-gradient(circle at 95% 80%, rgba(38, 91, 246, 0.08) 0%, transparent 12%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .footer__container {
   max-width: 1140px;
   margin: 0 auto;
   padding: 0 20px;
+  position: relative;
+  z-index: 1;
 }
 
 .footer__header {
