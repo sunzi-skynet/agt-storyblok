@@ -1,8 +1,8 @@
 <template>
-  <section v-editable="blok" class="client-logos">
-    <div class="client-logos__container">
+  <section v-editable="blok" class="client-logos agt-section agt-section--dark">
+    <div class="agt-container">
       <!-- Title -->
-      <h2 v-if="blok.title" class="client-logos__title">{{ blok.title }}</h2>
+      <h2 v-if="blok.title" class="agt-title client-logos__title">{{ blok.title }}</h2>
       
       <!-- Logos Row -->
       <div class="client-logos__grid">
@@ -22,13 +22,13 @@
       
       <!-- Bottom Row: Description + CTA -->
       <div class="client-logos__bottom">
-        <p v-if="blok.description" class="client-logos__description">
+        <p v-if="blok.description" class="client-logos__description agt-subtitle">
           {{ blok.description }}
         </p>
         <a 
           v-if="blok.cta_link && blok.cta_text"
           :href="blok.cta_link.cached_url || blok.cta_link.url || blok.cta_link"
-          class="client-logos__cta"
+          class="agt-btn agt-btn--secondary"
         >
           {{ blok.cta_text }}
           <span class="client-logos__cta-arrow">›</span>
@@ -48,22 +48,9 @@ defineProps({
 </script>
 
 <style scoped>
-.client-logos {
-  background-color: #040B2F;
-  padding: 80px 0;
-}
-
-.client-logos__container {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
 .client-logos__title {
-  color: #ffffff;
-  font-size: 48px;
-  font-weight: 500;
-  margin-bottom: 60px;
+  color: var(--color-text-inverse);
+  margin-bottom: var(--space-2xl);
 }
 
 .client-logos__grid {
@@ -71,8 +58,8 @@ defineProps({
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 60px;
-  margin-bottom: 60px;
+  gap: var(--space-2xl);
+  margin-bottom: var(--space-2xl);
 }
 
 .client-logos__item {
@@ -86,7 +73,7 @@ defineProps({
   width: auto;
   filter: brightness(0) invert(1);
   opacity: 0.9;
-  transition: opacity 0.2s ease;
+  transition: opacity var(--transition-base);
 }
 
 .client-logos__image:hover {
@@ -98,58 +85,34 @@ defineProps({
   justify-content: space-between;
   align-items: flex-end;
   flex-wrap: wrap;
-  gap: 30px;
+  gap: var(--space-lg);
 }
 
 .client-logos__description {
-  color: #ffffff;
-  font-size: 16px;
-  line-height: 1.6;
+  color: var(--color-text-inverse);
   max-width: 600px;
   margin: 0;
   opacity: 0.9;
 }
 
-.client-logos__cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 500;
-  text-decoration: none;
-  border: 2px solid #ffffff;
-  padding: 16px 32px;
-  transition: all 0.2s ease;
-}
-
-.client-logos__cta:hover {
-  background-color: #ffffff;
-  color: #040B2F;
-}
-
 .client-logos__cta-arrow {
   font-size: 24px;
-  transition: transform 0.2s ease;
+  transition: transform var(--transition-base);
 }
 
-.client-logos__cta:hover .client-logos__cta-arrow {
+.agt-btn:hover .client-logos__cta-arrow {
   transform: translateX(4px);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .client-logos {
-    padding: 60px 0;
-  }
-  
   .client-logos__title {
     font-size: 32px;
-    margin-bottom: 40px;
+    margin-bottom: var(--space-xl);
   }
   
   .client-logos__grid {
-    gap: 40px;
+    gap: var(--space-xl);
   }
   
   .client-logos__image {
@@ -161,7 +124,7 @@ defineProps({
     align-items: flex-start;
   }
   
-  .client-logos__cta {
+  .client-logos__bottom .agt-btn {
     width: 100%;
     justify-content: center;
   }

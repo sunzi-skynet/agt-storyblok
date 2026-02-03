@@ -1,9 +1,9 @@
 <template>
-  <section v-editable="blok" class="fleet-list">
-    <div class="fleet-list__container">
+  <section v-editable="blok" class="fleet-list agt-section agt-section--light">
+    <div class="agt-container">
       <div class="fleet-list__header">
-        <h2 class="fleet-list__title">{{ blok.title }}</h2>
-        <p v-if="blok.intro_text" class="fleet-list__intro">{{ blok.intro_text }}</p>
+        <h2 class="fleet-list__title agt-title agt-title--italic">{{ blok.title }}</h2>
+        <p v-if="blok.intro_text" class="fleet-list__intro agt-subtitle">{{ blok.intro_text }}</p>
       </div>
       <div class="fleet-list__items">
         <FleetItem
@@ -28,40 +28,20 @@ defineProps({
 </script>
 
 <style scoped>
-.fleet-list {
-  padding: 80px 0;
-  background-color: #ffffff;
-}
-
-.fleet-list__container {
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
 .fleet-list__header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 48px;
-  gap: 40px;
+  margin-bottom: var(--space-xl);
+  gap: var(--space-xl);
 }
 
 .fleet-list__title {
-  font-size: 48px;
-  font-weight: 400;
-  color: #1e2a4a;
-  margin: 0;
-  font-style: italic;
   flex: 1;
 }
 
 .fleet-list__intro {
-  font-size: 14px;
-  line-height: 1.6;
-  color: #1e2a4a;
   max-width: 320px;
-  margin: 0;
   text-align: right;
 }
 
@@ -71,18 +51,10 @@ defineProps({
 }
 
 @media (max-width: 768px) {
-  .fleet-list {
-    padding: 48px 0;
-  }
-
   .fleet-list__header {
     flex-direction: column;
-    gap: 24px;
-    margin-bottom: 32px;
-  }
-
-  .fleet-list__title {
-    font-size: 32px;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
   }
 
   .fleet-list__intro {

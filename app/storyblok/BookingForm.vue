@@ -1,15 +1,15 @@
 <template>
-  <section v-editable="blok" id="anfragen" class="booking-form">
-    <div class="booking-form__container">
-      <h2 class="booking-form__title">{{ blok.title }}</h2>
+  <section v-editable="blok" id="anfragen" class="booking-form agt-section agt-section--light">
+    <div class="agt-container">
+      <h2 class="booking-form__title agt-title">{{ blok.title }}</h2>
       
       <div class="booking-form__content">
         <!-- Contact Sidebar -->
         <div class="booking-form__sidebar">
           <h3 class="booking-form__sidebar-title">Kontakt</h3>
           <p class="booking-form__sidebar-text">{{ blok.contact_text }}</p>
-          <a :href="'tel:' + blok.phone?.replace(/\s/g, '')" class="booking-form__phone">{{ blok.phone }}</a>
-          <a :href="'mailto:' + blok.email" class="booking-form__email">{{ blok.email }}</a>
+          <a :href="'tel:' + blok.phone?.replace(/\s/g, '')" class="booking-form__link">{{ blok.phone }}</a>
+          <a :href="'mailto:' + blok.email" class="booking-form__link">{{ blok.email }}</a>
         </div>
 
         <!-- Form -->
@@ -17,7 +17,7 @@
           <div class="booking-form__grid">
             <!-- Fahrttyp -->
             <div class="booking-form__field">
-              <label class="booking-form__label">Fahrttyp <span class="required">*</span></label>
+              <label class="booking-form__label">Fahrttyp <span class="booking-form__required">*</span></label>
               <div class="booking-form__select-wrapper">
                 <select v-model="form.fahrttyp" class="booking-form__select" required>
                   <option value="" disabled selected>Fahrttyp wählen</option>
@@ -31,7 +31,7 @@
 
             <!-- Datum -->
             <div class="booking-form__field">
-              <label class="booking-form__label">Datum <span class="required">*</span></label>
+              <label class="booking-form__label">Datum <span class="booking-form__required">*</span></label>
               <div class="booking-form__input-wrapper">
                 <input 
                   v-model="form.datum" 
@@ -39,7 +39,7 @@
                   class="booking-form__input booking-form__input--date" 
                   required
                 >
-                <svg class="booking-form__icon booking-form__icon--calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <svg class="booking-form__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
                   <line x1="16" y1="2" x2="16" y2="6"/>
                   <line x1="8" y1="2" x2="8" y2="6"/>
@@ -50,13 +50,13 @@
 
             <!-- Abreiseort -->
             <div class="booking-form__field">
-              <label class="booking-form__label">Ihr Abreiseort <span class="required">*</span></label>
+              <label class="booking-form__label">Ihr Abreiseort <span class="booking-form__required">*</span></label>
               <input v-model="form.abreiseort" type="text" class="booking-form__input" required>
             </div>
 
             <!-- Abfahrtszeit -->
             <div class="booking-form__field">
-              <label class="booking-form__label">Abfahrtszeit <span class="required">*</span></label>
+              <label class="booking-form__label">Abfahrtszeit <span class="booking-form__required">*</span></label>
               <div class="booking-form__select-wrapper">
                 <select v-model="form.abfahrtszeit" class="booking-form__select" required>
                   <option value="" disabled selected>Uhrzeit wählen</option>
@@ -70,13 +70,13 @@
 
             <!-- Reiseziel -->
             <div class="booking-form__field">
-              <label class="booking-form__label">Ihr Reiseziel <span class="required">*</span></label>
+              <label class="booking-form__label">Ihr Reiseziel <span class="booking-form__required">*</span></label>
               <input v-model="form.reiseziel" type="text" class="booking-form__input" required>
             </div>
 
             <!-- Anzahl Fahrgäste -->
             <div class="booking-form__field">
-              <label class="booking-form__label">Anzahl der Fahrgäste <span class="required">*</span></label>
+              <label class="booking-form__label">Anzahl der Fahrgäste <span class="booking-form__required">*</span></label>
               <div class="booking-form__input-wrapper">
                 <input v-model="form.fahrgaeste" type="number" min="1" class="booking-form__input booking-form__input--number" required>
                 <svg class="booking-form__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
@@ -90,7 +90,7 @@
 
             <!-- Weitere Fahrten -->
             <div class="booking-form__field">
-              <label class="booking-form__label">Weitere Fahrten am Zielort <span class="required">*</span></label>
+              <label class="booking-form__label">Weitere Fahrten am Zielort <span class="booking-form__required">*</span></label>
               <div class="booking-form__select-wrapper">
                 <select v-model="form.weitereFahrten" class="booking-form__select" required>
                   <option value="" disabled selected>Bitte auswählen</option>
@@ -107,13 +107,13 @@
             <div class="booking-form__field booking-form__field--checkbox">
               <label class="booking-form__checkbox-label">
                 <input v-model="form.hinweis" type="checkbox" class="booking-form__checkbox" required>
-                <span>{{ blok.disclaimer_text }} <span class="required">*</span></span>
+                <span>{{ blok.disclaimer_text }} <span class="booking-form__required">*</span></span>
               </label>
             </div>
           </div>
 
           <!-- Submit Button -->
-          <button type="submit" class="booking-form__submit">
+          <button type="submit" class="booking-form__submit agt-btn agt-btn--primary">
             {{ blok.button_text || 'Weiter 1/2' }}
           </button>
         </form>
@@ -171,59 +171,43 @@ const nextStep = () => {
 </script>
 
 <style scoped>
-.booking-form {
-  padding: 80px 0;
-  background: #fff;
-}
-
-.booking-form__container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
 .booking-form__title {
-  font-size: 48px;
-  font-weight: 700;
-  color: #1a1a2e;
-  margin-bottom: 48px;
+  margin-bottom: var(--space-xl);
 }
 
 .booking-form__content {
   display: grid;
   grid-template-columns: 250px 1fr;
-  gap: 60px;
+  gap: var(--space-2xl);
 }
 
 .booking-form__sidebar {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-xs);
 }
 
 .booking-form__sidebar-title {
   font-size: 14px;
   font-weight: 600;
-  color: #1a1a2e;
-  margin-bottom: 8px;
+  color: var(--color-text);
+  margin-bottom: var(--space-xs);
 }
 
 .booking-form__sidebar-text {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--color-text-muted);
   line-height: 1.6;
 }
 
-.booking-form__phone,
-.booking-form__email {
+.booking-form__link {
   font-size: 14px;
-  color: #1a1a2e;
+  color: var(--color-text);
   text-decoration: none;
 }
 
-.booking-form__phone:hover,
-.booking-form__email:hover {
-  color: #2563eb;
+.booking-form__link:hover {
+  color: var(--color-primary);
 }
 
 .booking-form__form {
@@ -234,13 +218,13 @@ const nextStep = () => {
 .booking-form__grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 24px 40px;
+  gap: var(--space-md) var(--space-xl);
 }
 
 .booking-form__field {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: var(--space-xs);
 }
 
 .booking-form__field--checkbox {
@@ -250,41 +234,42 @@ const nextStep = () => {
 
 .booking-form__label {
   font-size: 14px;
-  font-weight: 500;
-  color: #1a1a2e;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
 }
 
-.required {
-  color: #ef4444;
+.booking-form__required {
+  color: var(--color-error);
 }
 
 .booking-form__input,
 .booking-form__select {
-  padding: 16px;
-  background: #f3f4f6;
+  padding: var(--space-sm);
+  background: var(--color-bg-alt);
   border: none;
   border-radius: 0;
+  font-family: var(--font-family);
   font-size: 16px;
-  color: #1a1a2e;
+  color: var(--color-text);
   width: 100%;
   height: 56px;
   box-sizing: border-box;
 }
 
 .booking-form__input::placeholder {
-  color: #6b7280;
+  color: var(--color-text-muted);
 }
 
 .booking-form__select {
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
-  padding-right: 48px;
+  padding-right: var(--space-xl);
 }
 
 .booking-form__input:focus,
 .booking-form__select:focus {
-  outline: 2px solid #2563eb;
+  outline: 2px solid var(--color-primary);
   outline-offset: -2px;
 }
 
@@ -295,12 +280,12 @@ const nextStep = () => {
 
 .booking-form__select-icon {
   position: absolute;
-  right: 16px;
+  right: var(--space-sm);
   top: 50%;
   transform: translateY(-50%);
   width: 20px;
   height: 20px;
-  color: #6b7280;
+  color: var(--color-text-muted);
   pointer-events: none;
 }
 
@@ -310,17 +295,17 @@ const nextStep = () => {
 }
 
 .booking-form__input-wrapper .booking-form__input {
-  padding-right: 48px;
+  padding-right: var(--space-xl);
 }
 
 .booking-form__icon {
   position: absolute;
-  right: 16px;
+  right: var(--space-sm);
   top: 50%;
   transform: translateY(-50%);
   width: 24px;
   height: 24px;
-  color: #9ca3af;
+  color: var(--color-text-muted);
   pointer-events: none;
 }
 
@@ -344,7 +329,7 @@ const nextStep = () => {
 }
 
 .booking-form__input--date:valid::-webkit-datetime-edit {
-  color: #1a1a2e;
+  color: var(--color-text);
 }
 
 /* Number input - hide spinners */
@@ -364,7 +349,7 @@ const nextStep = () => {
   align-items: flex-start;
   gap: 12px;
   font-size: 14px;
-  color: #1a1a2e;
+  color: var(--color-text);
   cursor: pointer;
   line-height: 1.5;
 }
@@ -374,17 +359,17 @@ const nextStep = () => {
   height: 20px;
   margin-top: 2px;
   flex-shrink: 0;
-  border: 1px solid #d1d5db;
+  border: 1px solid var(--color-border);
   border-radius: 2px;
   appearance: none;
   -webkit-appearance: none;
   cursor: pointer;
-  background: #fff;
+  background: var(--color-bg);
 }
 
 .booking-form__checkbox:checked {
-  background: #2563eb;
-  border-color: #2563eb;
+  background: var(--color-primary);
+  border-color: var(--color-primary);
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
   background-size: 100%;
   background-position: center;
@@ -393,26 +378,15 @@ const nextStep = () => {
 
 /* Submit Button */
 .booking-form__submit {
-  margin-top: 32px;
-  padding: 20px;
-  background: #2563eb;
-  color: #fff;
-  font-size: 18px;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.booking-form__submit:hover {
-  background: #1d4ed8;
+  margin-top: var(--space-lg);
+  width: 100%;
 }
 
 /* Responsive */
 @media (max-width: 900px) {
   .booking-form__content {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: var(--space-xl);
   }
 
   .booking-form__grid {
@@ -421,10 +395,6 @@ const nextStep = () => {
 
   .booking-form__field--checkbox {
     grid-column: 1;
-  }
-
-  .booking-form__title {
-    font-size: 32px;
   }
 }
 </style>

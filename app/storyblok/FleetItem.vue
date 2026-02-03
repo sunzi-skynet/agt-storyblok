@@ -47,87 +47,87 @@ const linkUrl = computed(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 24px 32px;
-  border-top: 1px solid #e5e7eb;
+  padding: var(--space-md) var(--space-lg);
+  border-top: 1px solid var(--color-border-light);
   text-decoration: none;
-  transition: all 0.3s ease;
+  transition: all var(--transition-slow);
   cursor: pointer;
 }
 
 .fleet-item:last-child {
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid var(--color-border-light);
 }
 
 .fleet-item__left {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: var(--space-md);
 }
 
 .fleet-item__number {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--color-text-muted);
   min-width: 24px;
 }
 
 .fleet-item__description {
   font-size: 14px;
-  color: #9ca3af;
+  color: var(--color-text-muted);
   opacity: 0;
   transform: translateX(-10px);
-  transition: all 0.3s ease;
+  transition: all var(--transition-slow);
 }
 
 .fleet-item__right {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: var(--space-sm);
 }
 
 .fleet-item__name {
   font-size: 32px;
-  font-weight: 400;
-  color: #1e2a4a;
-  transition: color 0.3s ease;
+  font-weight: var(--font-weight-regular);
+  color: var(--color-text);
+  transition: color var(--transition-slow);
 }
 
 .fleet-item__arrow {
   display: flex;
   align-items: center;
-  color: #1e2a4a;
+  color: var(--color-text);
   opacity: 0;
   transform: translateX(-10px);
-  transition: all 0.3s ease;
+  transition: all var(--transition-slow);
 }
 
 /* Hover / Active State */
 .fleet-item--active {
-  background-color: #1e2a4a;
+  background-color: var(--color-secondary);
 }
 
 .fleet-item--active .fleet-item__number {
-  color: #9ca3af;
+  color: var(--color-text-muted);
 }
 
 .fleet-item--active .fleet-item__description {
   opacity: 1;
   transform: translateX(0);
-  color: #9ca3af;
+  color: var(--color-text-muted);
 }
 
 .fleet-item--active .fleet-item__name {
-  color: #60a5fa;
+  color: var(--color-primary-light);
 }
 
 .fleet-item--active .fleet-item__arrow {
   opacity: 1;
   transform: translateX(0);
-  color: #60a5fa;
+  color: var(--color-primary-light);
 }
 
 @media (max-width: 768px) {
   .fleet-item {
-    padding: 16px 20px;
+    padding: var(--space-sm) var(--space-md);
   }
 
   .fleet-item__name {

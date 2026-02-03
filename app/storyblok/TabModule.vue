@@ -11,7 +11,7 @@
       <div class="tab-module__overlay"></div>
     </div>
     
-    <div class="tab-module__container">
+    <div class="agt-container tab-module__inner">
       <!-- Headline with highlighted word -->
       <h2 v-if="blok.headline" class="tab-module__headline">
         <template v-for="(part, index) in headlineParts" :key="index">
@@ -39,7 +39,7 @@
         
         <!-- Tab Content (right) -->
         <div class="tab-module__panel">
-          <p v-if="activeTab" class="tab-module__description">
+          <p v-if="activeTab" class="tab-module__description agt-lead">
             {{ activeTab.description }}
           </p>
         </div>
@@ -114,7 +114,7 @@ const headlineParts = computed(() => {
 <style scoped>
 .tab-module {
   position: relative;
-  padding: 80px 0 100px;
+  padding: var(--section-padding-y) 0 calc(var(--section-padding-y) + 20px);
   min-height: 600px;
   display: flex;
   align-items: center;
@@ -122,10 +122,7 @@ const headlineParts = computed(() => {
 
 .tab-module__background {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   z-index: 0;
 }
 
@@ -137,10 +134,7 @@ const headlineParts = computed(() => {
 
 .tab-module__overlay {
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  inset: 0;
   background: linear-gradient(
     to right,
     rgba(26, 26, 46, 0.85) 0%,
@@ -149,20 +143,17 @@ const headlineParts = computed(() => {
   );
 }
 
-.tab-module__container {
+.tab-module__inner {
   position: relative;
   z-index: 1;
-  max-width: 1140px;
-  margin: 0 auto;
-  padding: 0 20px;
   width: 100%;
 }
 
 .tab-module__headline {
-  font-size: 3rem;
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
-  color: #fff;
-  margin-bottom: 48px;
+  color: var(--color-text-inverse);
+  margin-bottom: var(--space-xl);
   line-height: 1.2;
   max-width: 800px;
 }
@@ -174,27 +165,26 @@ const headlineParts = computed(() => {
 .tab-module__content {
   display: grid;
   grid-template-columns: 280px 1fr;
-  gap: 60px;
+  gap: var(--space-2xl);
   align-items: start;
 }
 
 .tab-module__nav {
   display: flex;
   flex-direction: column;
-  gap: 0;
 }
 
 .tab-module__tab {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 0;
+  padding: var(--space-sm) 0;
   background: none;
   border: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   cursor: pointer;
   text-align: left;
-  transition: all 0.2s ease;
+  transition: all var(--transition-base);
 }
 
 .tab-module__tab:first-child {
@@ -203,92 +193,88 @@ const headlineParts = computed(() => {
 
 .tab-module__tab-title {
   font-size: 1.1rem;
-  font-weight: 500;
+  font-weight: var(--font-weight-medium);
   color: rgba(255, 255, 255, 0.7);
-  transition: color 0.2s ease;
+  transition: color var(--transition-base);
 }
 
 .tab-module__tab:hover .tab-module__tab-title {
-  color: #fff;
+  color: var(--color-text-inverse);
 }
 
 .tab-module__tab--active .tab-module__tab-title {
-  color: #fff;
+  color: var(--color-text-inverse);
   text-decoration: underline;
   text-underline-offset: 4px;
 }
 
 .tab-module__tab-chevron {
   color: rgba(255, 255, 255, 0.5);
-  transition: color 0.2s ease;
+  transition: color var(--transition-base);
 }
 
 .tab-module__tab:hover .tab-module__tab-chevron,
 .tab-module__tab--active .tab-module__tab-chevron {
-  color: #fff;
+  color: var(--color-text-inverse);
 }
 
 .tab-module__panel {
-  padding-top: 16px;
+  padding-top: var(--space-sm);
 }
 
 .tab-module__description {
-  font-size: 1.25rem;
-  line-height: 1.7;
   color: rgba(255, 255, 255, 0.9);
-  margin: 0;
   max-width: 600px;
 }
 
 .tab-module__cta-wrapper {
   position: absolute;
-  bottom: -20px;
-  right: 20px;
+  bottom: calc(-1 * var(--space-md));
+  right: var(--container-padding);
 }
 
 .tab-module__cta {
   display: inline-block;
-  padding: 16px 48px;
+  padding: var(--space-sm) var(--space-xl);
   background: #00b4d8;
-  color: #fff;
+  color: var(--color-text-inverse);
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
+  border-radius: var(--radius-sm);
+  transition: background-color var(--transition-base);
 }
 
 .tab-module__cta:hover {
   background: #0096c7;
+  color: var(--color-text-inverse);
 }
 
 /* Responsive */
 @media (max-width: 900px) {
   .tab-module {
-    padding: 60px 0 80px;
     min-height: auto;
   }
   
   .tab-module__headline {
-    font-size: 2rem;
-    margin-bottom: 32px;
+    margin-bottom: var(--space-lg);
   }
   
   .tab-module__content {
     grid-template-columns: 1fr;
-    gap: 32px;
+    gap: var(--space-lg);
   }
   
   .tab-module__nav {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: var(--space-xs);
   }
   
   .tab-module__tab {
-    padding: 12px 16px;
+    padding: 12px var(--space-sm);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
+    border-radius: var(--radius-sm);
   }
   
   .tab-module__tab:first-child {
@@ -299,27 +285,15 @@ const headlineParts = computed(() => {
     display: none;
   }
   
-  .tab-module__description {
-    font-size: 1.1rem;
-  }
-  
   .tab-module__cta-wrapper {
     position: static;
-    margin-top: 40px;
+    margin-top: var(--space-xl);
   }
 }
 
 @media (max-width: 480px) {
-  .tab-module__headline {
-    font-size: 1.5rem;
-  }
-  
   .tab-module__tab-title {
     font-size: 0.9rem;
-  }
-  
-  .tab-module__description {
-    font-size: 1rem;
   }
 }
 </style>

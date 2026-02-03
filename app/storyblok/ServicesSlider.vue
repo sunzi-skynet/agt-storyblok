@@ -58,17 +58,17 @@ const modules = [Pagination, Autoplay]
               : 'none'
           }"
         />
-        <div class="services-slider__overlay" />
+        <div class="agt-overlay agt-overlay--gradient-left" />
         <div class="services-slider__content">
-          <h2 class="services-slider__title">{{ slide.title }}</h2>
-          <p class="services-slider__description">{{ slide.description }}</p>
+          <h2 class="services-slider__title agt-title agt-title--italic">{{ slide.title }}</h2>
+          <p class="services-slider__description agt-lead">{{ slide.description }}</p>
           <NuxtLink 
             v-if="slide.button_link?.cached_url || slide.button_link?.url"
             :to="'/' + (slide.button_link.cached_url || slide.button_link.url)"
-            class="services-slider__button"
+            class="agt-btn agt-btn--secondary"
           >
             {{ slide.button_text || 'Mehr erfahren' }}
-            <svg class="services-slider__arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg class="agt-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M5 12h14M12 5l7 7-7 7"/>
             </svg>
           </NuxtLink>
@@ -106,17 +106,6 @@ const modules = [Pagination, Autoplay]
   background-repeat: no-repeat;
 }
 
-.services-slider__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0.5) 0%,
-    rgba(0, 0, 0, 0.3) 50%,
-    rgba(0, 0, 0, 0.1) 100%
-  );
-}
-
 .services-slider__content {
   position: relative;
   z-index: 10;
@@ -124,55 +113,21 @@ const modules = [Pagination, Autoplay]
   flex-direction: column;
   justify-content: center;
   height: 100%;
-  padding: 4rem 6rem;
+  padding: var(--space-xl) var(--space-2xl);
   max-width: 800px;
-  color: white;
+  color: var(--color-text-inverse);
 }
 
 .services-slider__title {
+  color: var(--color-text-inverse);
   font-size: clamp(2.5rem, 6vw, 5rem);
-  font-weight: 500;
-  margin-bottom: 1.5rem;
-  line-height: 1.1;
-  font-style: italic;
+  margin-bottom: var(--space-md);
 }
 
 .services-slider__description {
-  font-size: clamp(1rem, 1.5vw, 1.25rem);
-  line-height: 1.6;
-  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: var(--space-lg);
   max-width: 600px;
-  opacity: 0.95;
-}
-
-.services-slider__button {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  padding: 1rem 2rem;
-  border: 2px solid white;
-  color: white;
-  text-decoration: none;
-  font-size: 1.125rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  width: fit-content;
-  background: transparent;
-}
-
-.services-slider__button:hover {
-  background: white;
-  color: #1a1a2e;
-}
-
-.services-slider__arrow {
-  width: 1.25rem;
-  height: 1.25rem;
-  transition: transform 0.3s ease;
-}
-
-.services-slider__button:hover .services-slider__arrow {
-  transform: translateX(4px);
 }
 
 /* Pagination bullets */
@@ -180,20 +135,20 @@ const modules = [Pagination, Autoplay]
   width: 12px;
   height: 12px;
   background: rgba(255, 255, 255, 0.5);
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   margin: 0 6px !important;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: all var(--transition-slow);
 }
 
 :deep(.services-slider__bullet--active) {
-  background: white;
+  background: var(--color-text-inverse);
   width: 48px;
   border-radius: 6px;
 }
 
 :deep(.swiper-pagination) {
-  bottom: 2rem !important;
+  bottom: var(--space-lg) !important;
 }
 
 /* Responsive */
@@ -204,11 +159,7 @@ const modules = [Pagination, Autoplay]
   }
   
   .services-slider__content {
-    padding: 2rem 1.5rem;
-  }
-  
-  .services-slider__description {
-    font-size: 0.95rem;
+    padding: var(--space-lg) var(--container-padding-mobile);
   }
 }
 </style>

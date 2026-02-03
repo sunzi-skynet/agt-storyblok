@@ -10,12 +10,40 @@ defineProps<{
 </script>
 
 <template>
-  <div v-editable="blok" class="p-8 bg-surface-alt rounded-xl text-center">
-    <div class="w-16 h-16 mx-auto mb-4 bg-primary/10 rounded-full flex items-center justify-center">
-      <span class="text-2xl">✨</span>
+  <div v-editable="blok" class="feature agt-card agt-card--bordered">
+    <div class="feature__inner">
+      <div class="feature__icon">
+        <span>✨</span>
+      </div>
+      <h3 class="feature__title">
+        {{ blok.name }}
+      </h3>
     </div>
-    <h3 class="text-body-lg font-medium text-text">
-      {{ blok.name }}
-    </h3>
   </div>
 </template>
+
+<style scoped>
+.feature__inner {
+  padding: var(--space-lg);
+  text-align: center;
+}
+
+.feature__icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--space-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(38, 91, 246, 0.1);
+  border-radius: var(--radius-full);
+  font-size: 24px;
+}
+
+.feature__title {
+  font-size: 18px;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  margin: 0;
+}
+</style>

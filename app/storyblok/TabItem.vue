@@ -15,7 +15,5 @@ defineProps({
 </script>
 
 <style scoped>
-.tab-item {
-  /* Minimal styling - parent handles display */
-}
+/* Minimal styling - parent handles display */
 </style>

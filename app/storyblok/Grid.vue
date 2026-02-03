@@ -10,9 +10,9 @@ defineProps<{
 </script>
 
 <template>
-  <section v-editable="blok" class="py-16 lg:py-24 bg-surface">
-    <div class="container-agt">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+  <section v-editable="blok" class="grid-section agt-section agt-section--light">
+    <div class="agt-container">
+      <div class="agt-grid agt-grid--3">
         <StoryblokComponent
           v-for="item in blok.columns"
           :key="item._uid"
@@ -22,3 +22,7 @@ defineProps<{
     </div>
   </section>
 </template>
+
+<style scoped>
+/* Uses global agt-grid classes */
+</style>

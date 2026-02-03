@@ -31,18 +31,18 @@ defineProps<{
 
 <style scoped>
 .testimonial-card-preview {
-  padding: 16px;
-  background: #f5f5f5;
-  border-radius: 8px;
+  padding: var(--space-sm);
+  background: var(--color-bg-alt);
+  border-radius: var(--radius-md);
   font-size: 14px;
 }
 
 .testimonial-card-preview strong {
-  color: #265BF6;
+  color: var(--color-primary);
 }
 
 .testimonial-card-preview p {
-  margin: 8px 0 0;
-  color: #666;
+  margin: var(--space-xs) 0 0;
+  color: var(--color-text-light);
 }
 </style>
