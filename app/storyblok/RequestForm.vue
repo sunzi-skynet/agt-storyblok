@@ -485,7 +485,7 @@ const submitForm = async () => {
 
 .form-group label:not(.checkbox-label) {
   font-size: 14px;
-  color: #666666;
+  color: #00000E;
   font-weight: 500;
 }
 
@@ -516,10 +516,10 @@ const submitForm = async () => {
 
 .form-group select {
   appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23666666' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 24 24' fill='none' stroke='%23265BF6' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 16px center;
-  padding-right: 44px;
+  padding-right: 48px;
 }
 
 /* Input with Icon */
@@ -604,12 +604,12 @@ const submitForm = async () => {
 }
 
 .btn--primary {
-  background: #265BF6;
+  background: #040B2F;
   color: white;
 }
 
 .btn--primary:hover:not(:disabled) {
-  background: #1A3CCF;
+  background: #0a1654;
 }
 
 .btn--secondary {
