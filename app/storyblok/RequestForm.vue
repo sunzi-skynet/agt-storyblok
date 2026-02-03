@@ -509,19 +509,18 @@ const submitForm = async () => {
 .request-form__step {
   display: flex;
   flex-direction: column;
-  gap: 0;
+  gap: 16px;
 }
 
-/* Form Fields - Inline Labels as Placeholders */
+/* Form Fields */
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 0;
+  gap: 16px;
 }
 
 .form-field {
   position: relative;
-  border-bottom: 1px solid #E0E0E0;
 }
 
 .form-field--full {
@@ -532,13 +531,21 @@ const submitForm = async () => {
 .form-field select,
 .form-field textarea {
   width: 100%;
-  padding: 20px 48px 20px 0;
+  padding: 16px 48px 16px 16px;
   font-size: 16px;
   font-family: inherit;
-  border: none;
-  background: transparent;
+  border: 1px solid #E0E0E0;
+  border-radius: 8px;
+  background: white;
   color: #00000E;
   outline: none;
+  transition: border-color 0.2s;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: #265BF6;
 }
 
 .form-field input::placeholder,
@@ -567,7 +574,7 @@ const submitForm = async () => {
 /* Field Icons */
 .field-icon {
   position: absolute;
-  right: 0;
+  right: 16px;
   top: 50%;
   transform: translateY(-50%);
   color: #265BF6;
@@ -576,16 +583,6 @@ const submitForm = async () => {
 
 .field-icon--chevron {
   color: #265BF6;
-}
-
-/* Row borders - only between columns */
-.form-row .form-field:first-child {
-  border-right: 1px solid #E0E0E0;
-  padding-right: 24px;
-}
-
-.form-row .form-field:last-child {
-  padding-left: 24px;
 }
 
 /* Checkbox */
@@ -742,15 +739,6 @@ const submitForm = async () => {
   
   .form-row {
     grid-template-columns: 1fr;
-  }
-  
-  .form-row .form-field:first-child {
-    border-right: none;
-    padding-right: 0;
-  }
-  
-  .form-row .form-field:last-child {
-    padding-left: 0;
   }
   
   .btn-row {
