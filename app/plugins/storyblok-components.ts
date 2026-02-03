@@ -14,6 +14,9 @@ import Testimonial from '../storyblok/Testimonial.vue'
 // Layout components
 import HeaderNav from '../storyblok/HeaderNav.vue'
 import NavItem from '../storyblok/NavItem.vue'
+import Footer from '../storyblok/Footer.vue'
+import NavigationColumn from '../storyblok/NavigationColumn.vue'
+import NavigationItem from '../storyblok/NavigationItem.vue'
 
 // Content blocks
 import ImageTextSection from '../storyblok/ImageTextSection.vue'
@@ -38,6 +41,9 @@ export default defineNuxtPlugin(({ vueApp }) => {
   // Layout
   vueApp.component('header-nav', HeaderNav)
   vueApp.component('nav-item', NavItem)
+  vueApp.component('footer', Footer)
+  vueApp.component('navigation-column', NavigationColumn)
+  vueApp.component('navigation-item', NavigationItem)
   
   // Content blocks
   vueApp.component('image-text-section', ImageTextSection)
