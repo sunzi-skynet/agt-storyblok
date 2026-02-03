@@ -181,8 +181,8 @@ defineProps<{
   }
 
   .footer__nav {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 32px;
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 
   .footer__bottom {
