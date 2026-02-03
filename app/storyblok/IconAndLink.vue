@@ -130,6 +130,7 @@ const getUrl = (link: { url?: string; cached_url?: string } | undefined) => {
 }
 
 .icon-link__label {
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 </style>

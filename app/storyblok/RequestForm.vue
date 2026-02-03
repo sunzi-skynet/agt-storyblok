@@ -477,7 +477,7 @@ const submitForm = async () => {
 
 .request-form__title {
   font-size: clamp(36px, 4vw, 56px);
-  font-weight: 500;
+  font-weight: 700;
   color: #00000E;
   margin: 0 0 20px;
   letter-spacing: -0.02em;
