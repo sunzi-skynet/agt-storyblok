@@ -4,7 +4,7 @@ import Teaser from '../storyblok/Teaser.vue'
 import Grid from '../storyblok/Grid.vue'
 import Feature from '../storyblok/Feature.vue'
 import Hero from '../storyblok/Hero.vue'
-import HeroTeaser from '../storyblok/hero_teaser.vue'
+import HeroTeaser from '../storyblok/HeroTeaser.vue'
 import Testimonial from '../storyblok/Testimonial.vue'
 import TextSection from '../storyblok/TextSection.vue'
 
