@@ -14,10 +14,15 @@ const { data: globalData } = await useAsyncData('global', async () => {
   }
 })
 
-// Extract header from global body
+// Extract header and footer from global body
 const headerBlok = computed(() => {
   const body = globalData.value?.content?.body || []
   return body.find((blok: any) => blok.component === 'header_nav')
+})
+
+const footerBlok = computed(() => {
+  const body = globalData.value?.content?.body || []
+  return body.find((blok: any) => blok.component === 'footer_section')
 })
 </script>
 
@@ -34,7 +39,11 @@ const headerBlok = computed(() => {
       <slot />
     </main>
 
-    <!-- Footer will go here later -->
+    <!-- Footer -->
+    <StoryblokComponent
+      v-if="footerBlok"
+      :blok="footerBlok"
+    />
   </div>
 </template>
 
