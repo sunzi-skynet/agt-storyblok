@@ -11,7 +11,7 @@ export default defineNuxtConfig({
   storyblok: {
     accessToken: 'ur2ZPYt2LKS234t7IemDZQtt',
     // Auto-register components from ~/storyblok (converts snake_case → PascalCase)
-    componentsDir: '~/app/storyblok',
+    componentsDir: false,
     // Enable the bridge for live preview + visual editing
     bridge: true,
     apiOptions: {
