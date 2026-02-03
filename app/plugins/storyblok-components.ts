@@ -27,6 +27,12 @@ import TestimonialCard from '../storyblok/TestimonialCard.vue'
 import ClientLogos from '../storyblok/ClientLogos.vue'
 import Accordion from '../storyblok/Accordion.vue'
 import AccordionItem from '../storyblok/AccordionItem.vue'
+import BookingForm from '../storyblok/BookingForm.vue'
+import FleetList from '../storyblok/FleetList.vue'
+import FleetItem from '../storyblok/FleetItem.vue'
+import TabModule from '../storyblok/TabModule.vue'
+import TabItem from '../storyblok/TabItem.vue'
+import ServicesSlider from '../storyblok/ServicesSlider.vue'
 
 export default defineNuxtPlugin(({ vueApp }) => {
   // Register with KEBAB-CASE names (Storyblok converts _ to - internally)
@@ -54,4 +60,10 @@ export default defineNuxtPlugin(({ vueApp }) => {
   vueApp.component('client-logos', ClientLogos)
   vueApp.component('accordion', Accordion)
   vueApp.component('accordion-item', AccordionItem)
+  vueApp.component('booking-form', BookingForm)
+  vueApp.component('fleet-list', FleetList)
+  vueApp.component('fleet-item', FleetItem)
+  vueApp.component('tab-module', TabModule)
+  vueApp.component('tab-item', TabItem)
+  vueApp.component('services-slider', ServicesSlider)
 })
