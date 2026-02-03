@@ -10,7 +10,8 @@ export default defineNuxtConfig({
 
   storyblok: {
     accessToken: 'ur2ZPYt2LKS234t7IemDZQtt',
-    componentsDir: 'storyblok',
+    // Disable auto-discovery - we manually register in plugin with snake_case names
+    componentsDir: false,
     apiOptions: {
       region: 'eu',
     },
