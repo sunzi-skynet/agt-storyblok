@@ -44,26 +44,8 @@ const phone = ref('')
 const notes = ref('')
 const privacyAccepted = ref(false)
 
-// Labels from Datasource
-const labels = ref<Record<string, string>>({})
-
-// Load labels from Storyblok Datasource
-onMounted(async () => {
-  try {
-    const storyblokApi = useStoryblokApi()
-    const { data } = await storyblokApi.get('cdn/datasource_entries', {
-      datasource: 'form-labels'
-    })
-    
-    if (data?.datasource_entries) {
-      data.datasource_entries.forEach((entry: { name: string; value: string }) => {
-        labels.value[entry.name] = entry.value
-      })
-    }
-  } catch (e) {
-    console.error('Failed to load form labels:', e)
-    // Fallback labels
-    labels.value = {
+// Labels from Datasource - initialized with fallback values for SSR
+const labels = ref<Record<string, string>>({
       label_trip_type: 'Fahrttyp auswählen (z. B. Hin- & Rückfahrt)*',
       label_date: 'Datum (TT.MM.JJJJ)*',
       label_departure_time: 'Abfahrtszeit*',
@@ -87,8 +69,24 @@ onMounted(async () => {
       option_trip_roundtrip: 'Hin- und Rückfahrt',
       option_yes: 'Ja',
       option_no: 'Nein',
-      option_select: 'Bitte auswählen'
+  option_select: 'Bitte auswählen'
+})
+
+// Load labels from Storyblok Datasource on client (overrides fallbacks)
+onMounted(async () => {
+  try {
+    const storyblokApi = useStoryblokApi()
+    const { data } = await storyblokApi.get('cdn/datasource_entries', {
+      datasource: 'form-labels'
+    })
+    
+    if (data?.datasource_entries) {
+      data.datasource_entries.forEach((entry: { name: string; value: string }) => {
+        labels.value[entry.name] = entry.value
+      })
     }
+  } catch (e) {
+    console.error('Failed to load form labels from datasource:', e)
   }
 })
 
