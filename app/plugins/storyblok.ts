@@ -34,6 +34,10 @@ import ServicesSlider from '../storyblok/ServicesSlider.vue'
 import TabModule from '../storyblok/TabModule.vue'
 import TabItem from '../storyblok/TabItem.vue'
 
+// Fleet
+import FleetList from '../storyblok/FleetList.vue'
+import FleetItem from '../storyblok/FleetItem.vue'
+
 export default defineNuxtPlugin(({ vueApp }) => {
   // Register with KEBAB-CASE names (Storyblok converts _ to - internally)
   vueApp.component('page', Page)
@@ -66,4 +70,8 @@ export default defineNuxtPlugin(({ vueApp }) => {
   // Tabs
   vueApp.component('tab-module', TabModule)
   vueApp.component('tab-item', TabItem)
+  
+  // Fleet
+  vueApp.component('fleet-list', FleetList)
+  vueApp.component('fleet-item', FleetItem)
 })
