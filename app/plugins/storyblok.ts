@@ -25,7 +25,7 @@ import ImageTextSection from '../storyblok/ImageTextSection.vue'
 import CtaBanner from '../storyblok/CtaBanner.vue'
 import TestimonialSection from '../storyblok/TestimonialSection.vue'
 import TestimonialCard from '../storyblok/TestimonialCard.vue'
-
+import ClientLogos from '../storyblok/ClientLogos.vue'
 // Forms
 import BookingForm from '../storyblok/BookingForm.vue'
 import FormField from '../storyblok/FormField.vue'
@@ -54,7 +54,7 @@ export default defineNuxtPlugin(({ vueApp }) => {
   vueApp.component('cta-banner', CtaBanner)
   vueApp.component('testimonial-section', TestimonialSection)
   vueApp.component('testimonial-card', TestimonialCard)
-  
+  vueApp.component('client-logos', ClientLogos)
   // Forms
   vueApp.component('booking-form', BookingForm)
   vueApp.component('form-field', FormField)
