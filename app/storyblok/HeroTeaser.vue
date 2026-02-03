@@ -58,7 +58,7 @@ defineProps<{
             {{ blok.title_left }}
           </h1>
           
-          <p :style="{ fontSize: 'clamp(36px, 6vw, 72px)', fontWeight: '500', color: 'white', lineHeight: '1.05', letterSpacing: '-0.02em', fontStyle: 'italic', textAlign: 'right', margin: '0' }">
+          <p class="hero-teaser__title-right">
             {{ blok.title_right }}
           </p>
         </div>
@@ -89,3 +89,16 @@ defineProps<{
     </div>
   </section>
 </template>
+
+<style scoped>
+.hero-teaser__title-right {
+  font-size: clamp(36px, 6vw, 72px);
+  font-weight: 500;
+  color: white;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  font-style: italic;
+  text-align: right;
+  margin: 0;
+}
+</style>
