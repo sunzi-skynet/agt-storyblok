@@ -47,87 +47,87 @@ const linkUrl = computed(() => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-md) var(--space-lg);
-  border-top: 1px solid var(--color-border-light);
+  padding: 24px 32px;
+  border-top: 1px solid #e5e7eb;
   text-decoration: none;
-  transition: all var(--transition-slow);
+  transition: all 0.3s ease;
   cursor: pointer;
 }
 
 .fleet-item:last-child {
-  border-bottom: 1px solid var(--color-border-light);
+  border-bottom: 1px solid #e5e7eb;
 }
 
 .fleet-item__left {
   display: flex;
   align-items: center;
-  gap: var(--space-md);
+  gap: 24px;
 }
 
 .fleet-item__number {
   font-size: 14px;
-  color: var(--color-text-muted);
+  color: #6b7280;
   min-width: 24px;
 }
 
 .fleet-item__description {
   font-size: 14px;
-  color: var(--color-text-muted);
+  color: #9ca3af;
   opacity: 0;
   transform: translateX(-10px);
-  transition: all var(--transition-slow);
+  transition: all 0.3s ease;
 }
 
 .fleet-item__right {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: 16px;
 }
 
 .fleet-item__name {
   font-size: 32px;
-  font-weight: var(--font-weight-regular);
-  color: var(--color-text);
-  transition: color var(--transition-slow);
+  font-weight: 400;
+  color: #1e2a4a;
+  transition: color 0.3s ease;
 }
 
 .fleet-item__arrow {
   display: flex;
   align-items: center;
-  color: var(--color-text);
+  color: #1e2a4a;
   opacity: 0;
   transform: translateX(-10px);
-  transition: all var(--transition-slow);
+  transition: all 0.3s ease;
 }
 
 /* Hover / Active State */
 .fleet-item--active {
-  background-color: var(--color-secondary);
+  background-color: #1e2a4a;
 }
 
 .fleet-item--active .fleet-item__number {
-  color: var(--color-text-muted);
+  color: #9ca3af;
 }
 
 .fleet-item--active .fleet-item__description {
   opacity: 1;
   transform: translateX(0);
-  color: var(--color-text-muted);
+  color: #9ca3af;
 }
 
 .fleet-item--active .fleet-item__name {
-  color: var(--color-primary-light);
+  color: #60a5fa;
 }
 
 .fleet-item--active .fleet-item__arrow {
   opacity: 1;
   transform: translateX(0);
-  color: var(--color-primary-light);
+  color: #60a5fa;
 }
 
 @media (max-width: 768px) {
   .fleet-item {
-    padding: var(--space-sm) var(--space-md);
+    padding: 16px 20px;
   }
 
   .fleet-item__name {

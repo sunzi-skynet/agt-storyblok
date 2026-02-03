@@ -75,7 +75,7 @@ onUnmounted(() => {
         <a
           v-if="blok.cta_text"
           :href="blok.cta_link || '#'"
-          class="header__cta agt-btn agt-btn--primary agt-btn--sm"
+          class="header__cta"
         >
           {{ blok.cta_text }}
         </a>
@@ -110,7 +110,7 @@ onUnmounted(() => {
       <a
         v-if="blok.cta_text"
         :href="blok.cta_link || '#'"
-        class="header__mobile-cta agt-btn agt-btn--primary"
+        class="header__mobile-cta"
         @click="isMobileMenuOpen = false"
       >
         {{ blok.cta_text }}
@@ -127,18 +127,18 @@ onUnmounted(() => {
   right: 0;
   z-index: 1000;
   background: transparent;
-  transition: background var(--transition-slow), box-shadow var(--transition-slow);
+  transition: background 0.3s, box-shadow 0.3s;
 }
 
 .header--scrolled {
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 20px rgba(4, 11, 47, 0.08);
 }
 
 .header--scrolled .header__logo-text,
 .header--scrolled .header__nav :deep(.nav-item) {
-  color: var(--color-secondary);
+  color: #040B2F;
 }
 
 .header__container {
@@ -147,7 +147,7 @@ onUnmounted(() => {
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
-  padding: var(--space-sm) var(--container-padding);
+  padding: 16px 24px;
 }
 
 /* Logo */
@@ -165,40 +165,54 @@ onUnmounted(() => {
 
 .header__logo-text {
   font-size: 32px;
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-inverse);
+  font-weight: 500;
+  color: white;
   letter-spacing: -0.03em;
-  transition: color var(--transition-slow);
+  transition: color 0.3s;
 }
 
 .header--scrolled .header__logo-text {
-  color: var(--color-secondary);
+  color: #040B2F;
 }
 
 /* Desktop nav */
 .header__nav {
   display: flex;
   align-items: center;
-  gap: var(--space-xs);
+  gap: 8px;
 }
 
 .header__nav :deep(.nav-item) {
-  color: var(--color-text-inverse);
+  color: white;
 }
 
 .header--scrolled .header__nav :deep(.nav-item) {
-  color: var(--color-secondary);
+  color: #040B2F;
 }
 
 /* Actions */
 .header__actions {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: 16px;
 }
 
 .header__cta {
-  border-radius: var(--radius-md);
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background: #265BF6;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.header__cta:hover {
+  background: #1A3CCF;
+  transform: translateY(-1px);
 }
 
 /* Hamburger */
@@ -219,12 +233,12 @@ onUnmounted(() => {
   display: block;
   width: 24px;
   height: 2px;
-  background: var(--color-text-inverse);
-  transition: transform var(--transition-slow), opacity var(--transition-slow), background var(--transition-slow);
+  background: white;
+  transition: transform 0.3s, opacity 0.3s, background 0.3s;
 }
 
 .header--scrolled .header__hamburger span {
-  background: var(--color-secondary);
+  background: #040B2F;
 }
 
 .header__hamburger--open span:nth-child(1) {
@@ -246,13 +260,13 @@ onUnmounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: var(--color-bg);
-  padding: 100px var(--container-padding) var(--space-xl);
+  background: white;
+  padding: 100px 24px 40px;
   display: flex;
   flex-direction: column;
   opacity: 0;
   visibility: hidden;
-  transition: opacity var(--transition-slow), visibility var(--transition-slow);
+  transition: opacity 0.3s, visibility 0.3s;
 }
 
 .header__mobile-menu--open {
@@ -263,22 +277,28 @@ onUnmounted(() => {
 .header__mobile-nav {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: 8px;
 }
 
 .header__mobile-link {
-  padding: var(--space-sm) 0;
+  padding: 16px 0;
   font-size: 24px;
-  font-weight: var(--font-weight-medium);
-  color: var(--color-secondary);
+  font-weight: 500;
+  color: #040B2F;
   text-decoration: none;
-  border-bottom: 1px solid var(--color-border-light);
+  border-bottom: 1px solid #E7E7E7;
 }
 
 .header__mobile-cta {
   margin-top: auto;
-  width: 100%;
-  justify-content: center;
+  padding: 16px 32px;
+  background: #265BF6;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: none;
+  text-align: center;
+  border-radius: 8px;
 }
 
 /* Responsive */
@@ -296,7 +316,7 @@ onUnmounted(() => {
   }
 
   .header--menu-open .header__hamburger span {
-    background: var(--color-secondary);
+    background: #040B2F;
   }
 }
 </style>

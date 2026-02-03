@@ -22,30 +22,30 @@ defineProps<{
 <template>
   <section
     v-editable="blok"
-    class="hero"
+    class="relative min-h-[80vh] flex items-center bg-secondary overflow-hidden"
   >
     <!-- Background Image -->
     <div
       v-if="blok.background_image?.filename"
-      class="hero__background"
+      class="absolute inset-0"
     >
       <img
         :src="blok.background_image.filename"
         :alt="blok.background_image.alt || ''"
-        class="hero__bg-image"
+        class="w-full h-full object-cover opacity-40"
       />
     </div>
 
     <!-- Content -->
-    <div class="agt-container hero__content">
-      <div class="hero__inner">
-        <h1 class="hero__headline agt-title">
+    <div class="container-agt relative z-10 py-20">
+      <div class="max-w-4xl">
+        <h1 class="text-4xl md:text-display-5 lg:text-display-4 xl:text-display-3 text-white font-medium leading-tight">
           {{ blok.headline }}
         </h1>
         
         <p
           v-if="blok.subheadline"
-          class="hero__subheadline agt-lead"
+          class="mt-6 text-body-lg text-white/80"
         >
           {{ blok.subheadline }}
         </p>
@@ -53,7 +53,7 @@ defineProps<{
         <NuxtLink
           v-if="blok.cta_text && blok.cta_link"
           :to="blok.cta_link.cached_url || blok.cta_link.url || '#'"
-          class="agt-btn agt-btn--primary"
+          class="btn-primary mt-8"
         >
           {{ blok.cta_text }}
         </NuxtLink>
@@ -61,49 +61,3 @@ defineProps<{
     </div>
   </section>
 </template>
-
-<style scoped>
-.hero {
-  position: relative;
-  min-height: 80vh;
-  display: flex;
-  align-items: center;
-  background-color: var(--color-bg-dark);
-  overflow: hidden;
-}
-
-.hero__background {
-  position: absolute;
-  inset: 0;
-}
-
-.hero__bg-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0.4;
-}
-
-.hero__content {
-  position: relative;
-  z-index: 10;
-  padding: var(--space-3xl) 0;
-}
-
-.hero__inner {
-  max-width: 800px;
-}
-
-.hero__headline {
-  color: var(--color-text-inverse);
-}
-
-.hero__subheadline {
-  margin-top: var(--space-md);
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.hero .agt-btn {
-  margin-top: var(--space-lg);
-}
-</style>

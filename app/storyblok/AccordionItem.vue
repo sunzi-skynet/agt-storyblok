@@ -27,7 +27,7 @@
       </svg>
     </button>
     <div class="accordion-item__content-wrapper">
-      <div class="accordion-item__content agt-richtext" v-html="renderRichText(blok.content)"></div>
+      <div class="accordion-item__content" v-html="renderRichText(blok.content)"></div>
     </div>
   </div>
 </template>
@@ -55,15 +55,15 @@ defineEmits(['toggle'])
 
 <style scoped>
 .accordion-item {
-  border: 1px solid var(--color-border-light);
-  border-radius: var(--radius-md);
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
   overflow: hidden;
-  background: var(--color-bg);
-  transition: box-shadow var(--transition-base);
+  background: #fff;
+  transition: box-shadow 0.2s ease;
 }
 
 .accordion-item:hover {
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .accordion-item__header {
@@ -71,25 +71,25 @@ defineEmits(['toggle'])
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: var(--space-md) var(--space-md);
+  padding: 20px 24px;
   background: none;
   border: none;
   cursor: pointer;
   text-align: left;
   font-size: 1.1rem;
   font-weight: 600;
-  color: var(--color-text);
-  transition: background-color var(--transition-base);
+  color: #1a1a2e;
+  transition: background-color 0.2s ease;
 }
 
 .accordion-item__header:hover {
-  background-color: var(--color-bg-alt);
+  background-color: #f9fafb;
 }
 
 .accordion-item__header-content {
   display: flex;
   align-items: center;
-  gap: var(--space-sm);
+  gap: 16px;
 }
 
 .accordion-item__icon {
@@ -105,8 +105,8 @@ defineEmits(['toggle'])
 
 .accordion-item__chevron {
   flex-shrink: 0;
-  transition: transform var(--transition-slow);
-  color: var(--color-text-muted);
+  transition: transform 0.3s ease;
+  color: #6b7280;
 }
 
 .accordion-item--open .accordion-item__chevron {
@@ -116,7 +116,7 @@ defineEmits(['toggle'])
 .accordion-item__content-wrapper {
   display: grid;
   grid-template-rows: 0fr;
-  transition: grid-template-rows var(--transition-slow);
+  transition: grid-template-rows 0.3s ease;
 }
 
 .accordion-item--open .accordion-item__content-wrapper {
@@ -125,28 +125,52 @@ defineEmits(['toggle'])
 
 .accordion-item__content {
   overflow: hidden;
-  padding: 0 var(--space-md);
+  padding: 0 24px;
 }
 
 .accordion-item--open .accordion-item__content {
-  padding: 0 var(--space-md) var(--space-md);
+  padding: 0 24px 24px;
 }
 
-/* Rich text link color */
+.accordion-item__content :deep(p) {
+  margin: 0 0 1em;
+  line-height: 1.6;
+  color: #4b5563;
+}
+
+.accordion-item__content :deep(p:last-child) {
+  margin-bottom: 0;
+}
+
+.accordion-item__content :deep(ul),
+.accordion-item__content :deep(ol) {
+  margin: 0 0 1em;
+  padding-left: 1.5em;
+  color: #4b5563;
+}
+
 .accordion-item__content :deep(a) {
-  color: var(--color-primary);
+  color: #003366;
   text-decoration: underline;
 }
 
 @media (max-width: 768px) {
   .accordion-item__header {
-    padding: var(--space-sm) var(--space-md);
+    padding: 16px 20px;
     font-size: 1rem;
   }
   
   .accordion-item__icon {
     width: 28px;
     height: 28px;
+  }
+  
+  .accordion-item__content {
+    padding: 0 20px;
+  }
+  
+  .accordion-item--open .accordion-item__content {
+    padding: 0 20px 20px;
   }
 }
 </style>

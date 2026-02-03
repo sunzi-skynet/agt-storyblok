@@ -1,25 +1,24 @@
 <template>
   <section
     v-editable="blok"
-    class="image-text-section agt-section agt-section--light"
-    :class="{ 'image-text-section--reversed': blok.image_position === 'right' }"
+    class="image-text-section"
+    :class="{ 'image-right': blok.image_position === 'right' }"
   >
-    <div class="agt-container image-text-section__grid">
-      <div class="image-text-section__image">
+    <div class="its-container">
+      <div class="its-image">
         <img
           v-if="blok.image?.filename"
           :src="blok.image.filename"
           :alt="blok.image.alt || blok.title || 'Section image'"
-          class="agt-img agt-img--cover agt-img--rounded"
         />
       </div>
-      <div class="image-text-section__content">
-        <h2 v-if="blok.title" class="agt-title agt-title--sm">{{ blok.title }}</h2>
-        <div v-if="blok.body" class="agt-richtext" v-html="renderRichText(blok.body)"></div>
+      <div class="its-content">
+        <h2 v-if="blok.title" class="its-title">{{ blok.title }}</h2>
+        <div v-if="blok.body" class="its-body" v-html="renderRichText(blok.body)"></div>
         <a
           v-if="blok.cta_text && blok.cta_link"
           :href="blok.cta_link"
-          class="agt-btn agt-btn--primary"
+          class="its-cta"
         >
           {{ blok.cta_text }}
         </a>
@@ -40,45 +39,114 @@ defineProps({
 </script>
 
 <style scoped>
-.image-text-section__grid {
+.image-text-section {
+  padding: 80px 0;
+  background: #fff;
+}
+
+.its-container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-2xl);
+  gap: 60px;
   align-items: center;
 }
 
-.image-text-section--reversed .image-text-section__grid {
+.image-right .its-container {
   direction: rtl;
 }
 
-.image-text-section--reversed .image-text-section__grid > * {
+.image-right .its-container > * {
   direction: ltr;
 }
 
-.image-text-section__content {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
+.its-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
-.image-text-section__content .agt-title {
-  margin-bottom: var(--space-xs);
+.its-content {
+  padding: 20px 0;
 }
 
-.image-text-section__content .agt-btn {
-  align-self: flex-start;
-  margin-top: var(--space-xs);
+.its-title {
+  font-family: 'TT Hoves Pro', sans-serif;
+  font-weight: 500;
+  font-size: 2.5rem;
+  color: #040B2F;
+  margin: 0 0 24px 0;
+  line-height: 1.2;
+}
+
+.its-body {
+  font-family: 'TT Hoves Pro', sans-serif;
+  font-weight: 400;
+  font-size: 1.125rem;
+  color: #4a5568;
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+.its-body :deep(p) {
+  margin: 0 0 16px 0;
+}
+
+.its-body :deep(p:last-child) {
+  margin-bottom: 0;
+}
+
+.its-body :deep(ul),
+.its-body :deep(ol) {
+  margin: 16px 0;
+  padding-left: 24px;
+}
+
+.its-body :deep(li) {
+  margin-bottom: 8px;
+}
+
+.its-cta {
+  display: inline-block;
+  background: #265BF6;
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-family: 'TT Hoves Pro', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: background 0.2s ease;
+}
+
+.its-cta:hover {
+  background: #1a4ad4;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .image-text-section__grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-lg);
+  .image-text-section {
+    padding: 48px 0;
   }
 
-  .image-text-section--reversed .image-text-section__grid {
+  .its-container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .image-right .its-container {
     direction: ltr;
+  }
+
+  .its-title {
+    font-size: 1.875rem;
+  }
+
+  .its-body {
+    font-size: 1rem;
   }
 }
 </style>

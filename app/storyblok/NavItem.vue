@@ -29,22 +29,22 @@ defineProps<{
   display: inline-flex;
   align-items: center;
   gap: 4px;
-  padding: var(--space-xs) var(--space-sm);
+  padding: 8px 16px;
   font-size: 15px;
-  font-weight: var(--font-weight-medium);
-  color: var(--color-secondary);
+  font-weight: 500;
+  color: #040B2F;
   text-decoration: none;
   letter-spacing: -0.01em;
-  transition: color var(--transition-base);
+  transition: color 0.2s;
   white-space: nowrap;
 }
 
 .nav-item:hover {
-  color: var(--color-primary);
+  color: #265BF6;
 }
 
 .nav-item__chevron {
-  transition: transform var(--transition-base);
+  transition: transform 0.2s;
 }
 
 .nav-item--dropdown:hover .nav-item__chevron {

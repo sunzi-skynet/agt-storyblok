@@ -13,24 +13,24 @@ defineProps<{
 </script>
 
 <template>
-  <section v-editable="blok" class="testimonial agt-section agt-section--alt">
-    <div class="agt-container">
-      <figure class="testimonial__figure">
+  <section v-editable="blok" class="py-16 lg:py-24 bg-surface-alt">
+    <div class="container-agt">
+      <figure class="max-w-4xl mx-auto text-center">
         <!-- Quote Mark -->
-        <div class="testimonial__quote-mark">"</div>
+        <div class="text-primary text-6xl leading-none mb-4">"</div>
         
         <!-- Quote Text -->
-        <blockquote class="testimonial__quote">
+        <blockquote class="text-body-lg md:text-display-6 lg:text-display-5 font-medium text-text leading-snug">
           {{ blok.quote }}
         </blockquote>
 
         <!-- Author -->
-        <figcaption class="testimonial__author">
-          <cite class="testimonial__cite">
-            <span class="testimonial__name">
+        <figcaption class="mt-8">
+          <cite class="not-italic">
+            <span class="block text-body font-medium text-text">
               {{ blok.author_name }}
             </span>
-            <span v-if="blok.author_title || blok.company" class="testimonial__role">
+            <span v-if="blok.author_title || blok.company" class="block text-body-sm text-text-muted mt-1">
               {{ blok.author_title }}
               <template v-if="blok.author_title && blok.company">, </template>
               {{ blok.company }}
@@ -41,49 +41,3 @@ defineProps<{
     </div>
   </section>
 </template>
-
-<style scoped>
-.testimonial__figure {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: center;
-}
-
-.testimonial__quote-mark {
-  color: var(--color-primary);
-  font-size: 4rem;
-  line-height: 1;
-  margin-bottom: var(--space-sm);
-}
-
-.testimonial__quote {
-  font-size: clamp(20px, 3vw, 32px);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text);
-  line-height: 1.4;
-  margin: 0;
-  padding: 0;
-}
-
-.testimonial__author {
-  margin-top: var(--space-lg);
-}
-
-.testimonial__cite {
-  font-style: normal;
-}
-
-.testimonial__name {
-  display: block;
-  font-size: 18px;
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text);
-}
-
-.testimonial__role {
-  display: block;
-  font-size: 14px;
-  color: var(--color-text-muted);
-  margin-top: var(--space-xs);
-}
-</style>

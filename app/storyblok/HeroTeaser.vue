@@ -42,11 +42,11 @@ const hasRightContent = (blok: any) => {
     }"
   >
     <!-- Gradient overlay -->
-    <div class="agt-overlay agt-overlay--gradient-up" />
+    <div class="hero-teaser__overlay" />
 
     <!-- Content -->
     <div class="hero-teaser__content">
-      <div class="agt-container">
+      <div class="hero-teaser__container">
         
         <!-- Desktop: Two Column Layout -->
         <div class="hero-teaser__grid hero-teaser__grid--desktop">
@@ -65,7 +65,7 @@ const hasRightContent = (blok: any) => {
           
           <!-- Right Column -->
           <div v-if="hasRightContent(blok)" class="hero-teaser__column hero-teaser__column--right">
-            <p class="hero-teaser__title hero-teaser__title--italic">{{ blok.title_right }}</p>
+            <p class="hero-teaser__title hero-teaser__title--right">{{ blok.title_right }}</p>
             <p class="hero-teaser__description">{{ blok.description_right }}</p>
             <div v-if="blok.cta_right && blok.cta_right.length" class="hero-teaser__cta">
               <CtaButton 
@@ -103,7 +103,7 @@ const hasRightContent = (blok: any) => {
               class="hero-teaser__slide"
               :class="{ 'hero-teaser__slide--active': activeSlide === 1 }"
             >
-              <p class="hero-teaser__title hero-teaser__title--italic">{{ blok.title_right }}</p>
+              <p class="hero-teaser__title hero-teaser__title--right">{{ blok.title_right }}</p>
               <p class="hero-teaser__description">{{ blok.description_right }}</p>
               <div v-if="blok.cta_right && blok.cta_right.length" class="hero-teaser__cta">
                 <CtaButton 
@@ -139,7 +139,13 @@ const hasRightContent = (blok: any) => {
   min-height: 100vh;
   background-size: cover;
   background-position: center;
-  background-color: var(--color-bg-dark);
+  background-color: #040B2F;
+}
+
+.hero-teaser__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(4,11,47,0.85) 0%, rgba(4,11,47,0.4) 40%, transparent 70%);
 }
 
 .hero-teaser__content {
@@ -149,14 +155,21 @@ const hasRightContent = (blok: any) => {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding-bottom: var(--space-3xl);
+  padding-bottom: 80px;
+}
+
+.hero-teaser__container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
 /* Desktop Grid */
 .hero-teaser__grid--desktop {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: var(--space-xl);
+  gap: 48px;
 }
 
 .hero-teaser__grid--mobile {
@@ -166,7 +179,7 @@ const hasRightContent = (blok: any) => {
 .hero-teaser__column {
   display: flex;
   flex-direction: column;
-  gap: var(--space-sm);
+  gap: 16px;
 }
 
 .hero-teaser__column--right {
@@ -175,14 +188,14 @@ const hasRightContent = (blok: any) => {
 
 .hero-teaser__title {
   font-size: clamp(32px, 5vw, 56px);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text-inverse);
+  font-weight: 500;
+  color: white;
   line-height: 1.1;
   letter-spacing: -0.02em;
   margin: 0;
 }
 
-.hero-teaser__title--italic {
+.hero-teaser__title--right {
   font-style: italic;
 }
 
@@ -199,7 +212,7 @@ const hasRightContent = (blok: any) => {
 }
 
 .hero-teaser__cta {
-  margin-top: var(--space-xs);
+  margin-top: 8px;
 }
 
 .hero-teaser__column--right .hero-teaser__cta {
@@ -228,11 +241,11 @@ const hasRightContent = (blok: any) => {
     inset: 0;
     opacity: 0;
     transform: translateX(20px);
-    transition: all var(--transition-slow);
+    transition: all 0.3s ease;
     pointer-events: none;
     display: flex;
     flex-direction: column;
-    gap: var(--space-sm);
+    gap: 16px;
   }
   
   .hero-teaser__slide--active {
@@ -251,7 +264,7 @@ const hasRightContent = (blok: any) => {
   
   /* Mobile: both columns left-aligned */
   .hero-teaser__column--right,
-  .hero-teaser__slide .hero-teaser__title--italic {
+  .hero-teaser__slide .hero-teaser__title--right {
     text-align: left;
   }
   
@@ -270,13 +283,13 @@ const hasRightContent = (blok: any) => {
     left: 0;
     display: flex;
     align-items: center;
-    gap: var(--space-xs);
-    padding: var(--space-xs) 12px;
+    gap: 8px;
+    padding: 8px 12px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: var(--radius-full);
+    border-radius: 20px;
     cursor: pointer;
-    transition: background var(--transition-base);
+    transition: background 0.2s ease;
   }
   
   .hero-teaser__toggle:hover {
@@ -286,11 +299,11 @@ const hasRightContent = (blok: any) => {
   .hero-teaser__toggle-arrow {
     color: rgba(255, 255, 255, 0.4);
     font-size: 16px;
-    transition: color var(--transition-base);
+    transition: color 0.2s ease;
   }
   
   .hero-teaser__toggle-arrow.active {
-    color: var(--color-text-inverse);
+    color: white;
   }
   
   .hero-teaser__content {

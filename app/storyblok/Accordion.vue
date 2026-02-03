@@ -1,7 +1,7 @@
 <template>
-  <section v-editable="blok" class="accordion agt-section">
-    <div class="agt-container">
-      <h2 v-if="blok.title" class="agt-title agt-title--sm accordion__title">{{ blok.title }}</h2>
+  <section v-editable="blok" class="accordion">
+    <div class="accordion__container">
+      <h2 v-if="blok.title" class="accordion__title">{{ blok.title }}</h2>
       <div class="accordion__items">
         <AccordionItem
           v-for="item in blok.items"
@@ -59,14 +59,38 @@ const handleToggle = (uid) => {
 </script>
 
 <style scoped>
+.accordion {
+  padding: 64px 0;
+}
+
+.accordion__container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .accordion__title {
-  margin-bottom: var(--space-lg);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 32px;
   text-align: center;
 }
 
 .accordion__items {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: 8px;
+}
+
+@media (max-width: 768px) {
+  .accordion {
+    padding: 40px 0;
+  }
+  
+  .accordion__title {
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+  }
 }
 </style>

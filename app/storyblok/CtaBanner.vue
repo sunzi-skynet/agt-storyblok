@@ -15,29 +15,27 @@ const props = defineProps<{
   }
 }>()
 
-const sectionClass = computed(() => {
-  if (props.blok.bg_image?.filename) return ''
-  const colorMap: Record<string, string> = {
-    primary: 'cta-banner--primary',
-    secondary: 'cta-banner--dark',
-    light: 'cta-banner--light'
-  }
-  return colorMap[props.blok.bg_color || 'primary'] || 'cta-banner--primary'
-})
+const bgColors: Record<string, { bg: string; text: string; buttonBg: string; buttonText: string }> = {
+  primary: { bg: '#265BF6', text: 'white', buttonBg: 'white', buttonText: '#265BF6' },
+  secondary: { bg: '#040B2F', text: 'white', buttonBg: '#265BF6', buttonText: 'white' },
+  light: { bg: '#F5F5F5', text: '#040B2F', buttonBg: '#265BF6', buttonText: 'white' }
+}
 
-const hasImage = computed(() => !!props.blok.bg_image?.filename)
+const colors = computed(() => bgColors[props.blok.bg_color || 'primary'])
 </script>
 
 <template>
   <section
     v-editable="blok"
-    class="cta-banner agt-section"
-    :class="sectionClass"
-    :style="hasImage ? {
-      background: `linear-gradient(var(--color-secondary-light), var(--color-secondary-light)), url(${blok.bg_image?.filename}) center/cover`
-    } : undefined"
+    class="cta-banner"
+    :style="{
+      background: blok.bg_image?.filename
+        ? `linear-gradient(rgba(4,11,47,0.7), rgba(4,11,47,0.7)), url(${blok.bg_image.filename}) center/cover`
+        : colors.bg,
+      color: blok.bg_image?.filename ? 'white' : colors.text
+    }"
   >
-    <div class="agt-container cta-banner__inner">
+    <div class="cta-banner__container">
       <div class="cta-banner__content">
         <h2 v-if="blok.title" class="cta-banner__title">
           {{ blok.title }}
@@ -51,9 +49,13 @@ const hasImage = computed(() => !!props.blok.bg_image?.filename)
         v-if="blok.cta_text"
         :href="blok.cta_link || '#'"
         class="cta-banner__button"
+        :style="{
+          background: blok.bg_image?.filename ? 'white' : colors.buttonBg,
+          color: blok.bg_image?.filename ? '#040B2F' : colors.buttonText
+        }"
       >
         {{ blok.cta_text }}
-        <svg class="agt-btn__icon" width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
           <path d="M4 10h12M12 6l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
@@ -62,11 +64,17 @@ const hasImage = computed(() => !!props.blok.bg_image?.filename)
 </template>
 
 <style scoped>
-.cta-banner__inner {
+.cta-banner {
+  padding: 64px 24px;
+}
+
+.cta-banner__container {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: var(--space-lg);
+  gap: 32px;
   flex-wrap: wrap;
 }
 
@@ -77,8 +85,8 @@ const hasImage = computed(() => !!props.blok.bg_image?.filename)
 
 .cta-banner__title {
   font-size: clamp(28px, 4vw, 42px);
-  font-weight: var(--font-weight-medium);
-  margin: 0 0 var(--space-xs);
+  font-weight: 500;
+  margin: 0 0 8px;
   letter-spacing: -0.02em;
 }
 
@@ -91,65 +99,28 @@ const hasImage = computed(() => !!props.blok.bg_image?.filename)
 .cta-banner__button {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-xs);
-  padding: var(--space-sm) var(--space-lg);
+  gap: 8px;
+  padding: 16px 32px;
   font-size: 16px;
-  font-weight: var(--font-weight-medium);
+  font-weight: 500;
   text-decoration: none;
-  border-radius: var(--radius-md);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  border-radius: 8px;
+  transition: transform 0.2s, box-shadow 0.2s;
   white-space: nowrap;
 }
 
 .cta-banner__button:hover {
   transform: translateY(-2px);
-  box-shadow: var(--shadow-md);
-}
-
-/* Color Variants */
-.cta-banner--primary {
-  background-color: var(--color-primary);
-  color: var(--color-text-inverse);
-}
-
-.cta-banner--primary .cta-banner__button {
-  background: var(--color-text-inverse);
-  color: var(--color-primary);
-}
-
-.cta-banner--dark {
-  background-color: var(--color-bg-dark);
-  color: var(--color-text-inverse);
-}
-
-.cta-banner--dark .cta-banner__button {
-  background: var(--color-primary);
-  color: var(--color-text-inverse);
-}
-
-.cta-banner--light {
-  background-color: var(--color-bg-alt);
-  color: var(--color-text);
-}
-
-.cta-banner--light .cta-banner__button {
-  background: var(--color-primary);
-  color: var(--color-text-inverse);
-}
-
-/* Image variant (always dark text-inverse) */
-.cta-banner:not(.cta-banner--primary):not(.cta-banner--dark):not(.cta-banner--light) {
-  color: var(--color-text-inverse);
-}
-
-.cta-banner:not(.cta-banner--primary):not(.cta-banner--dark):not(.cta-banner--light) .cta-banner__button {
-  background: var(--color-text-inverse);
-  color: var(--color-secondary);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  .cta-banner__inner {
+  .cta-banner {
+    padding: 48px 16px;
+  }
+
+  .cta-banner__container {
     flex-direction: column;
     text-align: center;
   }

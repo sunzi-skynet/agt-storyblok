@@ -26,14 +26,14 @@ const activeTestimonial = computed(() => {
 </script>
 
 <template>
-  <section v-editable="blok" class="testimonial-section agt-section agt-section--light">
-    <div class="agt-container">
+  <section v-editable="blok" class="testimonial-section">
+    <div class="testimonial-section__container">
       <!-- Header -->
       <header class="testimonial-section__header">
-        <h2 v-if="blok.title" class="agt-title">
+        <h2 v-if="blok.title" class="testimonial-section__title">
           {{ blok.title }}
         </h2>
-        <p v-if="blok.subtitle" class="agt-subtitle testimonial-section__subtitle">
+        <p v-if="blok.subtitle" class="testimonial-section__subtitle">
           {{ blok.subtitle }}
         </p>
       </header>
@@ -74,22 +74,44 @@ const activeTestimonial = computed(() => {
 </template>
 
 <style scoped>
+.testimonial-section {
+  padding: 80px 0;
+  background: #FFFFFF;
+}
+
+.testimonial-section__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
 .testimonial-section__header {
-  margin-bottom: var(--space-xl);
+  margin-bottom: 48px;
+}
+
+.testimonial-section__title {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 500;
+  color: #040B2F;
+  margin: 0;
+  letter-spacing: -0.02em;
 }
 
 .testimonial-section__subtitle {
+  font-size: 16px;
+  color: #666666;
+  margin: 16px 0 0;
+  max-width: 500px;
+  line-height: 1.6;
   text-align: right;
   margin-left: auto;
-  max-width: 500px;
-  margin-top: var(--space-sm);
 }
 
 /* Content Grid */
 .testimonial-section__content {
   display: grid;
   grid-template-columns: 220px 1fr 180px;
-  gap: var(--space-xl);
+  gap: 48px;
   align-items: start;
   min-height: 300px;
 }
@@ -98,7 +120,7 @@ const activeTestimonial = computed(() => {
 .testimonial-section__companies {
   display: flex;
   flex-direction: column;
-  gap: var(--space-xs);
+  gap: 8px;
 }
 
 .testimonial-section__company {
@@ -110,39 +132,39 @@ const activeTestimonial = computed(() => {
   border: none;
   cursor: pointer;
   font-size: 18px;
-  font-weight: var(--font-weight-medium);
-  color: var(--color-text);
+  font-weight: 500;
+  color: #040B2F;
   text-align: left;
-  transition: color var(--transition-base);
+  transition: color 0.2s ease;
 }
 
 .testimonial-section__company:hover {
-  color: var(--color-primary);
+  color: #265BF6;
 }
 
 .testimonial-section__company--active {
-  color: var(--color-primary);
+  color: #265BF6;
 }
 
 .testimonial-section__bullet {
   width: 8px;
   height: 8px;
-  border-radius: var(--radius-full);
+  border-radius: 50%;
   background: transparent;
   flex-shrink: 0;
-  transition: background-color var(--transition-base);
+  transition: background-color 0.2s ease;
 }
 
 .testimonial-section__company--active .testimonial-section__bullet {
-  background: var(--color-primary);
+  background: #265BF6;
 }
 
 /* Quote */
 .testimonial-section__quote {
   font-size: clamp(20px, 2.5vw, 26px);
-  font-weight: var(--font-weight-regular);
+  font-weight: 400;
   line-height: 1.6;
-  color: var(--color-text);
+  color: #040B2F;
   margin: 0;
   padding: 0;
   letter-spacing: -0.01em;
@@ -168,31 +190,35 @@ const activeTestimonial = computed(() => {
 @media (max-width: 900px) {
   .testimonial-section__content {
     grid-template-columns: 180px 1fr;
-    gap: var(--space-lg);
+    gap: 32px;
   }
 
   .testimonial-section__logo-wrapper {
     grid-column: 2;
     justify-content: flex-start;
-    margin-top: var(--space-md);
+    margin-top: 24px;
   }
 }
 
 @media (max-width: 640px) {
+  .testimonial-section {
+    padding: 48px 0;
+  }
+
   .testimonial-section__content {
     grid-template-columns: 1fr;
-    gap: var(--space-md);
+    gap: 24px;
   }
 
   .testimonial-section__companies {
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 4px var(--space-sm);
+    gap: 4px 16px;
   }
 
   .testimonial-section__company {
     font-size: 14px;
-    padding: var(--space-xs) 0;
+    padding: 8px 0;
   }
 
   .testimonial-section__quote {
