@@ -25,7 +25,6 @@ import TestimonialCard from '../storyblok/TestimonialCard.vue'
 import ClientLogos from '../storyblok/ClientLogos.vue'
 import Accordion from '../storyblok/Accordion.vue'
 import AccordionItem from '../storyblok/AccordionItem.vue'
-import BookingForm from '../storyblok/BookingForm.vue'
 import FleetList from '../storyblok/FleetList.vue'
 import FleetItem from '../storyblok/FleetItem.vue'
 import TabModule from '../storyblok/TabModule.vue'
@@ -62,7 +61,6 @@ export default defineNuxtPlugin(({ vueApp }) => {
   register(vueApp, 'client_logos', ClientLogos)
   register(vueApp, 'accordion', Accordion)
   register(vueApp, 'accordion_item', AccordionItem)
-  register(vueApp, 'booking_form', BookingForm)
   register(vueApp, 'fleet_list', FleetList)
   register(vueApp, 'fleet_item', FleetItem)
   register(vueApp, 'tab_module', TabModule)
