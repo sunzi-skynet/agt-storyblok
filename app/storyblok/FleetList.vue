@@ -6,7 +6,7 @@
         <p v-if="blok.intro_text" class="fleet-list__intro">{{ blok.intro_text }}</p>
       </div>
       <div class="fleet-list__items">
-        <StoryblokComponent
+        <FleetItem
           v-for="item in blok.items"
           :key="item._uid"
           :blok="item"
@@ -17,6 +17,8 @@
 </template>
 
 <script setup>
+import FleetItem from './FleetItem.vue'
+
 defineProps({
   blok: {
     type: Object,
