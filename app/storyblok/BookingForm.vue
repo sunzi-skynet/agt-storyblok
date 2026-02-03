@@ -18,16 +18,34 @@
             <!-- Fahrttyp -->
             <div class="booking-form__field">
               <label class="booking-form__label">Fahrttyp <span class="required">*</span></label>
-              <select v-model="form.fahrttyp" class="booking-form__select" required>
-                <option value="" disabled>Fahrttyp wählen</option>
-                <option v-for="option in fahrttypen" :key="option" :value="option">{{ option }}</option>
-              </select>
+              <div class="booking-form__select-wrapper">
+                <select v-model="form.fahrttyp" class="booking-form__select" required>
+                  <option value="" disabled selected>Fahrttyp wählen</option>
+                  <option v-for="option in fahrttypen" :key="option" :value="option">{{ option }}</option>
+                </select>
+                <svg class="booking-form__select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </div>
             </div>
 
             <!-- Datum -->
             <div class="booking-form__field">
               <label class="booking-form__label">Datum <span class="required">*</span></label>
-              <input v-model="form.datum" type="date" class="booking-form__input booking-form__input--date" required>
+              <div class="booking-form__input-wrapper">
+                <input 
+                  v-model="form.datum" 
+                  type="date" 
+                  class="booking-form__input booking-form__input--date" 
+                  required
+                >
+                <svg class="booking-form__icon booking-form__icon--calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                  <line x1="16" y1="2" x2="16" y2="6"/>
+                  <line x1="8" y1="2" x2="8" y2="6"/>
+                  <line x1="3" y1="10" x2="21" y2="10"/>
+                </svg>
+              </div>
             </div>
 
             <!-- Abreiseort -->
@@ -39,10 +57,15 @@
             <!-- Abfahrtszeit -->
             <div class="booking-form__field">
               <label class="booking-form__label">Abfahrtszeit <span class="required">*</span></label>
-              <select v-model="form.abfahrtszeit" class="booking-form__select" required>
-                <option value="" disabled>Uhrzeit wählen</option>
-                <option v-for="time in timeOptions" :key="time" :value="time">{{ time }}</option>
-              </select>
+              <div class="booking-form__select-wrapper">
+                <select v-model="form.abfahrtszeit" class="booking-form__select" required>
+                  <option value="" disabled selected>Uhrzeit wählen</option>
+                  <option v-for="time in timeOptions" :key="time" :value="time">{{ time }}</option>
+                </select>
+                <svg class="booking-form__select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </div>
             </div>
 
             <!-- Reiseziel -->
@@ -55,8 +78,8 @@
             <div class="booking-form__field">
               <label class="booking-form__label">Anzahl der Fahrgäste <span class="required">*</span></label>
               <div class="booking-form__input-wrapper">
-                <input v-model="form.fahrgaeste" type="number" min="1" class="booking-form__input" required>
-                <svg class="booking-form__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <input v-model="form.fahrgaeste" type="number" min="1" class="booking-form__input booking-form__input--number" required>
+                <svg class="booking-form__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
                   <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
                   <circle cx="9" cy="7" r="4"/>
                   <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
@@ -68,11 +91,16 @@
             <!-- Weitere Fahrten -->
             <div class="booking-form__field">
               <label class="booking-form__label">Weitere Fahrten am Zielort <span class="required">*</span></label>
-              <select v-model="form.weitereFahrten" class="booking-form__select" required>
-                <option value="" disabled>Bitte auswählen</option>
-                <option value="ja">Ja</option>
-                <option value="nein">Nein</option>
-              </select>
+              <div class="booking-form__select-wrapper">
+                <select v-model="form.weitereFahrten" class="booking-form__select" required>
+                  <option value="" disabled selected>Bitte auswählen</option>
+                  <option value="ja">Ja</option>
+                  <option value="nein">Nein</option>
+                </select>
+                <svg class="booking-form__select-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="6 9 12 15 18 9"/>
+                </svg>
+              </div>
             </div>
 
             <!-- Checkbox -->
@@ -239,11 +267,19 @@ const nextStep = () => {
   font-size: 16px;
   color: #1a1a2e;
   width: 100%;
+  height: 56px;
+  box-sizing: border-box;
 }
 
-.booking-form__input::placeholder,
-.booking-form__select option[disabled] {
-  color: #9ca3af;
+.booking-form__input::placeholder {
+  color: #6b7280;
+}
+
+.booking-form__select {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  padding-right: 48px;
 }
 
 .booking-form__input:focus,
@@ -252,6 +288,23 @@ const nextStep = () => {
   outline-offset: -2px;
 }
 
+/* Select wrapper for custom dropdown icon */
+.booking-form__select-wrapper {
+  position: relative;
+}
+
+.booking-form__select-icon {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  color: #6b7280;
+  pointer-events: none;
+}
+
+/* Input wrapper for icons */
 .booking-form__input-wrapper {
   position: relative;
 }
@@ -265,11 +318,47 @@ const nextStep = () => {
   right: 16px;
   top: 50%;
   transform: translateY(-50%);
-  width: 20px;
-  height: 20px;
+  width: 24px;
+  height: 24px;
   color: #9ca3af;
+  pointer-events: none;
 }
 
+/* Date input - hide native picker icon */
+.booking-form__input--date {
+  position: relative;
+}
+
+.booking-form__input--date::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.booking-form__input--date::-webkit-datetime-edit {
+  color: transparent;
+}
+
+.booking-form__input--date:valid::-webkit-datetime-edit {
+  color: #1a1a2e;
+}
+
+/* Number input - hide spinners */
+.booking-form__input--number {
+  -moz-appearance: textfield;
+}
+
+.booking-form__input--number::-webkit-outer-spin-button,
+.booking-form__input--number::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Checkbox */
 .booking-form__checkbox-label {
   display: flex;
   align-items: flex-start;
@@ -281,12 +370,28 @@ const nextStep = () => {
 }
 
 .booking-form__checkbox {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
   margin-top: 2px;
   flex-shrink: 0;
+  border: 1px solid #d1d5db;
+  border-radius: 2px;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background: #fff;
 }
 
+.booking-form__checkbox:checked {
+  background: #2563eb;
+  border-color: #2563eb;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3E%3C/svg%3E");
+  background-size: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Submit Button */
 .booking-form__submit {
   margin-top: 32px;
   padding: 20px;
@@ -303,6 +408,7 @@ const nextStep = () => {
   background: #1d4ed8;
 }
 
+/* Responsive */
 @media (max-width: 900px) {
   .booking-form__content {
     grid-template-columns: 1fr;
