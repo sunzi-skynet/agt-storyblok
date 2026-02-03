@@ -8,11 +8,7 @@ const slug = route.params.slug
 
 // useAsyncStoryblok enables the Storyblok Bridge automatically
 // This allows: live preview updates + visual editing
-const story = await useAsyncStoryblok(
-  slug,
-  { version: 'draft' },
-  { resolveRelations: [] }  // Bridge options
-)
+const story = await useAsyncStoryblok(slug, { version: 'draft' })
 
 // 404 if no story found
 if (!story.value) {
