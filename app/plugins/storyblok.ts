@@ -27,6 +27,9 @@ import AccordionItem from '../storyblok/AccordionItem.vue'
 // Forms
 import BookingForm from '../storyblok/BookingForm.vue'
 
+// Sliders
+import ServicesSlider from '../storyblok/ServicesSlider.vue'
+
 export default defineNuxtPlugin(({ vueApp }) => {
   // Register with KEBAB-CASE names (Storyblok converts _ to - internally)
   vueApp.component('page', Page)
@@ -52,4 +55,7 @@ export default defineNuxtPlugin(({ vueApp }) => {
   
   // Forms
   vueApp.component('booking-form', BookingForm)
+  
+  // Sliders
+  vueApp.component('services-slider', ServicesSlider)
 })
