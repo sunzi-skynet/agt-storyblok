@@ -1,6 +1,9 @@
-// Manual Storyblok component registration
-// Storyblok looks up components by their snake_case block name
-// This is the correct approach - register with exact Storyblok block names
+// Storyblok component registration
+// 
+// WHY BOTH snake_case AND kebab-case?
+// - Storyblok looks up components by snake_case block name (e.g. 'navigation_item')
+// - Vue internally resolves templates using kebab-case (e.g. 'navigation-item')
+// - Both are needed for full compatibility
 
 import Page from '../storyblok/Page.vue'
 import Teaser from '../storyblok/Teaser.vue'
@@ -30,33 +33,40 @@ import TabItem from '../storyblok/TabItem.vue'
 import ServicesSlider from '../storyblok/ServicesSlider.vue'
 import ServicesSlide from '../storyblok/ServicesSlide.vue'
 
+// Helper to register component with both naming conventions
+function register(app: any, snakeName: string, component: any) {
+  app.component(snakeName, component)
+  if (snakeName.includes('_')) {
+    app.component(snakeName.replace(/_/g, '-'), component)
+  }
+}
+
 export default defineNuxtPlugin(({ vueApp }) => {
-  // Register with exact Storyblok block names (snake_case)
-  vueApp.component('page', Page)
-  vueApp.component('teaser', Teaser)
-  vueApp.component('grid', Grid)
-  vueApp.component('feature', Feature)
-  vueApp.component('hero', Hero)
-  vueApp.component('hero_teaser', HeroTeaser)
-  vueApp.component('testimonial', Testimonial)
-  vueApp.component('header_nav', HeaderNav)
-  vueApp.component('nav_item', NavItem)
-  vueApp.component('footer', Footer)
-  vueApp.component('navigation_column', NavigationColumn)
-  vueApp.component('navigation_item', NavigationItem)
-  vueApp.component('image_text_section', ImageTextSection)
-  vueApp.component('cta_banner', CtaBanner)
-  vueApp.component('cta_button', CtaButton)
-  vueApp.component('testimonial_section', TestimonialSection)
-  vueApp.component('testimonial_card', TestimonialCard)
-  vueApp.component('client_logos', ClientLogos)
-  vueApp.component('accordion', Accordion)
-  vueApp.component('accordion_item', AccordionItem)
-  vueApp.component('booking_form', BookingForm)
-  vueApp.component('fleet_list', FleetList)
-  vueApp.component('fleet_item', FleetItem)
-  vueApp.component('tab_module', TabModule)
-  vueApp.component('tab_item', TabItem)
-  vueApp.component('services_slider', ServicesSlider)
-  vueApp.component('services_slide', ServicesSlide)
+  register(vueApp, 'page', Page)
+  register(vueApp, 'teaser', Teaser)
+  register(vueApp, 'grid', Grid)
+  register(vueApp, 'feature', Feature)
+  register(vueApp, 'hero', Hero)
+  register(vueApp, 'hero_teaser', HeroTeaser)
+  register(vueApp, 'testimonial', Testimonial)
+  register(vueApp, 'header_nav', HeaderNav)
+  register(vueApp, 'nav_item', NavItem)
+  register(vueApp, 'footer', Footer)
+  register(vueApp, 'navigation_column', NavigationColumn)
+  register(vueApp, 'navigation_item', NavigationItem)
+  register(vueApp, 'image_text_section', ImageTextSection)
+  register(vueApp, 'cta_banner', CtaBanner)
+  register(vueApp, 'cta_button', CtaButton)
+  register(vueApp, 'testimonial_section', TestimonialSection)
+  register(vueApp, 'testimonial_card', TestimonialCard)
+  register(vueApp, 'client_logos', ClientLogos)
+  register(vueApp, 'accordion', Accordion)
+  register(vueApp, 'accordion_item', AccordionItem)
+  register(vueApp, 'booking_form', BookingForm)
+  register(vueApp, 'fleet_list', FleetList)
+  register(vueApp, 'fleet_item', FleetItem)
+  register(vueApp, 'tab_module', TabModule)
+  register(vueApp, 'tab_item', TabItem)
+  register(vueApp, 'services_slider', ServicesSlider)
+  register(vueApp, 'services_slide', ServicesSlide)
 })
