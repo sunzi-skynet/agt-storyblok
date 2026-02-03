@@ -54,7 +54,7 @@ const modules = [Pagination, Autoplay]
           class="services-slider__background"
           :style="{
             backgroundImage: slide.background_image?.filename 
-              ? `url(${slide.background_image.filename}/m/1920x0/filters:quality(80))` 
+              ? `url(${slide.background_image.filename})` 
               : 'none'
           }"
         />
