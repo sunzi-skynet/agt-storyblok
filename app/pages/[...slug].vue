@@ -6,22 +6,12 @@ const slug = route.params.slug
   ? (route.params.slug as string[]).join('/') 
   : 'home'
 
-// Use the Storyblok API directly
-const storyblokApi = useStoryblokApi()
-
-const { data: story } = await useAsyncData(
-  `story-${slug}`,
-  async () => {
-    try {
-      const response = await storyblokApi.get(`cdn/stories/${slug}`, {
-        version: 'draft',
-      })
-      return response.data.story
-    } catch (e) {
-      console.error('Storyblok fetch error:', e)
-      return null
-    }
-  }
+// useAsyncStoryblok enables the Storyblok Bridge automatically
+// This allows: live preview updates + visual editing
+const story = await useAsyncStoryblok(
+  slug,
+  { version: 'draft' },
+  { resolveRelations: [] }  // Bridge options
 )
 
 // 404 if no story found

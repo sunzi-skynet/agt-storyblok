@@ -12,6 +12,8 @@ export default defineNuxtConfig({
     accessToken: 'ur2ZPYt2LKS234t7IemDZQtt',
     // Disable auto-discovery - we manually register in plugin with snake_case names
     componentsDir: false,
+    // Enable the bridge for live preview + visual editing
+    bridge: true,
     apiOptions: {
       region: 'eu',
     },
