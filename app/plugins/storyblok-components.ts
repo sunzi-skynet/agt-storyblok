@@ -18,6 +18,7 @@ import NavItem from '../storyblok/NavItem.vue'
 // Content blocks
 import ImageTextSection from '../storyblok/ImageTextSection.vue'
 import CtaBanner from '../storyblok/CtaBanner.vue'
+import CtaButton from '../storyblok/CtaButton.vue'
 import TestimonialSection from '../storyblok/TestimonialSection.vue'
 import TestimonialCard from '../storyblok/TestimonialCard.vue'
 import ClientLogos from '../storyblok/ClientLogos.vue'
@@ -41,6 +42,7 @@ export default defineNuxtPlugin(({ vueApp }) => {
   // Content blocks
   vueApp.component('image-text-section', ImageTextSection)
   vueApp.component('cta-banner', CtaBanner)
+  vueApp.component('cta-button', CtaButton)
   vueApp.component('testimonial-section', TestimonialSection)
   vueApp.component('testimonial-card', TestimonialCard)
   vueApp.component('client-logos', ClientLogos)
