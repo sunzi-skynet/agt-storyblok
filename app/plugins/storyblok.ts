@@ -35,6 +35,10 @@ import TabItem from '../storyblok/TabItem.vue'
 import FleetList from '../storyblok/FleetList.vue'
 import FleetItem from '../storyblok/FleetItem.vue'
 
+// Request Form
+import RequestForm from '../storyblok/RequestForm.vue'
+import IconAndLink from '../storyblok/IconAndLink.vue'
+
 export default defineNuxtPlugin(({ vueApp }) => {
   // Register with KEBAB-CASE names (Storyblok converts _ to - internally)
   vueApp.component('page', Page)
@@ -68,4 +72,10 @@ export default defineNuxtPlugin(({ vueApp }) => {
   // Fleet
   vueApp.component('fleet-list', FleetList)
   vueApp.component('fleet-item', FleetItem)
+  
+  // Request Form
+  vueApp.component('request-form', RequestForm)
+  vueApp.component('request_form', RequestForm)
+  vueApp.component('icon-and-link', IconAndLink)
+  vueApp.component('icon_and_link', IconAndLink)
 })

@@ -31,6 +31,8 @@ import TabModule from '../storyblok/TabModule.vue'
 import TabItem from '../storyblok/TabItem.vue'
 import ServicesSlider from '../storyblok/ServicesSlider.vue'
 import ServicesSlide from '../storyblok/ServicesSlide.vue'
+import RequestForm from '../storyblok/RequestForm.vue'
+import IconAndLink from '../storyblok/IconAndLink.vue'
 
 // Helper to register component with both naming conventions
 function register(app: any, snakeName: string, component: any) {
@@ -67,4 +69,6 @@ export default defineNuxtPlugin(({ vueApp }) => {
   register(vueApp, 'tab_item', TabItem)
   register(vueApp, 'services_slider', ServicesSlider)
   register(vueApp, 'services_slide', ServicesSlide)
+  register(vueApp, 'request_form', RequestForm)
+  register(vueApp, 'icon_and_link', IconAndLink)
 })
