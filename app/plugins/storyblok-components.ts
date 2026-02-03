@@ -1,6 +1,5 @@
 // Manual component registration
-// NOTE: @storyblok/vue converts snake_case to kebab-case internally
-// So booking_form becomes booking-form when resolving
+// Register with SNAKE_CASE names (matching Storyblok component names exactly)
 
 // Base components
 import Page from '../storyblok/Page.vue'
@@ -36,36 +35,36 @@ import ServicesSlider from '../storyblok/ServicesSlider.vue'
 import ServicesSlide from '../storyblok/ServicesSlide.vue'
 
 export default defineNuxtPlugin(({ vueApp }) => {
-  // Register with KEBAB-CASE names (Storyblok converts _ to - internally)
+  // Base
   vueApp.component('page', Page)
   vueApp.component('teaser', Teaser)
-  vueApp.component('hero-teaser', HeroTeaser)
+  vueApp.component('hero_teaser', HeroTeaser)
   vueApp.component('grid', Grid)
   vueApp.component('feature', Feature)
   vueApp.component('hero', Hero)
   vueApp.component('testimonial', Testimonial)
   
   // Layout
-  vueApp.component('header-nav', HeaderNav)
-  vueApp.component('nav-item', NavItem)
+  vueApp.component('header_nav', HeaderNav)
+  vueApp.component('nav_item', NavItem)
   vueApp.component('footer', Footer)
-  vueApp.component('navigation-column', NavigationColumn)
-  vueApp.component('navigation-item', NavigationItem)
+  vueApp.component('navigation_column', NavigationColumn)
+  vueApp.component('navigation_item', NavigationItem)
   
   // Content blocks
-  vueApp.component('image-text-section', ImageTextSection)
-  vueApp.component('cta-banner', CtaBanner)
-  vueApp.component('cta-button', CtaButton)
-  vueApp.component('testimonial-section', TestimonialSection)
-  vueApp.component('testimonial-card', TestimonialCard)
-  vueApp.component('client-logos', ClientLogos)
+  vueApp.component('image_text_section', ImageTextSection)
+  vueApp.component('cta_banner', CtaBanner)
+  vueApp.component('cta_button', CtaButton)
+  vueApp.component('testimonial_section', TestimonialSection)
+  vueApp.component('testimonial_card', TestimonialCard)
+  vueApp.component('client_logos', ClientLogos)
   vueApp.component('accordion', Accordion)
-  vueApp.component('accordion-item', AccordionItem)
-  vueApp.component('booking-form', BookingForm)
-  vueApp.component('fleet-list', FleetList)
-  vueApp.component('fleet-item', FleetItem)
-  vueApp.component('tab-module', TabModule)
-  vueApp.component('tab-item', TabItem)
-  vueApp.component('services-slider', ServicesSlider)
-  vueApp.component('services-slide', ServicesSlide)
+  vueApp.component('accordion_item', AccordionItem)
+  vueApp.component('booking_form', BookingForm)
+  vueApp.component('fleet_list', FleetList)
+  vueApp.component('fleet_item', FleetItem)
+  vueApp.component('tab_module', TabModule)
+  vueApp.component('tab_item', TabItem)
+  vueApp.component('services_slider', ServicesSlider)
+  vueApp.component('services_slide', ServicesSlide)
 })
