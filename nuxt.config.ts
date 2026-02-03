@@ -10,8 +10,8 @@ export default defineNuxtConfig({
 
   storyblok: {
     accessToken: 'ur2ZPYt2LKS234t7IemDZQtt',
-    // Disable auto-discovery - we manually register in plugin with snake_case names
-    componentsDir: false,
+    // Auto-register components from ~/storyblok (converts snake_case → PascalCase)
+    componentsDir: '~/app/storyblok',
     // Enable the bridge for live preview + visual editing
     bridge: true,
     apiOptions: {
