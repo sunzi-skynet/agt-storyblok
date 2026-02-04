@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-02-04T16:20:15.923Z",
+  "exported_at": "2026-02-04T18:16:57.976Z",
   "space_id": "290276210045571",
   "components": [
     {
@@ -854,17 +854,15 @@
           ],
           "id": "7ZDd3Cq5SQq2pePgyzlKIw"
         },
-        "cta_text": {
-          "type": "text",
+        "buttons": {
+          "type": "bloks",
           "pos": 4,
-          "display_name": "Button Text",
-          "id": "DR5ucZFSQ_ObrcGxK5XOig"
-        },
-        "cta_link": {
-          "type": "link",
-          "pos": 5,
-          "display_name": "Button Link",
-          "id": "tBTwo3AnSCOnxbVy5JcLBg"
+          "display_name": "Buttons",
+          "component_whitelist": [
+            "cta_button"
+          ],
+          "maximum": 2,
+          "id": "hXQA_TvNSnK1gVqGBCUt6g"
         }
       }
     },

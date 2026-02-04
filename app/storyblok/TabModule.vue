@@ -31,7 +31,7 @@
             @click="activeIndex = index"
           >
             <span class="tab-module__tab-title">{{ tab.title }}</span>
-            <svg class="tab-module__tab-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <svg class="tab-module__tab-chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <polyline points="9 18 15 12 9 6"></polyline>
             </svg>
           </button>
@@ -42,18 +42,16 @@
           <p v-if="activeTab" class="tab-module__description">
             {{ activeTab.description }}
           </p>
+          
+          <!-- CTA Buttons (under description, left-aligned) -->
+          <div v-if="blok.buttons && blok.buttons.length" class="tab-module__buttons">
+            <StoryblokComponent
+              v-for="button in blok.buttons"
+              :key="button._uid"
+              :blok="button"
+            />
+          </div>
         </div>
-      </div>
-      
-      <!-- CTA Button -->
-      <div v-if="blok.cta_text && blok.cta_link" class="tab-module__cta-wrapper">
-        <a 
-          :href="blok.cta_link.cached_url || blok.cta_link.url || blok.cta_link" 
-          class="tab-module__cta"
-          :target="blok.cta_link.target || '_self'"
-        >
-          {{ blok.cta_text }}
-        </a>
       </div>
     </div>
   </section>
@@ -191,15 +189,13 @@ const headlineParts = computed(() => {
   padding: 16px 0;
   background: none;
   border: none;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.3);
   cursor: pointer;
   text-align: left;
   transition: all 0.2s ease;
 }
 
-.tab-module__tab:first-child {
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
+/* No border-top - only lines below each tab */
 
 .tab-module__tab-title {
   font-size: 1.1rem;
@@ -214,8 +210,7 @@ const headlineParts = computed(() => {
 
 .tab-module__tab--active .tab-module__tab-title {
   color: #fff;
-  text-decoration: underline;
-  text-underline-offset: 4px;
+  font-weight: 700;
 }
 
 .tab-module__tab-chevron {
@@ -240,26 +235,8 @@ const headlineParts = computed(() => {
   max-width: 600px;
 }
 
-.tab-module__cta-wrapper {
-  position: absolute;
-  bottom: -20px;
-  right: 20px;
-}
-
-.tab-module__cta {
-  display: inline-block;
-  padding: 16px 48px;
-  background: #00b4d8;
-  color: #fff;
-  font-size: 1rem;
-  font-weight: 600;
-  text-decoration: none;
-  border-radius: 4px;
-  transition: background-color 0.2s ease;
-}
-
-.tab-module__cta:hover {
-  background: #0096c7;
+.tab-module__buttons {
+  margin-top: 32px;
 }
 
 /* Responsive */
@@ -303,9 +280,8 @@ const headlineParts = computed(() => {
     font-size: 1.1rem;
   }
   
-  .tab-module__cta-wrapper {
-    position: static;
-    margin-top: 40px;
+  .tab-module__buttons {
+    margin-top: 32px;
   }
 }
 
