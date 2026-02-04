@@ -29,41 +29,34 @@ defineProps<{
 
 const modules = [Navigation, Scrollbar]
 const swiperInstance = ref<SwiperType | null>(null)
+// Start with prev disabled, next enabled (we know there's overflow)
 const canGoPrev = ref(false)
 const canGoNext = ref(true)
 
 const onSwiper = (swiper: SwiperType) => {
   swiperInstance.value = swiper
-  setTimeout(() => updateNavState(), 200)
 }
 
 const updateNavState = () => {
   if (swiperInstance.value) {
     const swiper = swiperInstance.value
-    // Use progress and translate to determine navigation state
-    // progress: 0 = beginning, 1 = end
-    const progress = swiper.progress
-    canGoPrev.value = progress > 0.01
-    canGoNext.value = progress < 0.99
-    
-    // If swiper thinks it's locked (all slides visible), check actual overflow
-    if (swiper.isLocked) {
-      const slidesWidth = swiper.slidesGrid[swiper.slidesGrid.length - 1] + swiper.slidesSizesGrid[swiper.slidesSizesGrid.length - 1]
-      const containerWidth = swiper.width
-      const hasOverflow = slidesWidth > containerWidth
-      canGoNext.value = hasOverflow && progress < 0.99
-    }
+    canGoPrev.value = !swiper.isBeginning
+    canGoNext.value = !swiper.isEnd
   }
 }
 
 const slidePrev = () => {
-  swiperInstance.value?.slidePrev()
-  setTimeout(() => updateNavState(), 100)
+  if (swiperInstance.value) {
+    swiperInstance.value.slidePrev()
+    updateNavState()
+  }
 }
 
 const slideNext = () => {
-  swiperInstance.value?.slideNext()
-  setTimeout(() => updateNavState(), 100)
+  if (swiperInstance.value) {
+    swiperInstance.value.slideNext()
+    updateNavState()
+  }
 }
 </script>
 
@@ -126,8 +119,6 @@ const slideNext = () => {
         <div class="horizontal-slider-module__navigation">
           <button 
             class="horizontal-slider-module__nav-button horizontal-slider-module__nav-button--prev"
-            :class="{ 'horizontal-slider-module__nav-button--disabled': !canGoPrev }"
-            :disabled="!canGoPrev"
             aria-label="Vorheriges Slide"
             @click="slidePrev"
           >
@@ -137,8 +128,6 @@ const slideNext = () => {
           </button>
           <button 
             class="horizontal-slider-module__nav-button horizontal-slider-module__nav-button--next"
-            :class="{ 'horizontal-slider-module__nav-button--disabled': !canGoNext }"
-            :disabled="!canGoNext"
             aria-label="Nächstes Slide"
             @click="slideNext"
           >
