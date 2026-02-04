@@ -1,3 +1,28 @@
+<script setup lang="ts">
+import { renderRichText } from '@storyblok/vue'
+
+defineProps<{
+  blok: {
+    image?: { filename: string; alt?: string }
+    image_position?: 'left' | 'right'
+    title?: string
+    body?: any
+    buttons?: Array<{
+      _uid: string
+      component: string
+      label?: string
+      link?: any
+      style?: string
+      size?: string
+      icon_left?: { filename: string; alt?: string }
+      icon_right?: { filename: string; alt?: string }
+    }>
+    _uid: string
+    component: string
+  }
+}>()
+</script>
+
 <template>
   <section
     v-editable="blok"
@@ -15,28 +40,17 @@
       <div class="its-content">
         <h2 v-if="blok.title" class="its-title">{{ blok.title }}</h2>
         <div v-if="blok.body" class="its-body" v-html="renderRichText(blok.body)"></div>
-        <a
-          v-if="blok.cta_text && blok.cta_link"
-          :href="blok.cta_link"
-          class="its-cta"
-        >
-          {{ blok.cta_text }}
-        </a>
+        <div v-if="blok.buttons && blok.buttons.length" class="its-buttons">
+          <StoryblokComponent
+            v-for="button in blok.buttons"
+            :key="button._uid"
+            :blok="button"
+          />
+        </div>
       </div>
     </div>
   </section>
 </template>
-
-<script setup>
-import { renderRichText } from '@storyblok/vue'
-
-defineProps({
-  blok: {
-    type: Object,
-    required: true
-  }
-})
-</script>
 
 <style scoped>
 .image-text-section {
@@ -109,21 +123,11 @@ defineProps({
   margin-bottom: 8px;
 }
 
-.its-cta {
-  display: inline-block;
-  background: #265BF6;
-  color: #fff;
-  padding: 14px 32px;
-  border-radius: 4px;
-  text-decoration: none;
-  font-family: 'TT Hoves Pro', sans-serif;
-  font-weight: 500;
-  font-size: 1rem;
-  transition: background 0.2s ease;
-}
-
-.its-cta:hover {
-  background: #1a4ad4;
+.its-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 32px;
 }
 
 /* Responsive */
@@ -147,6 +151,15 @@ defineProps({
 
   .its-body {
     font-size: 1rem;
+  }
+
+  .its-buttons {
+    flex-direction: column;
+  }
+
+  .its-buttons :deep(.cta-button) {
+    width: 100%;
+    justify-content: center;
   }
 }
 </style>

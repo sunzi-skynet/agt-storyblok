@@ -17,9 +17,17 @@ defineProps<{
     button?: Array<{
       _uid: string
       component: string
-      text?: string
-      link?: string
-      variant?: string
+      label?: string
+      link?: {
+        url?: string
+        cached_url?: string
+        linktype?: string
+        target?: string
+      }
+      style?: 'primary' | 'secondary' | 'white'
+      size?: 'sm' | 'md' | 'lg'
+      icon_left?: { filename: string; alt?: string }
+      icon_right?: { filename: string; alt?: string }
     }>
   }
   theme?: 'light' | 'dark'
@@ -71,17 +79,11 @@ defineProps<{
     
     <!-- Button -->
     <div v-if="blok.button && blok.button.length > 0" class="slider-item__button-wrapper">
-      <a 
+      <StoryblokComponent
         v-for="btn in blok.button"
         :key="btn._uid"
-        :href="btn.link || '#'"
-        class="slider-item__button"
-      >
-        <span>{{ btn.text || 'Mehr erfahren' }}</span>
-        <svg class="slider-item__button-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </a>
+        :blok="btn"
+      />
     </div>
   </div>
 </template>
@@ -174,35 +176,10 @@ defineProps<{
   padding: 0 24px 24px;
 }
 
-.slider-item__button {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+/* Make CTA buttons full-width in slider cards */
+.slider-item__button-wrapper :deep(.cta-button) {
   width: 100%;
-  padding: 14px 20px;
-  background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  color: white;
-  text-decoration: none;
-  font-size: 16px;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  border-radius: 4px;
-}
-
-.slider-item__button:hover {
-  background: rgba(255, 255, 255, 0.1);
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-.slider-item__button-arrow {
-  width: 20px;
-  height: 20px;
-  transition: transform 0.3s ease;
-}
-
-.slider-item__button:hover .slider-item__button-arrow {
-  transform: translateX(4px);
+  justify-content: center;
 }
 
 /* Dark theme adjustments (default is dark cards) */

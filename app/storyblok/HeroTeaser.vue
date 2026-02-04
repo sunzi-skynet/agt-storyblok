@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import CtaButton from './CtaButton.vue'
 
 interface CtaButtonBlok {
-  text?: string
-  link?: string
-  variant?: 'primary' | 'secondary'
+  label?: string
+  link?: {
+    url?: string
+    cached_url?: string
+    linktype?: string
+    target?: string
+  }
+  style?: 'primary' | 'secondary' | 'white'
+  size?: 'sm' | 'md' | 'lg'
+  icon_left?: { filename: string; alt?: string }
+  icon_right?: { filename: string; alt?: string }
   _uid: string
   component: string
 }
@@ -55,7 +62,7 @@ const hasRightContent = (blok: any) => {
             <h1 class="hero-teaser__title">{{ blok.title_left }}</h1>
             <p class="hero-teaser__description">{{ blok.description_left }}</p>
             <div v-if="blok.cta_left && blok.cta_left.length" class="hero-teaser__cta">
-              <CtaButton 
+              <StoryblokComponent 
                 v-for="cta in blok.cta_left" 
                 :key="cta._uid" 
                 :blok="cta" 
@@ -68,7 +75,7 @@ const hasRightContent = (blok: any) => {
             <p class="hero-teaser__title hero-teaser__title--right">{{ blok.title_right }}</p>
             <p class="hero-teaser__description">{{ blok.description_right }}</p>
             <div v-if="blok.cta_right && blok.cta_right.length" class="hero-teaser__cta">
-              <CtaButton 
+              <StoryblokComponent 
                 v-for="cta in blok.cta_right" 
                 :key="cta._uid" 
                 :blok="cta" 
@@ -89,7 +96,7 @@ const hasRightContent = (blok: any) => {
               <h1 class="hero-teaser__title">{{ blok.title_left }}</h1>
               <p class="hero-teaser__description">{{ blok.description_left }}</p>
               <div v-if="blok.cta_left && blok.cta_left.length" class="hero-teaser__cta">
-                <CtaButton 
+                <StoryblokComponent 
                   v-for="cta in blok.cta_left" 
                   :key="cta._uid" 
                   :blok="cta" 
@@ -106,7 +113,7 @@ const hasRightContent = (blok: any) => {
               <p class="hero-teaser__title hero-teaser__title--right">{{ blok.title_right }}</p>
               <p class="hero-teaser__description">{{ blok.description_right }}</p>
               <div v-if="blok.cta_right && blok.cta_right.length" class="hero-teaser__cta">
-                <CtaButton 
+                <StoryblokComponent 
                   v-for="cta in blok.cta_right" 
                   :key="cta._uid" 
                   :blok="cta" 
