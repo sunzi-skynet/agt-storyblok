@@ -1,0 +1,1091 @@
+{
+  "exported_at": "2026-02-04T08:35:57.978Z",
+  "space_id": 290276210045571,
+  "components": [
+    {
+      "name": "accordion",
+      "display_name": "Accordion",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "title": {
+          "type": "text",
+          "display_name": "Section Title",
+          "pos": 0,
+          "id": "_F1oG16vSniKjpoePoWvhQ"
+        },
+        "items": {
+          "type": "bloks",
+          "display_name": "Accordion Items",
+          "pos": 1,
+          "component_whitelist": [
+            "accordion_item"
+          ],
+          "id": "7s0Fez-vSz6GwIE0PoVo4g"
+        },
+        "allow_multiple": {
+          "type": "boolean",
+          "display_name": "Allow Multiple Open",
+          "pos": 2,
+          "default_value": false,
+          "id": "ZPMDZLmqRAeh6XkVJeIrdQ"
+        }
+      }
+    },
+    {
+      "name": "accordion_item",
+      "display_name": "Accordion Item",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "title": {
+          "type": "text",
+          "display_name": "Title",
+          "pos": 0,
+          "id": "c7Ptl325TdyJTtEz0-IXQA"
+        },
+        "icon": {
+          "type": "asset",
+          "display_name": "Icon",
+          "pos": 1,
+          "filetypes": [
+            "images"
+          ],
+          "id": "5fJ5bMPWRsiCxEkuMFJp_A"
+        },
+        "content": {
+          "type": "richtext",
+          "display_name": "Content",
+          "pos": 2,
+          "id": "04aBMYoWTIOInf9_quXjJg"
+        },
+        "default_open": {
+          "type": "boolean",
+          "display_name": "Default Open",
+          "pos": 3,
+          "default_value": false,
+          "id": "-ULeMUSxQ-21zfxx-lEfqw"
+        }
+      }
+    },
+    {
+      "name": "client_logos",
+      "display_name": "Client Logos",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "id": "R2AfAaTRSZueCmAM_m6Yuw"
+        },
+        "logos": {
+          "type": "multiasset",
+          "pos": 1,
+          "filetypes": [
+            "images"
+          ],
+          "id": "48SIgolAS9-i2vJ5VO_sVw"
+        },
+        "description": {
+          "type": "textarea",
+          "pos": 2,
+          "id": "8WkUbV1dQVWDPy1WsUzG6g"
+        },
+        "cta_text": {
+          "type": "text",
+          "pos": 3,
+          "id": "V-n1k4vQTsq7z61t_4SsGw"
+        },
+        "cta_link": {
+          "type": "link",
+          "pos": 4,
+          "id": "h1xiob0OQ12lTVYhpe1Yww"
+        }
+      }
+    },
+    {
+      "name": "cta_banner",
+      "display_name": "CTA Banner",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "title": {
+          "type": "text",
+          "display_name": "Headline",
+          "pos": 0,
+          "id": "2n66Oh7WTiCpiZTUguSyHg"
+        },
+        "subtitle": {
+          "type": "text",
+          "display_name": "Subtitle",
+          "pos": 1,
+          "id": "J3PLbN6MSuCu0bxROhNv6g"
+        },
+        "cta_text": {
+          "type": "text",
+          "display_name": "Button Text",
+          "pos": 2,
+          "default_value": "Jetzt anfragen",
+          "id": "n-Ld9to_To2ICT88KypCRQ"
+        },
+        "cta_link": {
+          "type": "text",
+          "display_name": "Button Link",
+          "pos": 3,
+          "default_value": "/anfrage",
+          "id": "9ESBYoXzTI6MNBWf43Yrgw"
+        },
+        "bg_color": {
+          "type": "option",
+          "display_name": "Background Color",
+          "pos": 4,
+          "options": [
+            {
+              "name": "Primary (Blue)",
+              "value": "primary"
+            },
+            {
+              "name": "Secondary (Dark)",
+              "value": "secondary"
+            },
+            {
+              "name": "Light",
+              "value": "light"
+            }
+          ],
+          "default_value": "primary",
+          "id": "pjBs0gtuTMGmL-5qYd4RsA"
+        },
+        "bg_image": {
+          "type": "asset",
+          "display_name": "Background Image",
+          "pos": 5,
+          "filetypes": [
+            "images"
+          ],
+          "id": "SkrYwlhqQlqTV9NNewFMpQ"
+        }
+      }
+    },
+    {
+      "name": "cta_button",
+      "display_name": "CTA Button",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "label": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "Button Text",
+          "required": true,
+          "id": "t_Y65YRhQ0OVSqv04gJlng"
+        },
+        "link": {
+          "type": "multilink",
+          "pos": 1,
+          "display_name": "Link",
+          "id": "wZpiYE7mQ72GcJPFl7BhTw"
+        },
+        "style": {
+          "type": "option",
+          "pos": 2,
+          "display_name": "Style",
+          "options": [
+            {
+              "value": "primary",
+              "name": "Primary (Blau)"
+            },
+            {
+              "value": "secondary",
+              "name": "Secondary (Dunkelblau)"
+            },
+            {
+              "value": "white",
+              "name": "White (Hell)"
+            }
+          ],
+          "default_value": "primary",
+          "id": "Ts4TVGb3RnevkvYKaanWXQ"
+        },
+        "size": {
+          "type": "option",
+          "pos": 3,
+          "display_name": "Size",
+          "options": [
+            {
+              "value": "sm",
+              "name": "Small"
+            },
+            {
+              "value": "md",
+              "name": "Medium"
+            },
+            {
+              "value": "lg",
+              "name": "Large"
+            }
+          ],
+          "default_value": "md",
+          "id": "sH1vjMTjQRS6deyGiAuc6A"
+        },
+        "icon_left": {
+          "type": "asset",
+          "pos": 4,
+          "display_name": "Icon Left",
+          "filetypes": [
+            "images"
+          ],
+          "id": "CY2L726FSY6gnwXC4pu3TA"
+        },
+        "icon_right": {
+          "type": "asset",
+          "pos": 5,
+          "display_name": "Icon Right",
+          "filetypes": [
+            "images"
+          ],
+          "id": "tbeO7J5EQ1qPB_mhiyKqww"
+        }
+      }
+    },
+    {
+      "name": "feature",
+      "display_name": null,
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "name": {
+          "type": "text",
+          "id": "FY-_R8v5RAG5wziXW2N9nQ"
+        }
+      }
+    },
+    {
+      "name": "fleet_item",
+      "display_name": "Fleet Item",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "number": {
+          "type": "text",
+          "pos": 0,
+          "id": "0Fb16A3jQIOEO2lCRf1WTQ"
+        },
+        "name": {
+          "type": "text",
+          "pos": 1,
+          "id": "cMAiewhVSVmQeeAE9guI3A"
+        },
+        "description": {
+          "type": "text",
+          "pos": 2,
+          "id": "pRfA-2QTTHKc6DWwnTsCAw"
+        },
+        "link": {
+          "type": "link",
+          "pos": 3,
+          "id": "XoevXJvMTXOE2vc_jOaadw"
+        }
+      }
+    },
+    {
+      "name": "fleet_list",
+      "display_name": "Fleet List",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "id": "qdW7RiVqQkajnbh_v0wEAA"
+        },
+        "intro_text": {
+          "type": "textarea",
+          "pos": 1,
+          "id": "Wdx5fCoOTMaXkXXdO44f4g"
+        },
+        "items": {
+          "type": "bloks",
+          "pos": 2,
+          "component_whitelist": [
+            "fleet_item"
+          ],
+          "id": "h6usB6yGTiC53q8IQ00A6Q"
+        }
+      }
+    },
+    {
+      "name": "footer",
+      "display_name": "Footer",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "id": "MQYIbmN2SX-DvvuaisnYJw"
+        },
+        "cta_wrapper": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "cta_button"
+          ],
+          "maximum": 2,
+          "pos": 1,
+          "id": "3uBkdXh2SDmt4JUfXOlBtw"
+        },
+        "navigation_section": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "navigation_column"
+          ],
+          "pos": 2,
+          "id": "LwV7MoPZSJGzogOvcj5qxw"
+        },
+        "copyright": {
+          "type": "text",
+          "pos": 3,
+          "id": "xmh0CBGVTE2nq6Kq8-1Qig"
+        },
+        "slogan": {
+          "type": "text",
+          "pos": 4,
+          "id": "3qar77hsSFuoZkOsHS0vpw"
+        },
+        "background_image": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "pos": 5,
+          "id": "BfbFghYMRQyQyyj9RuD-bQ"
+        }
+      }
+    },
+    {
+      "name": "grid",
+      "display_name": null,
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "columns": {
+          "type": "bloks",
+          "id": "-jI0wqLgTgmp_XYP40AUeg"
+        }
+      }
+    },
+    {
+      "name": "header_nav",
+      "display_name": "Header Navigation",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "logo": {
+          "type": "asset",
+          "display_name": "Logo",
+          "pos": 0,
+          "filetypes": [
+            "images"
+          ],
+          "id": "rGzHcc-6RlGhLCk8Xr8HXA"
+        },
+        "nav_items": {
+          "type": "bloks",
+          "display_name": "Navigation Items",
+          "pos": 1,
+          "component_whitelist": [
+            "nav_item"
+          ],
+          "id": "AkSqHx0zRwmdFvdG-ygp8g"
+        },
+        "cta_text": {
+          "type": "text",
+          "display_name": "CTA Button Text",
+          "pos": 2,
+          "default_value": "Kontakt",
+          "id": "ejmh2lc5TxmQR2VM77ubHg"
+        },
+        "cta_link": {
+          "type": "text",
+          "display_name": "CTA Button Link",
+          "pos": 3,
+          "default_value": "/kontakt",
+          "id": "vbtVRot5TXKKuBr7uJeu0w"
+        },
+        "show_search": {
+          "type": "boolean",
+          "display_name": "Show Search",
+          "pos": 4,
+          "default_value": false,
+          "id": "0-lPdPETTNyjXKenxE10qQ"
+        },
+        "show_language": {
+          "type": "boolean",
+          "display_name": "Show Language Switcher",
+          "pos": 5,
+          "default_value": false,
+          "id": "hHQtDje6RdqBMHVt7u5VIg"
+        }
+      }
+    },
+    {
+      "name": "hero_teaser",
+      "display_name": "Hero Teaser",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "background_image": {
+          "type": "asset",
+          "pos": 0,
+          "display_name": "Background Image",
+          "filetypes": [
+            "images"
+          ],
+          "id": "cjSc0XrMS_-fhvY9NK9-Vw"
+        },
+        "title_left": {
+          "type": "text",
+          "pos": 1,
+          "display_name": "Title Left (H1)",
+          "id": "cHHRdy5YSCWgC6imO8ggjA"
+        },
+        "description_left": {
+          "type": "textarea",
+          "pos": 2,
+          "display_name": "Description Left",
+          "id": "KoA6_Rm-T5KEqIB3i7KFbw"
+        },
+        "cta_left": {
+          "type": "bloks",
+          "pos": 3,
+          "display_name": "CTA Left",
+          "component_whitelist": [
+            "cta_button"
+          ],
+          "maximum": 1,
+          "id": "ID8pmQigRcmxeb6tS1R-8g"
+        },
+        "title_right": {
+          "type": "text",
+          "pos": 4,
+          "display_name": "Title Right",
+          "id": "NkipdNMwRJylN8qyUYbsfQ"
+        },
+        "description_right": {
+          "type": "textarea",
+          "pos": 5,
+          "display_name": "Description Right",
+          "id": "2NTXBoueSgqmPxUPK85B9Q"
+        },
+        "cta_right": {
+          "type": "bloks",
+          "pos": 6,
+          "display_name": "CTA Right",
+          "component_whitelist": [
+            "cta_button"
+          ],
+          "maximum": 1,
+          "id": "Q3bnYlgDR2i7Cohu7pyNZw"
+        }
+      }
+    },
+    {
+      "name": "horizontal_slider_module",
+      "display_name": "Horizontal Slider Module",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "Title",
+          "description": "Main heading (text only, no styling)",
+          "id": "emHldoJ5Ra6wVKpWDt1m2g"
+        },
+        "description": {
+          "type": "textarea",
+          "pos": 1,
+          "display_name": "Description",
+          "description": "Multi-line introductory text",
+          "id": "Q3QKakeNQA2GdyithRJgFA"
+        },
+        "agt_theme": {
+          "type": "option",
+          "pos": 2,
+          "display_name": "Theme",
+          "source": "internal",
+          "datasource_slug": "agt-theme",
+          "description": "Light or dark mode styling",
+          "id": "AfLDr6byRMa5XAl1D_IEKQ"
+        },
+        "slider_section": {
+          "type": "bloks",
+          "pos": 3,
+          "display_name": "Slider Items",
+          "component_whitelist": [
+            "slider_item"
+          ],
+          "minimum": 1,
+          "description": "Individual slider cards (min. 1 required)",
+          "id": "MZl6KGLKT4Gw_8rVU_JUcw"
+        }
+      }
+    },
+    {
+      "name": "icon_and_link",
+      "display_name": "Icon & Link",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "icon_type": {
+          "type": "option",
+          "pos": 0,
+          "display_name": "Icon Typ",
+          "description": "Vordefinierte Icons oder Custom (wenn Custom, dann Icon-Asset hochladen)",
+          "options": [
+            {
+              "name": "Telefon",
+              "value": "phone"
+            },
+            {
+              "name": "E-Mail",
+              "value": "email"
+            },
+            {
+              "name": "Rückruf",
+              "value": "callback"
+            },
+            {
+              "name": "Custom (Bild)",
+              "value": "custom"
+            }
+          ],
+          "default_value": "phone",
+          "id": "uA_l9krpTR2jb0vciIpTgg"
+        },
+        "icon": {
+          "type": "asset",
+          "pos": 1,
+          "display_name": "Icon (Custom)",
+          "description": "Nur bei Icon Typ = Custom",
+          "filetypes": [
+            "images"
+          ],
+          "id": "eAnDSM1kRB6MRULRxNYPZQ"
+        },
+        "label": {
+          "type": "text",
+          "pos": 2,
+          "display_name": "Label",
+          "id": "bFk3-PHHTge-cDrdTSoqvg"
+        },
+        "url": {
+          "type": "link",
+          "pos": 3,
+          "display_name": "URL",
+          "id": "E2zU6Y0hSLSbsrbBDp_2GA"
+        }
+      }
+    },
+    {
+      "name": "image_text_section",
+      "display_name": "Image + Text Section",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "image": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "pos": 0,
+          "display_name": "Image",
+          "id": "kksTWdVxQ7SE3AlfL7jhqA"
+        },
+        "image_position": {
+          "type": "option",
+          "pos": 1,
+          "display_name": "Image Position",
+          "options": [
+            {
+              "name": "Left",
+              "value": "left"
+            },
+            {
+              "name": "Right",
+              "value": "right"
+            }
+          ],
+          "default_value": "left",
+          "id": "4kzaP6HDThaPb7UZjkyvaw"
+        },
+        "title": {
+          "type": "text",
+          "pos": 2,
+          "display_name": "Title",
+          "id": "JoT1qxczTNuIPCdz7kU-8Q"
+        },
+        "body": {
+          "type": "richtext",
+          "pos": 3,
+          "display_name": "Body",
+          "id": "DQoHbT_cSNCLnole2UmqHQ"
+        },
+        "buttons": {
+          "type": "bloks",
+          "pos": 4,
+          "display_name": "Buttons",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "cta_button"
+          ],
+          "maximum": 2,
+          "id": "LLrMY96JSDm1fQr-PlCoUA"
+        }
+      }
+    },
+    {
+      "name": "navigation_column",
+      "display_name": "Navigation Column",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "items": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "navigation_item"
+          ],
+          "pos": 0,
+          "id": "x8OwlIR1SaOnO1Iu-3ImKg"
+        }
+      }
+    },
+    {
+      "name": "navigation_item",
+      "display_name": "Navigation Item",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "label": {
+          "type": "text",
+          "pos": 0,
+          "id": "ZFy5Zl6gRX6jTW7D55vdMg"
+        },
+        "url": {
+          "type": "text",
+          "pos": 1,
+          "id": "7gXB0s0iQNqQlltWZihmUw"
+        }
+      }
+    },
+    {
+      "name": "nav_item",
+      "display_name": "Navigation Item",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "label": {
+          "type": "text",
+          "display_name": "Label",
+          "pos": 0,
+          "id": "K_lWNXkjSeyGgEY1MmeRLA"
+        },
+        "link": {
+          "type": "text",
+          "display_name": "URL",
+          "pos": 1,
+          "id": "EYqLofgCRpOBynNvuOsfNg"
+        },
+        "is_dropdown": {
+          "type": "boolean",
+          "display_name": "Has Dropdown",
+          "pos": 2,
+          "default_value": false,
+          "id": "QYYiPy6gSp-b85k-FcQXPg"
+        }
+      }
+    },
+    {
+      "name": "page",
+      "display_name": null,
+      "is_root": true,
+      "is_nestable": false,
+      "schema": {
+        "body": {
+          "type": "bloks",
+          "id": "bt3CFVwPTESBMzg3Y_WXJQ"
+        }
+      }
+    },
+    {
+      "name": "request_form",
+      "display_name": "Request Form (Anfrage)",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "Title (H3)",
+          "description": "Only the text of the H3 heading can be changed",
+          "id": "PQ7w6qz5SUCg9DjLM5S_bQ"
+        },
+        "description": {
+          "type": "textarea",
+          "pos": 1,
+          "display_name": "Description",
+          "description": "The text can be formatted as required",
+          "id": "KaG4U9MDQ2ayfDXf5dyO8g"
+        },
+        "icon_and_link": {
+          "type": "bloks",
+          "pos": 2,
+          "display_name": "Contact Links",
+          "restrict_type": "",
+          "restrict_components": true,
+          "component_whitelist": [
+            "icon_and_link"
+          ],
+          "maximum": 5,
+          "description": "Between 0 and 5 icon_text blocks can be added",
+          "id": "aTPXDPZYTtOOGp4K2YZN7w"
+        }
+      }
+    },
+    {
+      "name": "services_slide",
+      "display_name": "Services Slide",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "required": true,
+          "id": "s3B0SGa3RlayaiEeSyy-QQ"
+        },
+        "description": {
+          "type": "textarea",
+          "pos": 1,
+          "required": true,
+          "id": "cmAxUpNNQ92Ie8YH-uzEqA"
+        },
+        "button_text": {
+          "type": "text",
+          "pos": 2,
+          "default_value": "Mehr erfahren",
+          "id": "g96I8FGNRT-46jB-ETRqLQ"
+        },
+        "button_link": {
+          "type": "link",
+          "pos": 3,
+          "id": "BQryPFO5QeGvMsRPjwSR-A"
+        },
+        "background_image": {
+          "type": "asset",
+          "pos": 4,
+          "filetypes": [
+            "images"
+          ],
+          "required": true,
+          "id": "AQwd3OKFQoCySLV3aoM3Uw"
+        }
+      }
+    },
+    {
+      "name": "services_slider",
+      "display_name": "Services Slider",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "slides": {
+          "type": "bloks",
+          "pos": 0,
+          "restrict_components": true,
+          "component_whitelist": [
+            "services_slide"
+          ],
+          "required": true,
+          "id": "198oAypmRxy8m7sXelWQkw"
+        }
+      }
+    },
+    {
+      "name": "slider_item",
+      "display_name": "Slider Item",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "Title",
+          "description": "The heading of the slider item",
+          "id": "xoIW9L0hRrOxfSSdSpNnWg"
+        },
+        "background_image": {
+          "type": "asset",
+          "pos": 1,
+          "display_name": "Background Image",
+          "filetypes": [
+            "images"
+          ],
+          "description": "Background image for the card",
+          "id": "1s4y2rDWQp2FTrJ23fyxyQ"
+        },
+        "background_colour": {
+          "type": "option",
+          "pos": 2,
+          "display_name": "Background Colour",
+          "source": "internal",
+          "datasource_slug": "agt-colour",
+          "description": "Optional background colour if no image is set",
+          "id": "ueajDzAGSv2u1MBO-HoE6Q"
+        },
+        "icon": {
+          "type": "asset",
+          "pos": 3,
+          "display_name": "Icon",
+          "filetypes": [
+            "images"
+          ],
+          "description": "Optional icon image",
+          "id": "DtEhGMyBRuKzo83V3Pc1EQ"
+        },
+        "description": {
+          "type": "textarea",
+          "pos": 4,
+          "display_name": "Description",
+          "description": "Optional description text",
+          "id": "UT4elepdSwa1Ro4b0lh0Ng"
+        },
+        "button": {
+          "type": "bloks",
+          "pos": 5,
+          "display_name": "Button",
+          "component_whitelist": [
+            "cta_button"
+          ],
+          "maximum": 1,
+          "description": "Call-to-action button",
+          "id": "SrfSuv5zQyOFaOlSm3VnBQ"
+        }
+      }
+    },
+    {
+      "name": "stats_bar",
+      "display_name": "Stats Bar",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "id": "wzA72lc7TgagZ23gPQY-kQ"
+        },
+        "body": {
+          "type": "richtext",
+          "pos": 1,
+          "id": "zMPsQiEuSZOAtRcWA4t_Zw"
+        }
+      }
+    },
+    {
+      "name": "tab_item",
+      "display_name": "Tab Item",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "title": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "Tab Titel",
+          "required": true,
+          "id": "1a5bFikdQtOS8wPkOB4zKg"
+        },
+        "description": {
+          "type": "textarea",
+          "pos": 1,
+          "display_name": "Beschreibung",
+          "id": "l1hUZzyvQgW5sQ5lWG0xWQ"
+        },
+        "default_active": {
+          "type": "boolean",
+          "pos": 2,
+          "display_name": "Standard aktiv",
+          "default_value": false,
+          "id": "dyBTj9sOTbWMXXz2aHjwGQ"
+        }
+      }
+    },
+    {
+      "name": "tab_module",
+      "display_name": "Tab Module",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "headline": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "Überschrift",
+          "id": "Q2QkZ1W7R5ij6NblkIO8hA"
+        },
+        "headline_highlight": {
+          "type": "text",
+          "pos": 1,
+          "display_name": "Hervorgehobenes Wort",
+          "description": "Dieses Wort wird cyan hervorgehoben",
+          "id": "qZRhCPiqSbqWs9tjfRctAA"
+        },
+        "background_image": {
+          "type": "asset",
+          "pos": 2,
+          "display_name": "Hintergrundbild",
+          "filetypes": [
+            "images"
+          ],
+          "id": "n3s7BAfbQkScuh4HKeDZdA"
+        },
+        "tabs": {
+          "type": "bloks",
+          "pos": 3,
+          "display_name": "Tabs",
+          "component_whitelist": [
+            "tab_item"
+          ],
+          "id": "7ZDd3Cq5SQq2pePgyzlKIw"
+        },
+        "cta_text": {
+          "type": "text",
+          "pos": 4,
+          "display_name": "Button Text",
+          "id": "DR5ucZFSQ_ObrcGxK5XOig"
+        },
+        "cta_link": {
+          "type": "link",
+          "pos": 5,
+          "display_name": "Button Link",
+          "id": "tBTwo3AnSCOnxbVy5JcLBg"
+        }
+      }
+    },
+    {
+      "name": "teaser",
+      "display_name": "Hero Teaser",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "headline": {
+          "type": "text",
+          "pos": 0,
+          "id": "zWA6KJGbQ6mv-nfbWrgehw"
+        },
+        "subheadline": {
+          "type": "text",
+          "pos": 1,
+          "id": "4nuJgSt1SguNqck0eo70Eg"
+        },
+        "background_image": {
+          "type": "text",
+          "description": "URL zum Hintergrundbild",
+          "pos": 2,
+          "id": "5X6K-LZMQQ2_yDsxekqi5w"
+        },
+        "cta_text": {
+          "type": "text",
+          "pos": 3,
+          "id": "xGwv1ZRiSe-v99LDHGXDQg"
+        },
+        "cta_link": {
+          "type": "text",
+          "pos": 4,
+          "id": "nsY48y8YQCGWbEwqSLVFww"
+        }
+      }
+    },
+    {
+      "name": "testimonial_card",
+      "display_name": "Testimonial Card",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "company_name": {
+          "type": "text",
+          "display_name": "Company Name",
+          "pos": 0,
+          "id": "N8fTaH7gQI-EwbYVfDFp7A"
+        },
+        "quote": {
+          "type": "textarea",
+          "display_name": "Quote",
+          "pos": 1,
+          "id": "9D7c-TmvSD6kgCYXDy4hFw"
+        },
+        "company_logo": {
+          "type": "asset",
+          "display_name": "Company Logo",
+          "pos": 2,
+          "filetypes": [
+            "images"
+          ],
+          "id": "tN6SOdFEQCeOv1RNxFLLyg"
+        }
+      }
+    },
+    {
+      "name": "testimonial_section",
+      "display_name": "Testimonial Section",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "title": {
+          "type": "text",
+          "display_name": "Title",
+          "pos": 0,
+          "id": "MDkK7f9IRuum8xR9g8a7Pg"
+        },
+        "subtitle": {
+          "type": "text",
+          "display_name": "Subtitle",
+          "pos": 1,
+          "id": "xCpQeR-rSf6TufS2BuCpJg"
+        },
+        "testimonials": {
+          "type": "bloks",
+          "display_name": "Testimonials",
+          "pos": 2,
+          "component_whitelist": [
+            "testimonial_card"
+          ],
+          "id": "7tiImL7vT-eqNEN_jZIsDw"
+        },
+        "layout": {
+          "type": "option",
+          "display_name": "Layout",
+          "pos": 3,
+          "options": [
+            {
+              "name": "Single (Full Width)",
+              "value": "single"
+            },
+            {
+              "name": "Slider",
+              "value": "slider"
+            },
+            {
+              "name": "Grid",
+              "value": "grid"
+            }
+          ],
+          "default_value": "single",
+          "id": "M6xvPWuLS12xxodVzUArlw"
+        }
+      }
+    }
+  ]
+}
