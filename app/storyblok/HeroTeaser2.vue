@@ -88,7 +88,7 @@ defineProps<{
 .hero-teaser-2__subtitle {
   font-size: clamp(18px, 2.5vw, 24px);
   font-weight: 600;
-  color: #C9A227;
+  color: white;
   line-height: 1.3;
   margin: 0;
 }
