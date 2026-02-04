@@ -22,7 +22,7 @@ FRONTEND_DIR="$(dirname "$SCRIPT_DIR")"
 PROJECT_DIR="$(dirname "$FRONTEND_DIR")"
 STORYBLOK_DIR="$FRONTEND_DIR/app/storyblok"
 PLUGIN_FILE="$FRONTEND_DIR/app/plugins/storyblok-components.ts"
-REGISTRY_FILE="$PROJECT_DIR/content-model-registry.md"
+REGISTRY_FILE="$FRONTEND_DIR/docs/content-model-registry.md"
 
 # Convert names
 PASCAL_CASE=$(echo "$COMPONENT_NAME" | sed -r 's/(^|_)([a-z])/\U\2/g')
@@ -80,18 +80,30 @@ VUEEOF
   echo "   ✓ Created: $STORYBLOK_DIR/${PASCAL_CASE}.vue"
 fi
 
-# 3. Check if already in plugin
-if grep -q "'$KEBAB_CASE'" "$PLUGIN_FILE" 2>/dev/null; then
-  echo "⚠️  Already registered in plugin: $KEBAB_CASE"
+# 3. Register in plugin (auto)
+if grep -q "register(vueApp, '$COMPONENT_NAME'" "$PLUGIN_FILE" 2>/dev/null; then
+  echo "⚠️  Already registered in plugin: $COMPONENT_NAME"
 else
-  echo "📝 Updating plugin registration..."
-  echo ""
-  echo "   ⚠️  Manual step required!"
-  echo "   Add to $PLUGIN_FILE:"
-  echo ""
-  echo "   Import: import ${PASCAL_CASE} from '../storyblok/${PASCAL_CASE}.vue'"
-  echo "   Register: vueApp.component('$KEBAB_CASE', $PASCAL_CASE)"
-  echo ""
+  echo "📝 Registering in plugin..."
+  
+  # Add import after last import line
+  LAST_IMPORT_LINE=$(grep -n "^import .* from '\.\./storyblok/" "$PLUGIN_FILE" | tail -1 | cut -d: -f1)
+  if [ -n "$LAST_IMPORT_LINE" ]; then
+    sed -i "${LAST_IMPORT_LINE}a import ${PASCAL_CASE} from '../storyblok/${PASCAL_CASE}.vue'" "$PLUGIN_FILE"
+    echo "   ✓ Added import"
+  else
+    echo "   ⚠️  Could not find import section"
+  fi
+  
+  # Add register call before closing })
+  # Find last register() call and add after it
+  LAST_REGISTER_LINE=$(grep -n "register(vueApp," "$PLUGIN_FILE" | tail -1 | cut -d: -f1)
+  if [ -n "$LAST_REGISTER_LINE" ]; then
+    sed -i "${LAST_REGISTER_LINE}a\\  register(vueApp, '${COMPONENT_NAME}', ${PASCAL_CASE})" "$PLUGIN_FILE"
+    echo "   ✓ Added register()"
+  else
+    echo "   ⚠️  Could not find register section"
+  fi
 fi
 
 # 4. Create Storyblok schema (if not exists)
