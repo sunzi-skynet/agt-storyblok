@@ -1,0 +1,5 @@
+node_modules/
+
+# Credentials
+.env.local
+.env.*.local
