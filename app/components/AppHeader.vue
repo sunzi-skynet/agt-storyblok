@@ -526,11 +526,11 @@ const hasSubItems = (item: NavItem): boolean => {
 
 /* Responsive visibility */
 .desktop-only {
-  display: flex;
+  display: flex !important;
 }
 
 .mobile-only {
-  display: none;
+  display: none !important;
 }
 
 @media (max-width: 1024px) {
@@ -539,7 +539,7 @@ const hasSubItems = (item: NavItem): boolean => {
   }
   
   .mobile-only {
-    display: flex;
+    display: flex !important;
   }
 }
 
@@ -733,12 +733,22 @@ const hasSubItems = (item: NavItem): boolean => {
    DESKTOP MEGA MENU
    ============================================ */
 .mega-menu-overlay {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: transparent;
+}
+
+.mega-menu-overlay::before {
+  content: '';
   position: fixed;
   top: 80px;
   left: 0;
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.3);
+  z-index: -1;
 }
 
 .mega-menu {
@@ -871,7 +881,8 @@ const hasSubItems = (item: NavItem): boolean => {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 0 1rem;
+  height: 65px;
   border-bottom: 1px solid #e5e7eb;
   flex-shrink: 0;
 }
