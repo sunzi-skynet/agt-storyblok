@@ -62,6 +62,8 @@ export default defineNuxtPlugin(({ vueApp }) => {
   register(vueApp, 'footer', Footer)
   register(vueApp, 'navigation_column', NavigationColumn)
   register(vueApp, 'footer_nav_item', FooterNavItem)
+  // Backward compat: old content may still reference navigation_item
+  register(vueApp, 'navigation_item', FooterNavItem)
   
   // Content blocks
   register(vueApp, 'image_text_section', ImageTextSection)
