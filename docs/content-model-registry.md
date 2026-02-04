@@ -38,7 +38,9 @@ Alte simple Navigation. Nicht mehr verwenden!
 ### navigation ✅
 **Status:** Done | **Typ:** Content Type (Singleton) | **Trello:** [#36](https://trello.com/c/54WmPB0y) | **Datum:** 2026-02-04
 
-Globale Navigation mit Mega-Menu Support. Wird von `AppHeader.vue` geladen.
+Globale Navigation mit Mega-Menu Support. Wird von `AppHeader.vue` (in `app/components/`) geladen.
+
+**Hinweis:** Nicht als Storyblok-Block registriert! Die Vue-Komponente ist hardcoded und lädt die Daten via `useStoryblokApi().get('cdn/stories/navigation')`.
 
 - **logo** (asset) — Logo-Bild
 - **phone_number** (text) — Telefonnummer (z.B. "0800 50 50 50 3")
