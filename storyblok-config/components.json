@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-02-04T08:35:57.978Z",
+  "exported_at": "2026-02-04T09:04:17.403Z",
   "space_id": 290276210045571,
   "components": [
     {
@@ -65,42 +65,6 @@
           "pos": 3,
           "default_value": false,
           "id": "-ULeMUSxQ-21zfxx-lEfqw"
-        }
-      }
-    },
-    {
-      "name": "client_logos",
-      "display_name": "Client Logos",
-      "is_root": false,
-      "is_nestable": true,
-      "schema": {
-        "title": {
-          "type": "text",
-          "pos": 0,
-          "id": "R2AfAaTRSZueCmAM_m6Yuw"
-        },
-        "logos": {
-          "type": "multiasset",
-          "pos": 1,
-          "filetypes": [
-            "images"
-          ],
-          "id": "48SIgolAS9-i2vJ5VO_sVw"
-        },
-        "description": {
-          "type": "textarea",
-          "pos": 2,
-          "id": "8WkUbV1dQVWDPy1WsUzG6g"
-        },
-        "cta_text": {
-          "type": "text",
-          "pos": 3,
-          "id": "V-n1k4vQTsq7z61t_4SsGw"
-        },
-        "cta_link": {
-          "type": "link",
-          "pos": 4,
-          "id": "h1xiob0OQ12lTVYhpe1Yww"
         }
       }
     },
@@ -250,18 +214,6 @@
       }
     },
     {
-      "name": "feature",
-      "display_name": null,
-      "is_root": false,
-      "is_nestable": true,
-      "schema": {
-        "name": {
-          "type": "text",
-          "id": "FY-_R8v5RAG5wziXW2N9nQ"
-        }
-      }
-    },
-    {
       "name": "fleet_item",
       "display_name": "Fleet Item",
       "is_root": false,
@@ -366,68 +318,20 @@
       }
     },
     {
-      "name": "grid",
-      "display_name": null,
+      "name": "footer_nav_item",
+      "display_name": "Footer Navigation Item",
       "is_root": false,
       "is_nestable": true,
       "schema": {
-        "columns": {
-          "type": "bloks",
-          "id": "-jI0wqLgTgmp_XYP40AUeg"
-        }
-      }
-    },
-    {
-      "name": "header_nav",
-      "display_name": "Header Navigation",
-      "is_root": false,
-      "is_nestable": true,
-      "schema": {
-        "logo": {
-          "type": "asset",
-          "display_name": "Logo",
+        "label": {
+          "type": "text",
           "pos": 0,
-          "filetypes": [
-            "images"
-          ],
-          "id": "rGzHcc-6RlGhLCk8Xr8HXA"
+          "id": "ZFy5Zl6gRX6jTW7D55vdMg"
         },
-        "nav_items": {
-          "type": "bloks",
-          "display_name": "Navigation Items",
+        "url": {
+          "type": "text",
           "pos": 1,
-          "component_whitelist": [
-            "nav_item"
-          ],
-          "id": "AkSqHx0zRwmdFvdG-ygp8g"
-        },
-        "cta_text": {
-          "type": "text",
-          "display_name": "CTA Button Text",
-          "pos": 2,
-          "default_value": "Kontakt",
-          "id": "ejmh2lc5TxmQR2VM77ubHg"
-        },
-        "cta_link": {
-          "type": "text",
-          "display_name": "CTA Button Link",
-          "pos": 3,
-          "default_value": "/kontakt",
-          "id": "vbtVRot5TXKKuBr7uJeu0w"
-        },
-        "show_search": {
-          "type": "boolean",
-          "display_name": "Show Search",
-          "pos": 4,
-          "default_value": false,
-          "id": "0-lPdPETTNyjXKenxE10qQ"
-        },
-        "show_language": {
-          "type": "boolean",
-          "display_name": "Show Language Switcher",
-          "pos": 5,
-          "default_value": false,
-          "id": "hHQtDje6RdqBMHVt7u5VIg"
+          "id": "7gXB0s0iQNqQlltWZihmUw"
         }
       }
     },
@@ -658,55 +562,10 @@
           "type": "bloks",
           "restrict_components": true,
           "component_whitelist": [
-            "navigation_item"
+            "footer_nav_item"
           ],
           "pos": 0,
           "id": "x8OwlIR1SaOnO1Iu-3ImKg"
-        }
-      }
-    },
-    {
-      "name": "navigation_item",
-      "display_name": "Navigation Item",
-      "is_root": false,
-      "is_nestable": true,
-      "schema": {
-        "label": {
-          "type": "text",
-          "pos": 0,
-          "id": "ZFy5Zl6gRX6jTW7D55vdMg"
-        },
-        "url": {
-          "type": "text",
-          "pos": 1,
-          "id": "7gXB0s0iQNqQlltWZihmUw"
-        }
-      }
-    },
-    {
-      "name": "nav_item",
-      "display_name": "Navigation Item",
-      "is_root": false,
-      "is_nestable": true,
-      "schema": {
-        "label": {
-          "type": "text",
-          "display_name": "Label",
-          "pos": 0,
-          "id": "K_lWNXkjSeyGgEY1MmeRLA"
-        },
-        "link": {
-          "type": "text",
-          "display_name": "URL",
-          "pos": 1,
-          "id": "EYqLofgCRpOBynNvuOsfNg"
-        },
-        "is_dropdown": {
-          "type": "boolean",
-          "display_name": "Has Dropdown",
-          "pos": 2,
-          "default_value": false,
-          "id": "QYYiPy6gSp-b85k-FcQXPg"
         }
       }
     },
@@ -971,40 +830,6 @@
           "pos": 5,
           "display_name": "Button Link",
           "id": "tBTwo3AnSCOnxbVy5JcLBg"
-        }
-      }
-    },
-    {
-      "name": "teaser",
-      "display_name": "Hero Teaser",
-      "is_root": false,
-      "is_nestable": true,
-      "schema": {
-        "headline": {
-          "type": "text",
-          "pos": 0,
-          "id": "zWA6KJGbQ6mv-nfbWrgehw"
-        },
-        "subheadline": {
-          "type": "text",
-          "pos": 1,
-          "id": "4nuJgSt1SguNqck0eo70Eg"
-        },
-        "background_image": {
-          "type": "text",
-          "description": "URL zum Hintergrundbild",
-          "pos": 2,
-          "id": "5X6K-LZMQQ2_yDsxekqi5w"
-        },
-        "cta_text": {
-          "type": "text",
-          "pos": 3,
-          "id": "xGwv1ZRiSe-v99LDHGXDQg"
-        },
-        "cta_link": {
-          "type": "text",
-          "pos": 4,
-          "id": "nsY48y8YQCGWbEwqSLVFww"
         }
       }
     },

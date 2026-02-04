@@ -14,14 +14,14 @@ defineProps<{
     v-if="blok.label"
     v-editable="blok"
     :href="blok.url || '#'"
-    class="navigation-item"
+    class="footer-nav-item"
   >
     {{ blok.label }}
   </a>
 </template>
 
 <style scoped>
-.navigation-item {
+.footer-nav-item {
   display: block;
   color: white;
   text-decoration: none;
@@ -32,7 +32,7 @@ defineProps<{
   transition: color 0.2s ease;
 }
 
-.navigation-item:hover {
+.footer-nav-item:hover {
   color: #265BF6;
 }
 </style>
