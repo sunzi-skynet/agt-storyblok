@@ -29,31 +29,31 @@ defineProps<{
 
 const modules = [Navigation, Scrollbar]
 const swiperInstance = ref<SwiperType | null>(null)
-const isBeginning = ref(true)
-const isEnd = ref(false)
+const canGoPrev = ref(false)
+const canGoNext = ref(true)
 
 const onSwiper = (swiper: SwiperType) => {
   swiperInstance.value = swiper
-  updateNavState()
-}
-
-const onSlideChange = () => {
-  updateNavState()
+  // Small delay to ensure swiper is fully initialized
+  setTimeout(() => updateNavState(), 100)
 }
 
 const updateNavState = () => {
   if (swiperInstance.value) {
-    isBeginning.value = swiperInstance.value.isBeginning
-    isEnd.value = swiperInstance.value.isEnd
+    const swiper = swiperInstance.value
+    canGoPrev.value = !swiper.isBeginning
+    canGoNext.value = !swiper.isEnd
   }
 }
 
 const slidePrev = () => {
   swiperInstance.value?.slidePrev()
+  setTimeout(() => updateNavState(), 50)
 }
 
 const slideNext = () => {
   swiperInstance.value?.slideNext()
+  setTimeout(() => updateNavState(), 50)
 }
 </script>
 
@@ -89,10 +89,11 @@ const slideNext = () => {
           }"
           class="horizontal-slider-module__swiper"
           @swiper="onSwiper"
-          @slide-change="onSlideChange"
-          @reach-beginning="isBeginning = true"
-          @reach-end="isEnd = true"
+          @slide-change="updateNavState"
+          @reach-beginning="updateNavState"
+          @reach-end="updateNavState"
           @from-edge="updateNavState"
+          @progress="updateNavState"
         >
           <SwiperSlide
             v-for="item in blok.slider_section"
@@ -115,8 +116,8 @@ const slideNext = () => {
         <div class="horizontal-slider-module__navigation">
           <button 
             class="horizontal-slider-module__nav-button horizontal-slider-module__nav-button--prev"
-            :class="{ 'horizontal-slider-module__nav-button--disabled': isBeginning }"
-            :disabled="isBeginning"
+            :class="{ 'horizontal-slider-module__nav-button--disabled': !canGoPrev }"
+            :disabled="!canGoPrev"
             aria-label="Vorheriges Slide"
             @click="slidePrev"
           >
@@ -126,8 +127,8 @@ const slideNext = () => {
           </button>
           <button 
             class="horizontal-slider-module__nav-button horizontal-slider-module__nav-button--next"
-            :class="{ 'horizontal-slider-module__nav-button--disabled': isEnd }"
-            :disabled="isEnd"
+            :class="{ 'horizontal-slider-module__nav-button--disabled': !canGoNext }"
+            :disabled="!canGoNext"
             aria-label="Nächstes Slide"
             @click="slideNext"
           >
