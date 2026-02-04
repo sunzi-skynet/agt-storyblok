@@ -100,17 +100,7 @@ defineProps<{
   background: #181A1B;
 }
 
-/* Blue accent line at top */
-.slider-item::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: #265BF6;
-  z-index: 20;
-}
+/* Blue accent line removed per design */
 
 .slider-item__background {
   position: absolute;

@@ -85,6 +85,10 @@ const slideNext = () => {
           slides-per-view="auto"
           :space-between="16"
           :grab-cursor="true"
+          :simulate-touch="true"
+          :allow-touch-move="true"
+          :touch-start-prevent-default="false"
+          touch-events-target="container"
           :scrollbar="{
             el: '.horizontal-slider-module__scrollbar',
             draggable: true,
@@ -191,12 +195,17 @@ const slideNext = () => {
 
 .horizontal-slider-module__slider-wrapper {
   position: relative;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .horizontal-slider-module__swiper {
   overflow: visible;
   padding-right: 40px;
+  touch-action: pan-y;
+}
+
+.horizontal-slider-module__swiper :deep(.swiper-wrapper) {
+  touch-action: pan-x;
 }
 
 .horizontal-slider-module__slide {
