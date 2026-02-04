@@ -85,7 +85,7 @@ const slideNext = () => {
           :scrollbar="{
             el: '.horizontal-slider-module__scrollbar',
             draggable: true,
-            dragClass: 'horizontal-slider-module__scrollbar-drag'
+            hide: false
           }"
           class="horizontal-slider-module__swiper"
           @swiper="onSwiper"
@@ -106,12 +106,12 @@ const slideNext = () => {
           </SwiperSlide>
         </Swiper>
         
-        <!-- Scrollbar -->
+        <!-- Scrollbar (inside ClientOnly since Swiper needs it) -->
         <div class="horizontal-slider-module__scrollbar-wrapper">
           <div class="horizontal-slider-module__scrollbar" />
         </div>
         
-        <!-- Navigation Arrows -->
+        <!-- Navigation Arrows (inside ClientOnly for Swiper interaction) -->
         <div class="horizontal-slider-module__navigation">
           <button 
             class="horizontal-slider-module__nav-button horizontal-slider-module__nav-button--prev"
@@ -218,16 +218,21 @@ const slideNext = () => {
 }
 
 .horizontal-slider-module__scrollbar {
-  height: 4px;
-  background: rgba(0, 0, 0, 0.15);
+  height: 4px !important;
+  background: rgba(0, 0, 0, 0.15) !important;
   border-radius: 2px;
   width: 100%;
+  position: relative !important;
+  left: 0 !important;
+  bottom: 0 !important;
 }
 
-:deep(.swiper-scrollbar-drag) {
-  background: #00000E;
+:deep(.swiper-scrollbar-drag),
+.horizontal-slider-module__scrollbar :deep(.swiper-scrollbar-drag) {
+  background: #00000E !important;
   border-radius: 2px;
   cursor: grab;
+  height: 100% !important;
 }
 
 .horizontal-slider-module--dark .horizontal-slider-module__scrollbar {
