@@ -28,22 +28,51 @@ Der zentrale Button-Block für alle CTAs. Wird von hero_teaser, footer, slider_i
 
 ---
 
-### header_nav ✅
-**Status:** Done | **Trello:** [header_nav](https://trello.com/c/CirXxlti)
+### header_nav ⚠️ DEPRECATED
+**Status:** Deprecated | **Ersetzt durch:** navigation + mega_nav_* Blocks
+
+Alte simple Navigation. Nicht mehr verwenden!
+
+---
+
+### navigation ✅
+**Status:** Done | **Typ:** Content Type (Singleton) | **Trello:** [#36](https://trello.com/c/54WmPB0y) | **Datum:** 2026-02-04
+
+Globale Navigation mit Mega-Menu Support. Wird von `AppHeader.vue` geladen.
 
 - **logo** (asset) — Logo-Bild
-- **nav_items** (blocks: nav_item) — Hauptmenü-Einträge
-- **cta_text** (text) — Button-Text
-- **cta_link** (text) — Button-URL
+- **phone_number** (text) — Telefonnummer (z.B. "0800 50 50 50 3")
 - **show_search** (boolean) — Suchfeld anzeigen
-- **show_language** (boolean) — Sprachauswahl
+- **show_language** (boolean) — Sprachauswahl anzeigen
+- **nav_items** (blocks: mega_nav_item) — Hauptmenü-Einträge
 
-### nav_item ✅
+### mega_nav_item ✅
 **Status:** Done | **Typ:** Nested Block
 
-- **label** (text) — Menü-Label
-- **link** (text) — URL
-- **is_dropdown** (boolean) — Hat Dropdown
+- **label** (text, required) — Menü-Label
+- **link** (multilink) — URL (wenn kein Dropdown)
+- **has_dropdown** (boolean) — Hat Mega-Menü Dropdown
+- **tagline** (text) — Tagline links im Dropdown (z.B. "agency for\nglobal\ntransport")
+- **teaser_image** (asset) — Bild rechts im Dropdown
+- **columns** (blocks: mega_nav_column) — Spalten im Dropdown
+
+### mega_nav_column ✅
+**Status:** Done | **Typ:** Nested Block
+
+- **items** (blocks: mega_nav_link) — Links in der Spalte
+
+### mega_nav_link ✅
+**Status:** Done | **Typ:** Nested Block
+
+- **label** (text, required) — Link-Text
+- **link** (multilink) — Ziel-URL
+- **sub_items** (blocks: mega_nav_sub_link) — Sub-Links bei Hover
+
+### mega_nav_sub_link ✅
+**Status:** Done | **Typ:** Nested Block
+
+- **label** (text, required) — Link-Text
+- **link** (multilink) — Ziel-URL
 
 ---
 

@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-02-04T18:16:57.976Z",
+  "exported_at": "2026-02-04T18:46:51.564Z",
   "space_id": "290276210045571",
   "components": [
     {
@@ -584,6 +584,159 @@
           ],
           "maximum": 2,
           "id": "LLrMY96JSDm1fQr-PlCoUA"
+        }
+      }
+    },
+    {
+      "name": "mega_nav_column",
+      "display_name": "Mega Nav Column",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "items": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "mega_nav_link"
+          ],
+          "pos": 0,
+          "id": "yvaWL2jnQxuseqt_Ck7sWg"
+        }
+      }
+    },
+    {
+      "name": "mega_nav_item",
+      "display_name": "Mega Nav Item",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "label": {
+          "type": "text",
+          "required": true,
+          "pos": 0,
+          "id": "SY_BSBb6QqqgRIMH427upw"
+        },
+        "link": {
+          "type": "multilink",
+          "pos": 1,
+          "id": "u6SFNpgDTaqjznUVR0_p3w"
+        },
+        "has_dropdown": {
+          "type": "boolean",
+          "default_value": false,
+          "pos": 2,
+          "id": "9t4oCQ2UTuWSarEW27Nkjg"
+        },
+        "tagline": {
+          "type": "text",
+          "pos": 3,
+          "id": "VHyvBFzkS7KIt2_mmx6Q2A"
+        },
+        "teaser_image": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "pos": 4,
+          "id": "n4SYADckQnuAqeYJv5TN_g"
+        },
+        "columns": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "mega_nav_column"
+          ],
+          "pos": 5,
+          "id": "Mna_yIEOQHez6mANdYf0bQ"
+        }
+      }
+    },
+    {
+      "name": "mega_nav_link",
+      "display_name": "Mega Nav Link",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "label": {
+          "type": "text",
+          "required": true,
+          "pos": 0,
+          "id": "vmETDuO6RZCOSfRuNRfTMQ"
+        },
+        "link": {
+          "type": "multilink",
+          "pos": 1,
+          "id": "IKp6E8nbTZmOAbpMSKz7yw"
+        },
+        "sub_items": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "mega_nav_sub_link"
+          ],
+          "pos": 2,
+          "id": "_EqoMOKKRwmak-0e3BbitA"
+        }
+      }
+    },
+    {
+      "name": "mega_nav_sub_link",
+      "display_name": "Mega Nav Sub-Link",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "label": {
+          "type": "text",
+          "required": true,
+          "pos": 0,
+          "id": "L9GYx8xfSxie0PRCCPsrwA"
+        },
+        "link": {
+          "type": "multilink",
+          "pos": 1,
+          "id": "IN-nqZ04SKylRn__u-44Fg"
+        }
+      }
+    },
+    {
+      "name": "navigation",
+      "display_name": "Navigation (Global)",
+      "is_root": true,
+      "is_nestable": false,
+      "schema": {
+        "logo": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "pos": 0,
+          "id": "4d1dEhKWQbW0OCVRyf_1pw"
+        },
+        "phone_number": {
+          "type": "text",
+          "pos": 1,
+          "id": "ntHIDjCGTOiiLZ_dQRYuOw"
+        },
+        "show_search": {
+          "type": "boolean",
+          "default_value": true,
+          "pos": 2,
+          "id": "wDfFgxP6TZa885KTbVykwQ"
+        },
+        "show_language": {
+          "type": "boolean",
+          "default_value": true,
+          "pos": 3,
+          "id": "643a1-LvRqixk-iE2hkGCg"
+        },
+        "nav_items": {
+          "type": "bloks",
+          "restrict_components": true,
+          "component_whitelist": [
+            "mega_nav_item"
+          ],
+          "pos": 4,
+          "id": "x34oAKS3RCiAzWdGFvt74w"
         }
       }
     },
