@@ -26,6 +26,8 @@ import AccordionItem from '../storyblok/AccordionItem.vue'
 
 // Sliders
 import ServicesSlider from '../storyblok/ServicesSlider.vue'
+import HorizontalSliderModule from '../storyblok/HorizontalSliderModule.vue'
+import SliderItem from '../storyblok/SliderItem.vue'
 
 // Tabs
 import TabModule from '../storyblok/TabModule.vue'
@@ -64,6 +66,10 @@ export default defineNuxtPlugin(({ vueApp }) => {
   
   // Sliders
   vueApp.component('services-slider', ServicesSlider)
+  vueApp.component('horizontal-slider-module', HorizontalSliderModule)
+  vueApp.component('horizontal_slider_module', HorizontalSliderModule)
+  vueApp.component('slider-item', SliderItem)
+  vueApp.component('slider_item', SliderItem)
   
   // Tabs
   vueApp.component('tab-module', TabModule)
