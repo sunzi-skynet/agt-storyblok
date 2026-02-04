@@ -64,82 +64,79 @@ const slideNext = () => {
     :class="{ 'horizontal-slider-module--dark': blok.agt_theme === 'dark' }"
   >
     <div class="horizontal-slider-module__container">
-      <!-- Top Row: Title left, Description right -->
+      <!-- Left: Title & Description -->
       <div class="horizontal-slider-module__header">
-        <div class="horizontal-slider-module__header-left">
-          <h2 v-if="blok.title" class="horizontal-slider-module__title">
-            {{ blok.title }}
-          </h2>
-        </div>
+        <h2 v-if="blok.title" class="horizontal-slider-module__title">
+          {{ blok.title }}
+        </h2>
         <p v-if="blok.description" class="horizontal-slider-module__description">
           {{ blok.description }}
         </p>
       </div>
       
-      <!-- Content Row: Navigation left, Slider right -->
-      <div class="horizontal-slider-module__content">
-        <!-- Left: Navigation Arrows -->
-        <div class="horizontal-slider-module__nav-column">
-          <ClientOnly>
-          <div class="horizontal-slider-module__navigation">
-            <button 
-              class="horizontal-slider-module__nav-button horizontal-slider-module__nav-button--prev"
-              :class="{ 'horizontal-slider-module__nav-button--disabled': isBeginning }"
-              :disabled="isBeginning"
-              aria-label="Vorheriges Slide"
-              @click="slidePrev"
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M19 12H5M12 19l-7-7 7-7"/>
-              </svg>
-            </button>
-            <button 
-              class="horizontal-slider-module__nav-button horizontal-slider-module__nav-button--next"
-              :class="{ 'horizontal-slider-module__nav-button--disabled': isEnd }"
-              :disabled="isEnd"
-              aria-label="Nächstes Slide"
-              @click="slideNext"
-            >
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
-            </button>
-          </div>
-          </ClientOnly>
+      <!-- Right: Slider -->
+      <div class="horizontal-slider-module__slider-wrapper">
+        <ClientOnly>
+        <Swiper
+          :modules="modules"
+          slides-per-view="auto"
+          :space-between="16"
+          :grab-cursor="true"
+          :scrollbar="{
+            el: '.horizontal-slider-module__scrollbar',
+            draggable: true,
+            dragClass: 'horizontal-slider-module__scrollbar-drag'
+          }"
+          class="horizontal-slider-module__swiper"
+          @swiper="onSwiper"
+          @slide-change="onSlideChange"
+          @reach-beginning="isBeginning = true"
+          @reach-end="isEnd = true"
+          @from-edge="updateNavState"
+        >
+          <SwiperSlide
+            v-for="item in blok.slider_section"
+            :key="item._uid"
+            class="horizontal-slider-module__slide"
+          >
+            <StoryblokComponent 
+              :blok="item" 
+              :theme="blok.agt_theme"
+            />
+          </SwiperSlide>
+        </Swiper>
+        
+        <!-- Scrollbar -->
+        <div class="horizontal-slider-module__scrollbar-wrapper">
+          <div class="horizontal-slider-module__scrollbar" />
         </div>
         
-        <!-- Right: Slider -->
-        <div class="horizontal-slider-module__slider-wrapper">
-          <ClientOnly>
-          <Swiper
-            :modules="modules"
-            slides-per-view="auto"
-            :space-between="16"
-            :grab-cursor="true"
-            :scrollbar="{
-              draggable: true,
-              hide: false
-            }"
-            class="horizontal-slider-module__swiper"
-            @swiper="onSwiper"
-            @slide-change="onSlideChange"
-            @reach-beginning="isBeginning = true"
-            @reach-end="isEnd = true"
-            @from-edge="updateNavState"
+        <!-- Navigation Arrows -->
+        <div class="horizontal-slider-module__navigation">
+          <button 
+            class="horizontal-slider-module__nav-button horizontal-slider-module__nav-button--prev"
+            :class="{ 'horizontal-slider-module__nav-button--disabled': isBeginning }"
+            :disabled="isBeginning"
+            aria-label="Vorheriges Slide"
+            @click="slidePrev"
           >
-            <SwiperSlide
-              v-for="item in blok.slider_section"
-              :key="item._uid"
-              class="horizontal-slider-module__slide"
-            >
-              <StoryblokComponent 
-                :blok="item" 
-                :theme="blok.agt_theme"
-              />
-            </SwiperSlide>
-          </Swiper>
-          </ClientOnly>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M19 12H5M12 19l-7-7 7-7"/>
+            </svg>
+          </button>
+          <button 
+            class="horizontal-slider-module__nav-button horizontal-slider-module__nav-button--next"
+            :class="{ 'horizontal-slider-module__nav-button--disabled': isEnd }"
+            :disabled="isEnd"
+            aria-label="Nächstes Slide"
+            @click="slideNext"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
         </div>
+        </ClientOnly>
       </div>
     </div>
   </section>
@@ -165,14 +162,15 @@ const slideNext = () => {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 40px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  align-items: start;
 }
 
 .horizontal-slider-module__header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 48px;
-  margin-bottom: 40px;
+  position: sticky;
+  top: 120px;
 }
 
 .horizontal-slider-module__title {
@@ -180,28 +178,15 @@ const slideNext = () => {
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: -1px;
-  margin: 0;
+  margin: 0 0 24px 0;
   color: #00000E;
-  flex-shrink: 0;
 }
 
 .horizontal-slider-module__description {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.6;
   color: #666666;
   margin: 0;
-  max-width: 500px;
-}
-
-.horizontal-slider-module__content {
-  display: grid;
-  grid-template-columns: 200px 1fr;
-  gap: 24px;
-  align-items: start;
-}
-
-.horizontal-slider-module__nav-column {
-  padding-top: 180px; /* Align buttons with card middle */
 }
 
 .horizontal-slider-module__slider-wrapper {
@@ -211,6 +196,7 @@ const slideNext = () => {
 
 .horizontal-slider-module__swiper {
   overflow: visible;
+  padding-right: 40px;
 }
 
 .horizontal-slider-module__slide {
@@ -219,15 +205,23 @@ const slideNext = () => {
   flex-shrink: 0;
 }
 
-/* Swiper Scrollbar */
-:deep(.swiper-scrollbar) {
-  position: relative !important;
+@media (max-width: 768px) {
+  .horizontal-slider-module__slide {
+    width: 240px !important;
+  }
+}
+
+/* Scrollbar */
+.horizontal-slider-module__scrollbar-wrapper {
   margin-top: 32px;
-  height: 4px !important;
+  padding-right: 40px;
+}
+
+.horizontal-slider-module__scrollbar {
+  height: 4px;
   background: rgba(0, 0, 0, 0.15);
   border-radius: 2px;
-  left: 0 !important;
-  width: calc(100% - 40px) !important;
+  width: 100%;
 }
 
 :deep(.swiper-scrollbar-drag) {
@@ -236,11 +230,17 @@ const slideNext = () => {
   cursor: grab;
 }
 
-.horizontal-slider-module--dark :deep(.swiper-scrollbar) {
+.horizontal-slider-module--dark .horizontal-slider-module__scrollbar {
   background: rgba(255, 255, 255, 0.2);
 }
 
-.horizontal-slider-module--dark :deep(.swiper-scrollbar-drag) {
+:deep(.horizontal-slider-module__scrollbar-drag) {
+  background: #00000E;
+  border-radius: 2px;
+  cursor: grab;
+}
+
+.horizontal-slider-module--dark :deep(.horizontal-slider-module__scrollbar-drag) {
   background: white;
 }
 
@@ -248,6 +248,7 @@ const slideNext = () => {
 .horizontal-slider-module__navigation {
   display: flex;
   gap: 12px;
+  margin-top: 24px;
 }
 
 .horizontal-slider-module__nav-button {
@@ -292,38 +293,26 @@ const slideNext = () => {
 /* Responsive */
 @media (max-width: 1024px) {
   .horizontal-slider-module__container {
+    grid-template-columns: 1fr;
+    gap: 32px;
     padding: 0 24px;
   }
   
   .horizontal-slider-module__header {
-    flex-direction: column;
-    gap: 16px;
-  }
-  
-  .horizontal-slider-module__description {
-    max-width: 100%;
+    position: static;
+    max-width: 500px;
   }
   
   .horizontal-slider-module__title {
     font-size: 42px;
   }
   
-  .horizontal-slider-module__content {
-    grid-template-columns: 1fr;
-    gap: 24px;
+  .horizontal-slider-module__swiper {
+    padding-right: 24px;
   }
   
-  .horizontal-slider-module__nav-column {
-    padding-top: 0;
-    order: 2;
-  }
-  
-  .horizontal-slider-module__slider-wrapper {
-    order: 1;
-  }
-  
-  .horizontal-slider-module__slide {
-    width: 260px !important;
+  .horizontal-slider-module__scrollbar-wrapper {
+    padding-right: 24px;
   }
 }
 
@@ -341,16 +330,16 @@ const slideNext = () => {
   }
   
   .horizontal-slider-module__description {
-    font-size: 14px;
+    font-size: 16px;
+  }
+  
+  .horizontal-slider-module__navigation {
+    margin-top: 20px;
   }
   
   .horizontal-slider-module__nav-button {
     width: 44px;
     height: 44px;
-  }
-  
-  .horizontal-slider-module__slide {
-    width: 240px !important;
   }
 }
 </style>
