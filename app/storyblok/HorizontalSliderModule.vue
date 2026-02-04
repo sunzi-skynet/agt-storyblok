@@ -79,27 +79,13 @@ const slideNext = () => {
         <ClientOnly>
         <Swiper
           :modules="modules"
-          :slides-per-view="1.2"
+          slides-per-view="auto"
           :space-between="16"
           :grab-cursor="true"
           :scrollbar="{
             el: '.horizontal-slider-module__scrollbar',
             draggable: true,
             dragClass: 'horizontal-slider-module__scrollbar-drag'
-          }"
-          :breakpoints="{
-            640: {
-              slidesPerView: 2.2,
-              spaceBetween: 20
-            },
-            1024: {
-              slidesPerView: 3.2,
-              spaceBetween: 24
-            },
-            1280: {
-              slidesPerView: 3.5,
-              spaceBetween: 24
-            }
           }"
           class="horizontal-slider-module__swiper"
           @swiper="onSwiper"
@@ -215,6 +201,14 @@ const slideNext = () => {
 
 .horizontal-slider-module__slide {
   height: auto;
+  width: 280px !important;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .horizontal-slider-module__slide {
+    width: 240px !important;
+  }
 }
 
 /* Scrollbar */

@@ -91,11 +91,23 @@ defineProps<{
   position: relative;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  min-height: 420px;
+  width: 100%;
+  height: 420px;
   border-radius: 8px;
   overflow: hidden;
   background: #181A1B;
+}
+
+/* Blue accent line at top */
+.slider-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #265BF6;
+  z-index: 20;
 }
 
 .slider-item__background {
