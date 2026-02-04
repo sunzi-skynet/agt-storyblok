@@ -18,10 +18,10 @@ fi
 
 # Paths
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
-FRONTEND_DIR="$PROJECT_DIR/frontend"
+FRONTEND_DIR="$(dirname "$SCRIPT_DIR")"
+PROJECT_DIR="$(dirname "$FRONTEND_DIR")"
 STORYBLOK_DIR="$FRONTEND_DIR/app/storyblok"
-PLUGIN_FILE="$FRONTEND_DIR/app/plugins/storyblok.ts"
+PLUGIN_FILE="$FRONTEND_DIR/app/plugins/storyblok-components.ts"
 REGISTRY_FILE="$PROJECT_DIR/content-model-registry.md"
 
 # Convert names

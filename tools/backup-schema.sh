@@ -8,8 +8,8 @@ set -e
 source "$(dirname "$0")/load-env.sh"
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
-PROJECT_DIR="$(dirname "$SCRIPT_DIR")"
-OUTPUT_FILE="$PROJECT_DIR/frontend/storyblok-config/components.json"
+FRONTEND_DIR="$(dirname "$SCRIPT_DIR")"
+OUTPUT_FILE="$FRONTEND_DIR/storyblok-config/components.json"
 
 echo "📦 Backing up Storyblok schema..."
 echo "   Space: $STORYBLOK_SPACE_ID"
