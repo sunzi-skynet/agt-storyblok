@@ -34,26 +34,36 @@ const canGoNext = ref(true)
 
 const onSwiper = (swiper: SwiperType) => {
   swiperInstance.value = swiper
-  // Small delay to ensure swiper is fully initialized
-  setTimeout(() => updateNavState(), 100)
+  setTimeout(() => updateNavState(), 200)
 }
 
 const updateNavState = () => {
   if (swiperInstance.value) {
     const swiper = swiperInstance.value
-    canGoPrev.value = !swiper.isBeginning
-    canGoNext.value = !swiper.isEnd
+    // Use progress and translate to determine navigation state
+    // progress: 0 = beginning, 1 = end
+    const progress = swiper.progress
+    canGoPrev.value = progress > 0.01
+    canGoNext.value = progress < 0.99
+    
+    // If swiper thinks it's locked (all slides visible), check actual overflow
+    if (swiper.isLocked) {
+      const slidesWidth = swiper.slidesGrid[swiper.slidesGrid.length - 1] + swiper.slidesSizesGrid[swiper.slidesSizesGrid.length - 1]
+      const containerWidth = swiper.width
+      const hasOverflow = slidesWidth > containerWidth
+      canGoNext.value = hasOverflow && progress < 0.99
+    }
   }
 }
 
 const slidePrev = () => {
   swiperInstance.value?.slidePrev()
-  setTimeout(() => updateNavState(), 50)
+  setTimeout(() => updateNavState(), 100)
 }
 
 const slideNext = () => {
   swiperInstance.value?.slideNext()
-  setTimeout(() => updateNavState(), 50)
+  setTimeout(() => updateNavState(), 100)
 }
 </script>
 
