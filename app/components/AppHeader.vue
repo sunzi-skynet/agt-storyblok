@@ -733,25 +733,18 @@ const hasSubItems = (item: NavItem): boolean => {
    DESKTOP MEGA MENU
    ============================================ */
 .mega-menu-overlay {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: transparent;
-}
-
-.mega-menu-overlay::before {
-  content: '';
   position: fixed;
   top: 80px;
   left: 0;
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.3);
-  z-index: -1;
+  display: flex;
+  flex-direction: column;
 }
 
 .mega-menu {
+  flex-shrink: 0;
   background: #fff;
   border-bottom: 1px solid #e5e7eb;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
@@ -882,7 +875,7 @@ const hasSubItems = (item: NavItem): boolean => {
   align-items: center;
   justify-content: space-between;
   padding: 0 1rem;
-  height: 65px;
+  height: 66px;
   border-bottom: 1px solid #e5e7eb;
   flex-shrink: 0;
 }
