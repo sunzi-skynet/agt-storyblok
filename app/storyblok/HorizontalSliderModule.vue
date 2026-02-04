@@ -83,7 +83,6 @@ const slideNext = () => {
           :space-between="16"
           :grab-cursor="true"
           :scrollbar="{
-            el: '.horizontal-slider-module__scrollbar',
             draggable: true,
             hide: false
           }"
@@ -106,12 +105,7 @@ const slideNext = () => {
           </SwiperSlide>
         </Swiper>
         
-        <!-- Scrollbar (inside ClientOnly since Swiper needs it) -->
-        <div class="horizontal-slider-module__scrollbar-wrapper">
-          <div class="horizontal-slider-module__scrollbar" />
-        </div>
-        
-        <!-- Navigation Arrows (inside ClientOnly for Swiper interaction) -->
+        <!-- Navigation Arrows -->
         <div class="horizontal-slider-module__navigation">
           <button 
             class="horizontal-slider-module__nav-button horizontal-slider-module__nav-button--prev"
@@ -211,41 +205,28 @@ const slideNext = () => {
   }
 }
 
-/* Scrollbar */
-.horizontal-slider-module__scrollbar-wrapper {
-  margin-top: 32px;
-  padding-right: 40px;
-}
-
-.horizontal-slider-module__scrollbar {
-  height: 4px !important;
-  background: rgba(0, 0, 0, 0.15) !important;
-  border-radius: 2px;
-  width: 100%;
+/* Swiper Scrollbar */
+:deep(.swiper-scrollbar) {
   position: relative !important;
-  left: 0 !important;
-  bottom: 0 !important;
-}
-
-:deep(.swiper-scrollbar-drag),
-.horizontal-slider-module__scrollbar :deep(.swiper-scrollbar-drag) {
-  background: #00000E !important;
+  margin-top: 32px;
+  height: 4px !important;
+  background: rgba(0, 0, 0, 0.15);
   border-radius: 2px;
-  cursor: grab;
-  height: 100% !important;
+  left: 0 !important;
+  width: calc(100% - 40px) !important;
 }
 
-.horizontal-slider-module--dark .horizontal-slider-module__scrollbar {
-  background: rgba(255, 255, 255, 0.2);
-}
-
-:deep(.horizontal-slider-module__scrollbar-drag) {
+:deep(.swiper-scrollbar-drag) {
   background: #00000E;
   border-radius: 2px;
   cursor: grab;
 }
 
-.horizontal-slider-module--dark :deep(.horizontal-slider-module__scrollbar-drag) {
+.horizontal-slider-module--dark :deep(.swiper-scrollbar) {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.horizontal-slider-module--dark :deep(.swiper-scrollbar-drag) {
   background: white;
 }
 
