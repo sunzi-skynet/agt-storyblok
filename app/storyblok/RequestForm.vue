@@ -471,8 +471,7 @@ const submitForm = async () => {
 
 /* Left Side */
 .request-form__info {
-  position: sticky;
-  top: 100px;
+  /* static positioning - no scroll following */
 }
 
 .request-form__title {
