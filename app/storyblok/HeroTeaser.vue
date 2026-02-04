@@ -203,7 +203,7 @@ const hasRightContent = (blok: any) => {
 }
 
 .hero-teaser__title--right {
-  font-style: italic;
+  /* same style as left title */
 }
 
 .hero-teaser__description {
