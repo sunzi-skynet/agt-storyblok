@@ -26,17 +26,10 @@ defineProps<{
     <!-- Content -->
     <div class="hero-teaser-2__content">
       <div class="hero-teaser-2__container">
-        <div class="hero-teaser-2__grid">
-          <!-- Left Column: Title only -->
-          <div class="hero-teaser-2__column hero-teaser-2__column--left">
-            <h1 class="hero-teaser-2__title">{{ blok.title_left }}</h1>
-          </div>
-          
-          <!-- Right Column: Subtitle + Description -->
-          <div class="hero-teaser-2__column hero-teaser-2__column--right">
-            <p v-if="blok.sub_title_right" class="hero-teaser-2__subtitle">{{ blok.sub_title_right }}</p>
-            <p v-if="blok.description_right" class="hero-teaser-2__description">{{ blok.description_right }}</p>
-          </div>
+        <div class="hero-teaser-2__stack">
+          <h1 class="hero-teaser-2__title">{{ blok.title_left }}</h1>
+          <p v-if="blok.sub_title_right" class="hero-teaser-2__subtitle">{{ blok.sub_title_right }}</p>
+          <p v-if="blok.description_right" class="hero-teaser-2__description">{{ blok.description_right }}</p>
         </div>
       </div>
     </div>
@@ -76,21 +69,11 @@ defineProps<{
   padding: 0 24px;
 }
 
-.hero-teaser-2__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 48px;
-  align-items: end;
-}
-
-.hero-teaser-2__column {
+.hero-teaser-2__stack {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-}
-
-.hero-teaser-2__column--right {
-  text-align: left;
+  gap: 16px;
+  max-width: 480px;
 }
 
 .hero-teaser-2__title {
@@ -121,11 +104,6 @@ defineProps<{
 
 /* Mobile Styles */
 @media (max-width: 768px) {
-  .hero-teaser-2__grid {
-    grid-template-columns: 1fr;
-    gap: 24px;
-  }
-  
   .hero-teaser-2__title {
     font-size: 32px;
   }
