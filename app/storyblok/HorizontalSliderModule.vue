@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref } from 'vue'
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Navigation, Scrollbar } from 'swiper/modules'
 import type { Swiper as SwiperType } from 'swiper'
@@ -76,6 +76,7 @@ const slideNext = () => {
       
       <!-- Right: Slider -->
       <div class="horizontal-slider-module__slider-wrapper">
+        <ClientOnly>
         <Swiper
           :modules="modules"
           :slides-per-view="1.2"
@@ -149,6 +150,7 @@ const slideNext = () => {
             </svg>
           </button>
         </div>
+        </ClientOnly>
       </div>
     </div>
   </section>
