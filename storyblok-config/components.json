@@ -1,6 +1,6 @@
 {
-  "exported_at": "2026-02-04T09:04:17.403Z",
-  "space_id": 290276210045571,
+  "exported_at": "2026-02-04T15:46:10.790Z",
+  "space_id": "290276210045571",
   "components": [
     {
       "name": "accordion",
@@ -393,6 +393,41 @@
           ],
           "maximum": 1,
           "id": "Q3bnYlgDR2i7Cohu7pyNZw"
+        }
+      }
+    },
+    {
+      "name": "hero_teaser_2",
+      "display_name": "Hero Teaser 2",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "background_image": {
+          "type": "asset",
+          "filetypes": [
+            "images"
+          ],
+          "pos": 0,
+          "display_name": "Background Image",
+          "id": "jfBXcSNlSQSekj50biZ0Rg"
+        },
+        "title_left": {
+          "type": "text",
+          "pos": 1,
+          "display_name": "Title Left (H1)",
+          "id": "E3akPtvfQNCcAJIqOjOocA"
+        },
+        "sub_title_right": {
+          "type": "text",
+          "pos": 2,
+          "display_name": "Subtitle Right",
+          "id": "Phjnyn7AS_ud5yWGIGJ6hA"
+        },
+        "description_right": {
+          "type": "textarea",
+          "pos": 3,
+          "display_name": "Description Right",
+          "id": "a2DiAo6MSCCxhtferMAFHw"
         }
       }
     },

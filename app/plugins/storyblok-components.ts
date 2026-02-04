@@ -9,6 +9,7 @@
 import Page from '../storyblok/Page.vue'
 import Hero from '../storyblok/Hero.vue'
 import HeroTeaser from '../storyblok/HeroTeaser.vue'
+import HeroTeaser2 from '../storyblok/HeroTeaser2.vue'
 import Testimonial from '../storyblok/Testimonial.vue'
 
 // Layout components
@@ -56,6 +57,7 @@ export default defineNuxtPlugin(({ vueApp }) => {
   register(vueApp, 'page', Page)
   register(vueApp, 'hero', Hero)
   register(vueApp, 'hero_teaser', HeroTeaser)
+  register(vueApp, 'hero_teaser_2', HeroTeaser2)
   register(vueApp, 'testimonial', Testimonial)
   
   // Layout
