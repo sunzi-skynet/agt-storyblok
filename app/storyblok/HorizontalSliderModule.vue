@@ -67,17 +67,21 @@ const slideNext = () => {
     :class="{ 'horizontal-slider-module--dark': blok.agt_theme === 'dark' }"
   >
     <div class="horizontal-slider-module__container">
-      <!-- Left: Title & Description -->
-      <div class="horizontal-slider-module__header">
-        <h2 v-if="blok.title" class="horizontal-slider-module__title">
-          {{ blok.title }}
-        </h2>
-        <p v-if="blok.description" class="horizontal-slider-module__description">
-          {{ blok.description }}
-        </p>
-      </div>
+      <!-- Title: Full Width Above -->
+      <h2 v-if="blok.title" class="horizontal-slider-module__title">
+        {{ blok.title }}
+      </h2>
       
-      <!-- Right: Slider -->
+      <!-- Content Row: Description + Slider -->
+      <div class="horizontal-slider-module__content">
+        <!-- Left: Description (top-aligned with slider items) -->
+        <div v-if="blok.description" class="horizontal-slider-module__sidebar">
+          <p class="horizontal-slider-module__description">
+            {{ blok.description }}
+          </p>
+        </div>
+        
+        <!-- Right: Slider -->
       <div class="horizontal-slider-module__slider-wrapper">
         <ClientOnly>
         <Swiper
@@ -142,6 +146,7 @@ const slideNext = () => {
         </div>
         </ClientOnly>
       </div>
+      </div>
     </div>
   </section>
 </template>
@@ -166,15 +171,6 @@ const slideNext = () => {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 40px;
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 48px;
-  align-items: start;
-}
-
-.horizontal-slider-module__header {
-  position: sticky;
-  top: 120px;
 }
 
 .horizontal-slider-module__title {
@@ -182,8 +178,19 @@ const slideNext = () => {
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: -1px;
-  margin: 0 0 24px 0;
+  margin: 0 0 32px 0;
   color: #00000E;
+}
+
+.horizontal-slider-module__content {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.horizontal-slider-module__sidebar {
+  /* Top-aligned with slider items */
 }
 
 .horizontal-slider-module__description {
@@ -302,13 +309,15 @@ const slideNext = () => {
 /* Responsive */
 @media (max-width: 1024px) {
   .horizontal-slider-module__container {
-    grid-template-columns: 1fr;
-    gap: 32px;
     padding: 0 24px;
   }
   
-  .horizontal-slider-module__header {
-    position: static;
+  .horizontal-slider-module__content {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  
+  .horizontal-slider-module__sidebar {
     max-width: 500px;
   }
   
@@ -336,6 +345,7 @@ const slideNext = () => {
   
   .horizontal-slider-module__title {
     font-size: 32px;
+    margin-bottom: 24px;
   }
   
   .horizontal-slider-module__description {
