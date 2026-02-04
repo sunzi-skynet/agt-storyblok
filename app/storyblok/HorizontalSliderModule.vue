@@ -64,73 +64,82 @@ const slideNext = () => {
     :class="{ 'horizontal-slider-module--dark': blok.agt_theme === 'dark' }"
   >
     <div class="horizontal-slider-module__container">
-      <!-- Left: Title & Description -->
+      <!-- Top Row: Title left, Description right -->
       <div class="horizontal-slider-module__header">
-        <h2 v-if="blok.title" class="horizontal-slider-module__title">
-          {{ blok.title }}
-        </h2>
+        <div class="horizontal-slider-module__header-left">
+          <h2 v-if="blok.title" class="horizontal-slider-module__title">
+            {{ blok.title }}
+          </h2>
+        </div>
         <p v-if="blok.description" class="horizontal-slider-module__description">
           {{ blok.description }}
         </p>
       </div>
       
-      <!-- Right: Slider -->
-      <div class="horizontal-slider-module__slider-wrapper">
-        <ClientOnly>
-        <Swiper
-          :modules="modules"
-          slides-per-view="auto"
-          :space-between="16"
-          :grab-cursor="true"
-          :scrollbar="{
-            draggable: true,
-            hide: false
-          }"
-          class="horizontal-slider-module__swiper"
-          @swiper="onSwiper"
-          @slide-change="onSlideChange"
-          @reach-beginning="isBeginning = true"
-          @reach-end="isEnd = true"
-          @from-edge="updateNavState"
-        >
-          <SwiperSlide
-            v-for="item in blok.slider_section"
-            :key="item._uid"
-            class="horizontal-slider-module__slide"
-          >
-            <StoryblokComponent 
-              :blok="item" 
-              :theme="blok.agt_theme"
-            />
-          </SwiperSlide>
-        </Swiper>
-        
-        <!-- Navigation Arrows -->
-        <div class="horizontal-slider-module__navigation">
-          <button 
-            class="horizontal-slider-module__nav-button horizontal-slider-module__nav-button--prev"
-            :class="{ 'horizontal-slider-module__nav-button--disabled': isBeginning }"
-            :disabled="isBeginning"
-            aria-label="Vorheriges Slide"
-            @click="slidePrev"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M19 12H5M12 19l-7-7 7-7"/>
-            </svg>
-          </button>
-          <button 
-            class="horizontal-slider-module__nav-button horizontal-slider-module__nav-button--next"
-            :class="{ 'horizontal-slider-module__nav-button--disabled': isEnd }"
-            :disabled="isEnd"
-            aria-label="Nächstes Slide"
-            @click="slideNext"
-          >
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M12 5l7 7-7 7"/>
-            </svg>
-          </button>
+      <!-- Content Row: Navigation left, Slider right -->
+      <div class="horizontal-slider-module__content">
+        <!-- Left: Navigation Arrows -->
+        <div class="horizontal-slider-module__nav-column">
+          <ClientOnly>
+          <div class="horizontal-slider-module__navigation">
+            <button 
+              class="horizontal-slider-module__nav-button horizontal-slider-module__nav-button--prev"
+              :class="{ 'horizontal-slider-module__nav-button--disabled': isBeginning }"
+              :disabled="isBeginning"
+              aria-label="Vorheriges Slide"
+              @click="slidePrev"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+              </svg>
+            </button>
+            <button 
+              class="horizontal-slider-module__nav-button horizontal-slider-module__nav-button--next"
+              :class="{ 'horizontal-slider-module__nav-button--disabled': isEnd }"
+              :disabled="isEnd"
+              aria-label="Nächstes Slide"
+              @click="slideNext"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+          </div>
+          </ClientOnly>
         </div>
-        </ClientOnly>
+        
+        <!-- Right: Slider -->
+        <div class="horizontal-slider-module__slider-wrapper">
+          <ClientOnly>
+          <Swiper
+            :modules="modules"
+            slides-per-view="auto"
+            :space-between="16"
+            :grab-cursor="true"
+            :scrollbar="{
+              draggable: true,
+              hide: false
+            }"
+            class="horizontal-slider-module__swiper"
+            @swiper="onSwiper"
+            @slide-change="onSlideChange"
+            @reach-beginning="isBeginning = true"
+            @reach-end="isEnd = true"
+            @from-edge="updateNavState"
+          >
+            <SwiperSlide
+              v-for="item in blok.slider_section"
+              :key="item._uid"
+              class="horizontal-slider-module__slide"
+            >
+              <StoryblokComponent 
+                :blok="item" 
+                :theme="blok.agt_theme"
+              />
+            </SwiperSlide>
+          </Swiper>
+          </ClientOnly>
+        </div>
       </div>
     </div>
   </section>
@@ -156,15 +165,14 @@ const slideNext = () => {
   max-width: 1440px;
   margin: 0 auto;
   padding: 0 40px;
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 48px;
-  align-items: start;
 }
 
 .horizontal-slider-module__header {
-  position: sticky;
-  top: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
+  margin-bottom: 40px;
 }
 
 .horizontal-slider-module__title {
@@ -172,15 +180,28 @@ const slideNext = () => {
   font-weight: 500;
   line-height: 1.1;
   letter-spacing: -1px;
-  margin: 0 0 24px 0;
+  margin: 0;
   color: #00000E;
+  flex-shrink: 0;
 }
 
 .horizontal-slider-module__description {
-  font-size: 18px;
+  font-size: 16px;
   line-height: 1.6;
   color: #666666;
   margin: 0;
+  max-width: 500px;
+}
+
+.horizontal-slider-module__content {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.horizontal-slider-module__nav-column {
+  padding-top: 180px; /* Align buttons with card middle */
 }
 
 .horizontal-slider-module__slider-wrapper {
@@ -190,19 +211,12 @@ const slideNext = () => {
 
 .horizontal-slider-module__swiper {
   overflow: visible;
-  padding-right: 40px;
 }
 
 .horizontal-slider-module__slide {
   height: auto;
   width: 280px !important;
   flex-shrink: 0;
-}
-
-@media (max-width: 768px) {
-  .horizontal-slider-module__slide {
-    width: 240px !important;
-  }
 }
 
 /* Swiper Scrollbar */
@@ -234,7 +248,6 @@ const slideNext = () => {
 .horizontal-slider-module__navigation {
   display: flex;
   gap: 12px;
-  margin-top: 24px;
 }
 
 .horizontal-slider-module__nav-button {
@@ -279,26 +292,38 @@ const slideNext = () => {
 /* Responsive */
 @media (max-width: 1024px) {
   .horizontal-slider-module__container {
-    grid-template-columns: 1fr;
-    gap: 32px;
     padding: 0 24px;
   }
   
   .horizontal-slider-module__header {
-    position: static;
-    max-width: 500px;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .horizontal-slider-module__description {
+    max-width: 100%;
   }
   
   .horizontal-slider-module__title {
     font-size: 42px;
   }
   
-  .horizontal-slider-module__swiper {
-    padding-right: 24px;
+  .horizontal-slider-module__content {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
   
-  .horizontal-slider-module__scrollbar-wrapper {
-    padding-right: 24px;
+  .horizontal-slider-module__nav-column {
+    padding-top: 0;
+    order: 2;
+  }
+  
+  .horizontal-slider-module__slider-wrapper {
+    order: 1;
+  }
+  
+  .horizontal-slider-module__slide {
+    width: 260px !important;
   }
 }
 
@@ -316,16 +341,16 @@ const slideNext = () => {
   }
   
   .horizontal-slider-module__description {
-    font-size: 16px;
-  }
-  
-  .horizontal-slider-module__navigation {
-    margin-top: 20px;
+    font-size: 14px;
   }
   
   .horizontal-slider-module__nav-button {
     width: 44px;
     height: 44px;
+  }
+  
+  .horizontal-slider-module__slide {
+    width: 240px !important;
   }
 }
 </style>
