@@ -1,6 +1,7 @@
 <template>
   <div class="min-h-screen flex flex-col">
-    <!-- Header will be added later via Storyblok -->
+    <!-- Global Header -->
+    <AppHeader />
 
     <!-- Main Content -->
     <main class="flex-1">
