@@ -219,8 +219,15 @@ const slideNext = () => {
 
 .horizontal-slider-module__scrollbar {
   height: 4px;
-  background: rgba(0, 0, 0, 0.1);
+  background: rgba(0, 0, 0, 0.15);
   border-radius: 2px;
+  width: 100%;
+}
+
+:deep(.swiper-scrollbar-drag) {
+  background: #00000E;
+  border-radius: 2px;
+  cursor: grab;
 }
 
 .horizontal-slider-module--dark .horizontal-slider-module__scrollbar {
