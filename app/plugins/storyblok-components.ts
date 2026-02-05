@@ -44,6 +44,10 @@ import FleetItem from '../storyblok/FleetItem.vue'
 import RequestForm from '../storyblok/RequestForm.vue'
 import IconAndLink from '../storyblok/IconAndLink.vue'
 
+// Hero Teaser 6 (with inline form)
+import HeroTeaser6 from '../storyblok/HeroTeaser6.vue'
+import TeaserForm from '../storyblok/TeaserForm.vue'
+
 // Helper to register component with both naming conventions
 function register(app: any, snakeName: string, component: any) {
   app.component(snakeName, component)
@@ -93,4 +97,8 @@ export default defineNuxtPlugin(({ vueApp }) => {
   // Request Form
   register(vueApp, 'request_form', RequestForm)
   register(vueApp, 'icon_and_link', IconAndLink)
+  
+  // Hero Teaser 6 (with inline form)
+  register(vueApp, 'hero_teaser_6', HeroTeaser6)
+  register(vueApp, 'teaser_form', TeaserForm)
 })
