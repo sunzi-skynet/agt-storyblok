@@ -347,6 +347,36 @@ Wenn ein neuer Block diese Felder hat, prüfen ob bestehender Block passt:
 **Layout:** 2-column (Info left, Form right), 2-step form
 **Datasource:** `form-labels` for all labels (central maintenance)
 
+---
+
+### hero_teaser_6 ✅
+**Status:** Done | **Datum:** 2026-02-05
+
+Hero mit integriertem Inline-Anfrageformular. Klick auf "Anfragen" leitet zu `/anfragen/?` mit URL-Parametern weiter.
+
+- **background_image** (asset) — Vollbild-Hintergrundbild
+- **title** (text) — H1: Nur Text änderbar, kein Styling
+- **form_title** (text) — Text über dem Formular (z.B. "Jetzt kostenlos anfragen!")
+- **teaser_form** (blocks: teaser_form, max 1) — Inline-Formular
+
+### teaser_form ✅
+**Status:** Done | **Typ:** Nested Block | **Datum:** 2026-02-05
+
+Inline-Formular für hero_teaser_6. Feldlabels kommen aus `form-labels` Datasource.
+
+- **target_url** (text) — Ziel-URL (default: `/anfragen/`)
+- **button_text** (text) — Button-Text (default: "Anfragen")
+
+**Felder (im Template):**
+- Abreiseort → `?departure=...`
+- Reiseziel → `?destination=...`
+- Personenanzahl (min. 6) → `?passengers=...`
+
+**Datasource Labels:**
+- `teaser_departure` = "Abreiseort eingeben"
+- `teaser_destination` = "Reiseziel eingeben"
+- `teaser_passengers` = "Mindestanzahl 6 Personen"
+
 ### icon_and_link ✅
 **Status:** Done | **Typ:** Nested Block
 

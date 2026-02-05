@@ -1,5 +1,5 @@
 {
-  "exported_at": "2026-02-04T18:46:51.564Z",
+  "exported_at": "2026-02-05T10:15:49.452Z",
   "space_id": "290276210045571",
   "components": [
     {
@@ -428,6 +428,47 @@
           "pos": 3,
           "display_name": "Description Right",
           "id": "a2DiAo6MSCCxhtferMAFHw"
+        }
+      }
+    },
+    {
+      "name": "hero_teaser_6",
+      "display_name": "Hero Teaser 6 (Form)",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "background_image": {
+          "type": "asset",
+          "pos": 0,
+          "display_name": "Background Image",
+          "filetypes": [
+            "images"
+          ],
+          "id": "keUbTWvHTM6bKbrlj1c1WQ"
+        },
+        "title": {
+          "type": "text",
+          "pos": 1,
+          "display_name": "Title (H1)",
+          "description": "Only text can be changed, no styling",
+          "id": "FyLXi50QQ6uQVodqfUaMiQ"
+        },
+        "form_title": {
+          "type": "text",
+          "pos": 2,
+          "display_name": "Form Title",
+          "description": "Text above the form (e.g. Jetzt kostenlos anfragen!)",
+          "id": "LKQkGanlQ5qo2iMk6ryzcQ"
+        },
+        "teaser_form": {
+          "type": "bloks",
+          "pos": 3,
+          "display_name": "Teaser Form",
+          "component_whitelist": [
+            "teaser_form"
+          ],
+          "maximum": 1,
+          "id": "hZ6UswhpSaeOmcXjuCh42Q"
         }
       }
     },
@@ -1016,6 +1057,29 @@
           ],
           "maximum": 2,
           "id": "hXQA_TvNSnK1gVqGBCUt6g"
+        }
+      }
+    },
+    {
+      "name": "teaser_form",
+      "display_name": "Teaser Form (Inline)",
+      "is_root": false,
+      "is_nestable": true,
+      "schema": {
+        "target_url": {
+          "type": "text",
+          "pos": 0,
+          "display_name": "Target URL",
+          "description": "URL to redirect to (e.g. /anfragen/)",
+          "default_value": "/anfragen/",
+          "id": "oH_aqQ3zQDufoz_m4HhJ9Q"
+        },
+        "button_text": {
+          "type": "text",
+          "pos": 1,
+          "display_name": "Button Text",
+          "default_value": "Anfragen",
+          "id": "Nn9QBp2rTUiorX_W0bONgw"
         }
       }
     },
